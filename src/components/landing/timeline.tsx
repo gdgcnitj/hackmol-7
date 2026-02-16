@@ -36,8 +36,8 @@ export default function Timeline() {
         <Image
           src="/images/timelineLeftBorder.png"
           alt=""
-          width={90}
-          height={90}
+          width={130}
+          height={130}
           className="timeline-corner-left"
         />
 
@@ -51,8 +51,8 @@ export default function Timeline() {
         <Image
           src="/images/timelineRightBorder.png"
           alt=""
-          width={90}
-          height={90}
+          width={130}
+          height={130}
           className="timeline-corner-right"
         />
       </div>
