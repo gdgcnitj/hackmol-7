@@ -16,6 +16,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Trajan Pro 3";
+  src: url("/fonts/Trajan Pro 3 Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Perpetua";
@@ -33,11 +40,21 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Perpetua Std";
+  src: url("/fonts/Perpetua Std Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
   --font-trajan: "Trajan Pro 3", serif;
   --font-perpetua: "Perpetua", serif;
+  --font-perpetua-std: "Perpetua Std", serif;
+  --font-cinzel: "Cinzel", serif;
 }
 
 @theme inline {

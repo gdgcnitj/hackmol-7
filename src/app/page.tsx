@@ -9,15 +9,15 @@ import FAQ from "@/components/landing/FAQ";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-20">
-    <Hero/>
-    <About/>
-    <Timeline/>
-    <Tracks/>
-    <Sponsors/>
-    <Prizes/>
-    <Speakers/>
-    <FAQ/>
+    <div className="flex flex-col">
+      <Hero />
+      <About />
+      <Timeline />
+      <Tracks />
+      <Sponsors />
+      <Prizes />
+      <Speakers />
+      <FAQ />
     </div>
   );
 }

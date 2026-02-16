@@ -1,0 +1,337 @@
+.tracks-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 0 100px;
+  color: #ffffff;
+  background: radial-gradient(
+    ellipse 75% 55% at 50% 45%,
+    #355f9b 0%,
+    #15345f 30%,
+    #08162b 55%,
+    #040815 85%
+  );
+}
+
+.tracks-heading {
+  text-align: center;
+  margin-bottom: 72px;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.tracks-heading-title {
+  font-family: var(--font-trajan, var(--font-cinzel)), serif;
+  font-weight: 600;
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.tracks-heading-title .highlight {
+  color: #74dbee;
+}
+
+.tracks-heading-rule {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.85),
+    transparent
+  );
+}
+
+.tracks-cards {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.tracks-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    #133A8E 0%,
+    #02122B 70%
+  );
+  border: 1px solid #6fa8ff;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tracks-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 50px rgba(19, 58, 142, 0.4);
+}
+
+.tracks-card--side {
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.tracks-card--center {
+  width: 500px;
+  flex-shrink: 0;
+  margin-bottom: 60px;
+}
+
+.tracks-card-header {
+  padding: 18px 20px 14px;
+  text-align: center;
+}
+
+.tracks-card--center .tracks-card-header {
+  padding: 22px 24px 16px;
+}
+
+.tracks-card-name {
+  font-family: var(--font-trajan, var(--font-cinzel)), serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.tracks-card--center .tracks-card-name {
+  font-size: 26px;
+}
+
+.tracks-card-separator-wrap {
+  width: 100%;
+  line-height: 0;
+}
+
+.tracks-card-separator {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tracks-card-body {
+  position: relative;
+  flex: 1;
+}
+
+.tracks-card-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 90%;
+  opacity: 100;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tracks-card-overlay img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.tracks-card-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 20px 24px 28px;
+}
+
+.tracks-card--center .tracks-card-content {
+  padding: 24px 32px 36px;
+}
+
+.tracks-prizes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tracks-prize-label {
+  font-family: var(--font-trajan), serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.tracks-card--center .tracks-prize-label {
+  font-size: 17px;
+}
+
+.tracks-prize-amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 4px 12px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.tracks-prize-amount img {
+  flex-shrink: 0;
+}
+
+.tracks-prize-amount span {
+  font-family: var(--font-perpetua-std), serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+}
+
+.tracks-card--center .tracks-prize-amount span {
+  font-size: 17px;
+}
+
+.tracks-awards {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tracks-awards-title {
+  font-family: var(--font-trajan), serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.tracks-card--center .tracks-awards-title {
+  font-size: 18px;
+}
+
+.tracks-awards-list {
+  list-style: disc;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tracks-awards-list li {
+  font-family: var(--font-perpetua), serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 1.45;
+}
+
+.tracks-card--center .tracks-awards-list li {
+  font-size: 16px;
+}
+
+@media (max-width: 1250px) {
+  .tracks-card--side {
+    width: 280px;
+  }
+
+}
+
+@media (max-width: 1100px) {
+  .tracks-cards {
+    gap: 28px;
+    padding: 0 32px;
+  }
+
+  .tracks-card--side {
+    width: 280px;
+  }
+
+  .tracks-card--center {
+    width: 380px;
+    margin-bottom: 40px;
+  }
+
+  .tracks-card-name {
+    font-size: 18px;
+  }
+
+  .tracks-card--center .tracks-card-name {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .tracks-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .tracks-card--side,
+  .tracks-card--center {
+    width: 100%;
+    max-width: 480px;
+    margin-bottom: 0;
+  }
+
+  .tracks-heading-title {
+    font-size: 36px;
+
+  }
+}
+
+@media (max-width: 600px) {
+  .tracks-section {
+    padding: 56px 0 64px;
+  }
+
+  .tracks-heading {
+    margin-bottom: 48px;
+  }
+
+  .tracks-heading-title {
+    font-size: 28px;
+  }
+
+  .tracks-heading-rule {
+    width: 240px;
+  }
+
+  .tracks-cards {
+    padding: 0 16px;
+    gap: 28px;
+  }
+
+  .tracks-card-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 20px 28px;
+  }
+
+  .tracks-card--center .tracks-card-content {
+    padding: 20px 24px 28px;
+  }
+
+  .tracks-card-name {
+    font-size: 17px;
+  }
+
+  .tracks-card--center .tracks-card-name {
+    font-size: 20px;
+  }
+}
