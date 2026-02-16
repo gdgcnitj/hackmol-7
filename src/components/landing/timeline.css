@@ -256,6 +256,10 @@
     padding-bottom: 16px;
   }
 
+  .timeline-heading-rule {
+    width: 320px;
+  }
+
   .timeline-heading-title {
     font-size: 26px;
     padding: 0 16px;
@@ -310,6 +314,11 @@
 
   .timeline-content {
     padding: 24px 12px 40px;
+  }
+
+  .timeline-heading-rule{
+    width: 240px;
+    
   }
 
   .timeline-subheading-title {
