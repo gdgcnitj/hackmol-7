@@ -11,10 +11,10 @@ import "./speakers.css";
 
 // Asset imports
 import leftOrnament from "../../../public/images/leftOrnament.png";
-import arrowAsset from "../../../public/images/Arrow2.png";
-import bottomUnion from "../../../public/images/Union.png";
+import arrowAsset from "../../../public/images/arrow_2.png";
+import bottomUnion from "../../../public/images/union.png";
 import maskCorner from "../../../public/images/Maskgroup.png";
-import speaker1 from "../../../public/images/speakerDummy.jpg";
+import speaker1 from "../../../public/images/speakerdummy.jpg";
 
 const speakersData = Array(6).fill({
   name: "DR. RAKESH SHARMA",
