@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import "./faq.css"; // Import your custom CSS
 
@@ -46,7 +46,7 @@ export default function FAQ() {
         <div className="faq-header">
           <h2 className="faq-title cinzel-font">Got Questions?</h2>
           <p className="faq-subtitle cinzel-font">
-            We've got answers. Find everything you <br className="desktop-only" />
+            We&apos;ve got answers. Find everything you <br className="desktop-only" />
             need to know about Hackmol 7.0 here.
           </p>
         </div>
