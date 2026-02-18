@@ -85,7 +85,7 @@ function TrackCard({ track }: { track: TrackData }) {
       : "tracks-card tracks-card--side";
 
   return (
-    <div className={cardClass}>
+    <div className={cardClass} id="tracks">
       <div className="tracks-card-header">
         <h3 className="tracks-card-name">{track.name}</h3>
       </div>

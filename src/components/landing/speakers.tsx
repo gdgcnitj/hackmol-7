@@ -30,19 +30,27 @@ export default function Speakers() {
       {/* HEADER SECTION */}
       <div className="speakers-header">
         <div className="title-row">
-          <img src={leftOrnament.src} alt="" className="side-ornament" />
+          <div className="relative">
+            <Image src={leftOrnament.src} fill alt="" className="side-ornament" />
+          </div>
           <h1 className="cinzel-font main-title">SPEAKERS</h1>
-          <img src={leftOrnament.src} alt="" className="side-ornament flip-x" />
+          <div className="relative">
+            <Image src={leftOrnament.src} fill alt="" className="side-ornament flip-x" />
+          </div>
         </div>
 
         <div className="subtitle-row">
-          <img src={arrowAsset.src} alt="" className="subtitle-arrow" />
+          <div className="relative">
+            <Image src={arrowAsset.src} fill alt="" className="subtitle-arrow" />
+          </div>
           <span className="cinzel-font subtitle-text">Voices of the Hollow</span>
-          <img src={arrowAsset.src} alt="" className="subtitle-arrow flip-x" />
+          <div className="relative">
+            <Image src={arrowAsset.src} fill alt="" className="subtitle-arrow flip-x" />
+          </div>
         </div>
 
-        <div className="header-base">
-          <img src={bottomUnion.src} alt="" className="union-asset" />
+        <div className="header-base relative">
+          <Image src={bottomUnion.src} fill alt="" className="union-asset" />
         </div>
       </div>
 
@@ -71,8 +79,12 @@ export default function Speakers() {
           {speakersData.map((person, index) => (
             <SwiperSlide key={index} className="speaker-slide">
               <div className="speaker-card">
-                <img src={maskCorner.src} alt="" className="card-corner top-l" />
-                <img src={maskCorner.src} alt="" className="card-corner bottom-r" />
+                <div className="relative">
+                  <Image src={maskCorner.src} fill alt="" className="card-corner top-l" />
+                </div>
+                <div className="relative">
+                  <Image src={maskCorner.src} fill alt="" className="card-corner bottom-r" />
+                </div>
 
                 <div className="avatar-wrapper">
                   <div className="glow-effect"></div>
@@ -99,9 +111,9 @@ export default function Speakers() {
                 <p className="cinzel-font card-desc">{person.description}</p>
 
                 <div className="tag-list">
-                  {person.tags.map((tag, i) => (
+                    {person.tags.map((tag: string, i: number) => (
                     <span key={i} className="tag-pill">{tag}</span>
-                  ))}
+                    ))}
                 </div>
 
                 <button className="cinzel-font view-btn">View Entry</button>
