@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,9 +10,55 @@ import "./hero.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_COUNT = 138;
+// Minimum frames that must be loaded before allowing smooth scroll animation
+const MIN_FRAMES_FOR_SCROLL = 40;
+// Concurrency limit for fetch requests (avoid network congestion)
+const CONCURRENT_LOAD_LIMIT = 6;
 
 function getCurrentFrame(index: number): string {
-  return `/frames/${String(index + 1).padStart(3, "0")}.png`;
+  return `/frames/${String(index + 1).padStart(3, "0")}.webp`;
+}
+
+/**
+ * Generate a smart loading order:
+ * 1. Frame 0 (immediate display)
+ * 2. Key frames evenly spread across the sequence (skeleton preview)
+ * 3. Fill in remaining frames sequentially
+ */
+function getSmartLoadOrder(): number[] {
+  const order: number[] = [0];
+  const visited = new Set<number>([0]);
+
+  // Phase 1: Key frames — every ~10th frame for quick scrub preview
+  for (let i = 10; i < FRAME_COUNT; i += 10) {
+    if (!visited.has(i)) {
+      order.push(i);
+      visited.add(i);
+    }
+  }
+  // Include last frame
+  if (!visited.has(FRAME_COUNT - 1)) {
+    order.push(FRAME_COUNT - 1);
+    visited.add(FRAME_COUNT - 1);
+  }
+
+  // Phase 2: Interleave — every 5th frame
+  for (let i = 5; i < FRAME_COUNT; i += 5) {
+    if (!visited.has(i)) {
+      order.push(i);
+      visited.add(i);
+    }
+  }
+
+  // Phase 3: Fill remaining sequentially
+  for (let i = 0; i < FRAME_COUNT; i++) {
+    if (!visited.has(i)) {
+      order.push(i);
+      visited.add(i);
+    }
+  }
+
+  return order;
 }
 
 export default function Hero() {
@@ -21,7 +67,12 @@ export default function Hero() {
   const frameIndexRef = useRef({ value: 0 });
   const lastRenderedFrame = useRef(-1);
   const framesRef = useRef<(ImageBitmap | null)[]>(new Array(FRAME_COUNT).fill(null));
-  
+  const loadedCountRef = useRef(0);
+
+  // Loading state
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
   // Countdown state
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -66,6 +117,22 @@ export default function Hero() {
     }
   }, []);
 
+  // Find nearest loaded frame (fallback when the exact frame isn't loaded yet)
+  const findNearestLoadedFrame = useCallback((targetIndex: number): ImageBitmap | null => {
+    const frames = framesRef.current;
+    // Check exact frame first
+    if (frames[targetIndex]) return frames[targetIndex];
+
+    // Search outward from targetIndex in both directions
+    for (let offset = 1; offset < FRAME_COUNT; offset++) {
+      const before = targetIndex - offset;
+      const after = targetIndex + offset;
+      if (before >= 0 && frames[before]) return frames[before];
+      if (after < FRAME_COUNT && frames[after]) return frames[after];
+    }
+    return null;
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const section = sectionRef.current;
@@ -88,26 +155,13 @@ export default function Hero() {
       canvas.style.height = `${height}px`;
     };
 
-    // Render frame function (defined BEFORE use)
-    const renderFrame = (index: number) => {
-      if (!context || !canvas) return;
-
-      const safeIndex = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(index)));
-
-      // Skip redundant renders
-      if (safeIndex === lastRenderedFrame.current) return;
-      lastRenderedFrame.current = safeIndex;
-
-      const bitmap = framesRef.current[safeIndex];
-      // If frame not ready, do nothing (wait for load)
-      if (!bitmap) return;
-
+    // Draw a bitmap onto the canvas with cover scaling
+    const drawBitmap = (bitmap: ImageBitmap) => {
       const displayW = canvas.width;
       const displayH = canvas.height;
 
       context.clearRect(0, 0, displayW, displayH);
 
-      // Draw covering canvas (contain logic)
       const canvasRatio = displayW / displayH;
       const imgRatio = bitmap.width / bitmap.height;
 
@@ -128,20 +182,70 @@ export default function Hero() {
       context.drawImage(bitmap, offsetX, offsetY, drawW, drawH);
     };
 
-    // 2. Efficient Frame Loading (Batching to avoid network/thread congestion)
-    const loadFrame = async (index: number) => {
+    // Render frame function with nearest-frame fallback
+    const renderFrame = (index: number) => {
+      if (!context || !canvas) return;
+
+      const safeIndex = Math.max(0, Math.min(FRAME_COUNT - 1, Math.round(index)));
+
+      // Skip redundant renders
+      if (safeIndex === lastRenderedFrame.current) return;
+
+      // Try exact frame, fallback to nearest loaded frame
+      const bitmap = framesRef.current[safeIndex] || findNearestLoadedFrame(safeIndex);
+      if (!bitmap) return;
+
+      lastRenderedFrame.current = safeIndex;
+      drawBitmap(bitmap);
+    };
+
+    // 2. Efficient Frame Loading with concurrency control
+    let cancelled = false;
+
+    const loadFrame = async (index: number): Promise<void> => {
+      if (cancelled) return;
       if (framesRef.current[index]) return; // Already loaded
 
       try {
         const src = getCurrentFrame(index);
         const resp = await fetch(src);
+        if (cancelled) return;
         const blob = await resp.blob();
+        if (cancelled) return;
         // createImageBitmap decodes off-main-thread. Huge win.
         const bitmap = await createImageBitmap(blob);
+        if (cancelled) return;
         framesRef.current[index] = bitmap;
+
+        // Track progress
+        loadedCountRef.current++;
+        const progress = Math.round((loadedCountRef.current / FRAME_COUNT) * 100);
+        setLoadProgress(progress);
+
+        // Mark as ready for scroll once we have enough key frames
+        if (loadedCountRef.current >= MIN_FRAMES_FOR_SCROLL) {
+          setIsLoaded(true);
+        }
       } catch (err) {
-        console.error(`Failed to load frame ${index}`, err);
+        if (!cancelled) {
+          console.error(`Failed to load frame ${index}`, err);
+        }
       }
+    };
+
+    // Concurrency-limited batch loader
+    const loadFramesWithConcurrency = async (indices: number[], concurrency: number) => {
+      let cursor = 0;
+
+      const worker = async () => {
+        while (cursor < indices.length && !cancelled) {
+          const idx = indices[cursor++];
+          await loadFrame(idx);
+        }
+      };
+
+      const workers = Array.from({ length: concurrency }, () => worker());
+      await Promise.all(workers);
     };
 
     // Initial setup - set canvas size FIRST
@@ -158,30 +262,21 @@ export default function Hero() {
       rafId = requestAnimationFrame(tick);
     };
 
-    // Load initial batch (priority)
-    const PRELOAD_BATCH = 25; // Adjusted batch size
+    // Smart loading: prioritize key frames first, then fill in
+    const loadOrder = getSmartLoadOrder();
+
     (async () => {
       // Load first frame immediately and render it
       await loadFrame(0);
+      if (cancelled) return;
       renderFrame(0);
       
       // Start render loop after first frame is ready
       rafId = requestAnimationFrame(tick);
-      
-      const loadPromises = [];
-      for (let i = 1; i < FRAME_COUNT; i++) {
-        // High priority: first batch
-        if (i < PRELOAD_BATCH) {
-          loadPromises.push(loadFrame(i));
-        } else {
-          // Add a tiny delay between subsequent batches to yield to UI
-          // Using 20ms delay to keep the main thread breathing space
-          await new Promise(r => setTimeout(r, 20));
-          loadFrame(i);
-        }
-      }
-      // Wait for first batch to be ready
-      await Promise.all(loadPromises.slice(0, PRELOAD_BATCH - 1));
+
+      // Load remaining frames in smart order with concurrency limit
+      const remaining = loadOrder.slice(1); // Skip frame 0 (already loaded)
+      await loadFramesWithConcurrency(remaining, CONCURRENT_LOAD_LIMIT);
     })();
 
     const handleResize = () => {
@@ -207,6 +302,7 @@ export default function Hero() {
     });
 
     return () => {
+      cancelled = true;
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(rafId);
       scrollAnimation.kill();
@@ -215,10 +311,33 @@ export default function Hero() {
       // Cleanup bitmaps to free GPU memory
       framesRef.current.forEach(bmp => bmp?.close());
     };
-  }, []);
+  }, [findNearestLoadedFrame]);
 
   return (
     <>
+      {/* Loading overlay — shown until enough frames are loaded */}
+      <div className={`hero-loading-overlay ${isLoaded ? "hero-loading-hidden" : ""}`}>
+        <div className="hero-loading-content">
+          <Image
+            src="/images/hackmol_logo.png"
+            alt="HackMol 7.0"
+            width={600}
+            height={180}
+            className="hero-loading-logo"
+            priority
+          />
+          <div className="hero-loading-bar-track">
+            <div
+              className="hero-loading-bar-fill"
+              style={{ width: `${loadProgress}%` }}
+            />
+          </div>
+          <p className="hero-loading-text">
+            Loading experience… {loadProgress}%
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section with scroll-driven frames */}
       <section className="hero-scroll-section" ref={sectionRef}>
         <div className="hero-canvas-wrapper">

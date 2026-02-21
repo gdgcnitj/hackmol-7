@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: clamp(8px, 1.5vw, 14px) auto clamp(6px, 1.2vw, 10px);
+  margin: clamp(4px, 0.8vw, 8px) auto clamp(2px, 0.6vw, 6px);
 }
 
 .section-heading__divider-ornament {
