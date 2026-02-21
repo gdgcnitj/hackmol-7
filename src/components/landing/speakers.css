@@ -90,6 +90,7 @@
   box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
   height: auto;
   margin: auto 0;
+  cursor: default;
 }
 
 .speaker-card:hover {
