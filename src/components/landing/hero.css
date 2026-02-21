@@ -431,6 +431,9 @@ body {
 
 .scroll-arrow {
   display: block;
+  width: 30px;
+  height: 30px;
+  color: #4da8da;
   opacity: 0.85;
   transition: opacity 0.3s ease;
   filter: drop-shadow(0 0 10px var(--glow-blue));

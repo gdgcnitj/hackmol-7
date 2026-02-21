@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { HiChevronDown } from "react-icons/hi2";
 import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -286,13 +287,7 @@ export default function Hero() {
 
           {/* Scroll indicator */}
           <div className="scroll-indicator">
-            <Image
-              src="/images/scroll_down.png"
-              alt="Scroll Down"
-              width={30}
-              height={30}
-              className="scroll-arrow"
-            />
+            <HiChevronDown className="scroll-arrow" />
           </div>
         </div>
       </section>
