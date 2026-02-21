@@ -136,6 +136,8 @@ body {
   will-change: contents;
   transform: translateZ(0);
   /* Force GPU layer */
+  pointer-events: none;
+  /* Don't interfere with scroll */
 }
 
 /* Vignette & Texture Overlay */
@@ -274,6 +276,8 @@ body {
   transform: translateX(-50%);
   z-index: 10;
   text-align: center;
+  pointer-events: none;
+  /* Don't block scroll interaction */
 }
 
 .logo-overlay img {
@@ -301,6 +305,8 @@ body {
   transform: translateX(-50%);
   z-index: 10;
   text-align: center;
+  pointer-events: none;
+  /* Don't block scroll interaction */
 }
 
 .countdown-label {
@@ -416,21 +422,19 @@ body {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  /* Visual indicator only, don't block scroll */
 }
 
 .scroll-arrow {
-  cursor: pointer;
-
+  display: block;
   opacity: 0.85;
-  transition: all 0.3s ease;
-
+  transition: opacity 0.3s ease;
   filter: drop-shadow(0 0 10px var(--glow-blue));
   animation: bounce 2s infinite;
-}
-
-.scroll-arrow:hover {
-  opacity: 1;
-  transform: translateY(6px);
 }
 
 /* Animations */
@@ -539,6 +543,15 @@ body {
   .devfolio-button-overlay {
     top: 54%;
   }
+
+  .scroll-indicator {
+    bottom: 30px;
+  }
+
+  .scroll-arrow {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -589,5 +602,14 @@ body {
 
   .devfolio-button-overlay {
     top: 52%;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
   }
 }
