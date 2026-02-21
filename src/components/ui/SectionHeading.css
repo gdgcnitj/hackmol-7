@@ -24,25 +24,19 @@
   color: #4da8da;
 }
 
-/* Divider — single short accent bar */
+/* Divider — ornamental image */
 .section-heading__divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: clamp(14px, 2.5vw, 22px) auto clamp(12px, 2vw, 18px);
+  margin: clamp(8px, 1.5vw, 14px) auto clamp(6px, 1.2vw, 10px);
 }
 
-.section-heading__divider-bar {
-  width: clamp(32px, 6vw, 52px);
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #4da8da 40%,
-    #4da8da 60%,
-    transparent 100%
-  );
-  border-radius: 2px;
+.section-heading__divider-ornament {
+  width: clamp(120px, 13vw, 280px);
+  height: auto;
+  opacity: 0.7;
+  object-fit: contain;
 }
 
 /* Description */

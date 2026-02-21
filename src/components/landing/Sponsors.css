@@ -1,246 +1,333 @@
-:root {
-  --bg-dark: #080E1C;
-  --accent-blue: #4b6cb7;
-  --text-silver: #d1d5db;
-  --glow-color: rgba(75, 108, 183, 0.3);
-}
+/* ══════════════════════════════════════════
+   Sponsors — compact category-filtered grid
+   ══════════════════════════════════════════ */
 
 .sponsor-container {
-  background-color: var(--bg-dark);
-  color: white;
+  background-color: #080e1c;
+  color: #fff;
   min-height: 100vh;
-  padding: 40px;
-  font-family: "Serif", "Georgia", serif;
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* ── 2-column layout: sidebar + grid ── */
 .sponsor-layout {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-columns: 220px 1fr;
+  gap: clamp(24px, 4vw, 48px);
   width: 100%;
-  max-width: 1200px;
-  gap: 20px;
-  margin: 2rem 0px 0px 0px;
+  max-width: 1100px;
+  margin-top: clamp(24px, 3vw, 40px);
+  align-items: start;
 }
 
-/* Sidebar Styling */
+/* ══════════════════════════════════════════
+   Sidebar — category filters
+   ══════════════════════════════════════════ */
 .sponsor-sidebar {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: auto 0;
-  font-family: var(--font-cinzel);
+  gap: 0;
+  position: sticky;
+  top: 100px;
 }
 
 .sidebar-item {
-  padding: 10px;
+  all: unset;
   cursor: pointer;
-  letter-spacing: 2px;
-  transition: all 0.3s ease;
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(10px, 0.95vw, 12px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   gap: 10px;
-  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.sidebar-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+  transform: translateX(2px);
+}
+
+.sidebar-item:hover::before {
+  width: 100%;
+}
+
+.sidebar-item:active {
+  transform: translateX(4px) scale(1.02);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-item.active {
-  opacity: 1;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
+  color: rgba(255, 255, 255, 1);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   transform: scale(1.05);
 }
 
-/* Center Piece with Radial Gradient */
-.sponsor-center-display {
-  padding: 30px;
+.sidebar-item.active::before {
+  display: none;
+}
+
+/* Tag icon in sidebar item */
+.sidebar-item-icon {
+  width: clamp(14px, 1.4vw, 18px) !important;
+  height: auto !important;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-item:hover .sidebar-item-icon {
+  opacity: 0.85;
+  transform: scale(1.08);
+}
+
+.sidebar-item.active .sidebar-item-icon {
+  opacity: 1;
+}
+
+/* Top/bottom ornaments */
+.sidebar-ornament-top,
+.sidebar-ornament-bottom {
+  width: clamp(80px, 10vw, 140px) !important;
+  height: auto !important;
+  margin: clamp(4px, 0.5vw, 8px) auto;
+  opacity: 0.75;
+  animation: fadeInOrnament 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInOrnament {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-4px);
+  }
+  to {
+    opacity: 0.75;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ══════════════════════════════════════════
+   Sponsor grid — cards
+   ══════════════════════════════════════════ */
+.sponsor-grid {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+  align-content: start;
+}
+
+/* ── Card ── */
+.sponsor-card {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: clamp(24px, 3vw, 36px) clamp(16px, 2vw, 24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
-.logo-glow-box {
-  width: 390px;
-  height: 390px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-
-.logo-glow-box::before {
+.sponsor-card::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #4f62a4 0%,
-    #374371 50%,
-    #1e253e 100%
-  );
-  border-radius: 50%;
-  filter: blur(115px);
-  opacity: 0.7;
-  z-index: 0;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.placeholder-logo {
-  position: relative;
-  z-index: 1;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
+.sponsor-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.045);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.vertical-divider {
-  margin: 1.5rem;
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, #ffffff, transparent);
+.sponsor-card:hover::after {
+  opacity: 1;
 }
 
-/* Details Panel */
-.sponsor-details {
-  padding: 35px;
-  text-align: center;
-  margin: auto 0;
+.sponsor-card:active {
+  transform: translateY(-1px);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.detail-name {
-  font-size: 2rem;
-  font-family: "Trajan Pro 3", serif;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
-}
-
-.detail-description,
-.detail-task {
-  font-size: 16px;
-  font-family: var(--font-perpetua), serif;
-  color: var(--text-silver);
-  line-height: 1.6;
-}
-
-.ornate-divider {
-  margin: 30px 0;
+/* Logo area */
+.sponsor-card-logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 48px;
 }
 
-.prize-box {
-  margin-top: 40px;
-  font-family: "Perpetua", sans-serif;
+.sponsor-card-logo img {
+  max-width: clamp(100px, 12vw, 160px) !important;
+  max-height: 56px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.sponsor-card:hover .sponsor-card-logo img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.sponsor-card-placeholder {
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(13px, 1.2vw, 16px);
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
 }
 
-.prize-value {
-  font-size: 1.2rem;
-  color: #ffffff;
-  font-weight: 700;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+/* Label below logo */
+.sponsor-card-label {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(9px, 0.8vw, 11px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
 }
 
-.footer-ornament {
-  margin-top: 50px;
+.sponsor-card:hover .sponsor-card-label {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Footer ornament ── */
+.sponsor-footer-ornament {
+  margin-top: clamp(36px, 4vw, 56px);
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.footer-ornament img {
-  max-width: 600px;
-  height: auto;
-  opacity: 1;
-  filter: brightness(1);
+.sponsor-footer-ornament img {
+  max-width: 500px !important;
+  width: 100% !important;
+  height: auto !important;
+  opacity: 0.8;
+  pointer-events: none;
 }
 
-.sidebar-active-ornament {
-  width: 3rem;
-  height: auto;
-  margin: 2px auto;
-}
+/* ══════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════ */
 
-.sidebar-active-ornament-flipped {
-  width: 3rem;
-  height: auto;
-  margin: 0px auto;
-  transform: rotate(180deg);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
+/* Tablet */
+@media (max-width: 768px) {
   .sponsor-layout {
-    grid-template-columns: 1fr; /* Stack vertically on tablets/phones */
-    gap: 40px;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .sponsor-sidebar {
-    order: 2; /* Move sidebar below the logo */
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 0;
+    position: static;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 4px;
   }
 
-  .sponsor-center-display {
-    order: 1;
-  }
-
-  .sponsor-details {
-    order: 3;
-  }
-
-  .vertical-divider {
-    display: none; /* Hide vertical lines on mobile stack */
-  }
-
-  .logo-glow-box {
-    width: 280px; /* Scaled down for smaller screens */
-    height: 280px;
-  }
-
-  .logo-glow-box::before {
-    filter: blur(60px); /* Adjust glow intensity for smaller size */
-  }
-}
-
-
-@media (max-width: 480px) {
-  .sponsor-title {
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-  }
-
-  .sponsor-container {
-    padding: 20px;
-  }
-
-  .detail-name {
-    font-size: 1.5rem;
-  }
-
-  .footer-ornament img {
-    max-width: 100%; /* Ensure ornament doesn't bleed off screen */
-  }
-  .sidebar-active-ornament {
+  /* Hide ornaments on tablet/mobile */
+  .sidebar-ornament-top,
+  .sidebar-ornament-bottom {
     display: none;
+  }
+
+  .sidebar-item {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+
+  .sidebar-item::before {
+    display: none;
+  }
+
+  .sidebar-item:hover {
+    transform: translateY(-1px);
+    border-left-color: transparent;
+  }
+
+  .sidebar-item:active {
+    transform: translateY(0);
+  }
+
+  .sidebar-item.active {
+    border-bottom-color: rgba(255, 255, 255, 0.6);
+    border-left-color: transparent;
+    border-top: none;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .sidebar-item.active::before {
+    display: none;
+  }
 }
 
-.sidebar-active-ornament-flipped {
-  display: none;
+/* Mobile — force max 2 cols except gold which stays at 1 */
+@media (max-width: 540px) {
+  .sponsor-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Keep gold sponsors at 1 column on mobile */
+  .sponsor-grid[data-category="gold"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sponsor-card {
+    padding: 20px 12px;
+  }
+
+  .sponsor-card-logo img {
+    max-width: 80px;
+    max-height: 40px;
+  }
 }
+
+/* Very small — single col */
+@media (max-width: 360px) {
+  .sponsor-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

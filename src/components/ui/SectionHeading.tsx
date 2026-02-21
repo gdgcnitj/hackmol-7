@@ -1,4 +1,6 @@
+import Image from "next/image";
 import "./SectionHeading.css";
+import ornament from "../../../public/images/SponserOrnament.png";
 
 interface SectionHeadingProps {
   title: string;
@@ -28,7 +30,13 @@ export default function SectionHeading({
       </h2>
 
       <div className="section-heading__divider">
-        <span className="section-heading__divider-bar" />
+        <Image 
+          src={ornament} 
+          alt="" 
+          className="section-heading__divider-ornament"
+          width={120}
+          height={24}
+        />
       </div>
 
       {description && (

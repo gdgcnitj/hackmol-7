@@ -1,55 +1,136 @@
 "use client";
 
-import React, { useState } from 'react';
-import SectionHeading from '@/components/ui/SectionHeading';
-import './Sponsors.css';
-import sponserOrnament from "../../../public/images/SponserOrnament.png";
-import vector from "../../../public/images/Vector.png";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import SectionHeading from "@/components/ui/SectionHeading";
+import "./Sponsors.css";
 import sponserTag from "../../../public/images/sponserTag.png";
-import sponserHook from "../../../public/images/SponsersHook.png";
+import upperFrame from "../../../public/images/upperframe.png";
+import lowerFrame from "../../../public/images/lowerframe.png";
+
+/* ─── Types ─── */
+type Category = "gold" | "silver" | "bronze" | "community";
 
 interface Sponsor {
-  id: number;
   name: string;
-  prize: string;
-  description: string;
-  task: string;
+  logo: string;
+  label: string;          /* e.g. "Platform Partner" */
+  link: string;
+  category: Category;
 }
 
-const sponsorData: Sponsor[] = [
-  { 
-    id: 1, 
-    name: 'POLYGON', 
-    prize: 'XXXXX', 
-    description: 'Write Something About Company.........', 
-    task: 'Write About Task To Be Eligible For This Company Track.....' 
+/* ─── Data ─── */
+const categories: { key: Category; title: string }[] = [
+  { key: "gold",      title: "Gold Sponsors" },
+  { key: "silver",    title: "Silver Sponsors" },
+  { key: "bronze",    title: "Bronze Sponsors" },
+  { key: "community", title: "Community" },
+];
+
+const sponsors: Sponsor[] = [
+  /* Gold — 1 per row */
+   { name: "Sponsor 1", logo: "",                           label: "Cloud Partner",      link: "#",                       category: "gold" },
+
+  /* Silver — 2 per row */
+  { name: "Devfolio",  logo: "/images/devfolio_white.png", label: "Platform Partner",   link: "https://devfolio.co",    category: "silver" },
+  { name: "Sponsor 2", logo: "",                           label: "Cloud Partner",      link: "#",                       category: "silver" },
+
+  /* Bronze — 3 per row */
+  { name: "Sponsor 3", logo: "",                           label: "Design Partner",     link: "#",                       category: "bronze" },
+  { name: "Sponsor 4", logo: "",                           label: "API Partner",        link: "#",                       category: "bronze" },
+  { name: "Sponsor 5", logo: "",                           label: "Data Partner",       link: "#",                       category: "bronze" },
+
+  /* Community — 3 per row */
+  {
+    name: "Community 1",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
   },
-  { 
-    id: 2, 
-    name: 'POLYGON', 
-    prize: 'XXXXX', 
-    description: 'Write Something About Company.........', 
-    task: 'Write About Task To Be Eligible For This Company Track.....' 
+  {
+    name: "Community 2",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
   },
-  { 
-    id: 3, 
-    name: 'POLYGON', 
-    prize: 'XXXXX', 
-    description: 'Write Something About Company.........', 
-    task: 'Write About Task To Be Eligible For This Company Track.....' 
+  {
+    name: "Community 3",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
   },
-  { 
-    id: 4, 
-    name: 'POLYGON', 
-    prize: 'XXXXX', 
-    description: 'Write Something About Company.........', 
-    task: 'Write About Task To Be Eligible For This Company Track.....' 
+  {
+    name: "Community 4",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
+  },
+  {
+    name: "Community 5",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
+  },
+  {
+    name: "Community 6",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
+  },
+  {
+    name: "Community 7",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
+  },
+  {
+    name: "Community 8",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
+  },
+  {
+    name: "Community 9",
+    logo: "",
+    label: "Community Partner",
+    link: "#",
+    category: "community"
   },
 ];
 
+/* Column count per tier */
+const tierCols: Record<Category, number> = {
+  gold: 1,
+  silver: 2,
+  bronze: 3,
+  community: 3,
+};
+
+/* ─── Component ─── */
 export default function Sponsors() {
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const currentSponsor = sponsorData[activeTab];
+  const [active, setActive] = useState<Category>("gold");
+  const filtered = sponsors.filter((s) => s.category === active);
+
+  // Auto-rotate categories every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((current) => {
+        const currentIndex = categories.findIndex((c) => c.key === current);
+        const nextIndex = (currentIndex + 1) % categories.length;
+        return categories[nextIndex].key;
+      });
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="sponsor-container" id="sponsors">
@@ -59,70 +140,61 @@ export default function Sponsors() {
         highlightPosition="after"
         description="The great houses of the kingdom. Their support lights the path through HackMol 7.0."
       />
+
       <div className="sponsor-layout">
-        {/* Left Sidebar */}
-        <div className="sponsor-sidebar">
-          {sponsorData.map((s, index) => {
-            const isActive = activeTab === index;
+        {/* ── Left: Category filters ── */}
+        <aside className="sponsor-sidebar">
+          {categories.map((cat) => {
+            const isActive = active === cat.key;
             return (
-              <React.Fragment key={s.id}>
-                {/* Ornament above active item */}
+              <React.Fragment key={cat.key}>
+                {/* Top ornament for active */}
                 {isActive && (
-                  <img src={sponserHook.src} alt="top-ornament" className="sidebar-active-ornament" />
+                  <Image src={upperFrame} alt="" className="sidebar-ornament-top" width={140} height={40} />
                 )}
                 
-                <div 
-                  className={`sidebar-item ${isActive ? 'active' : ''}`}
-                  onClick={() => setActiveTab(index)}
+                <button
+                  className={`sidebar-item ${isActive ? "active" : ""}`}
+                  onClick={() => setActive(cat.key)}
                 >
-                  <img src={sponserTag.src} alt="Sponsor Icon" />
-                  {s.name}
-                </div>
+                  <Image src={sponserTag} alt="" className="sidebar-item-icon" width={18} height={18} />
+                  {cat.title}
+                </button>
 
-                {/* Ornament below active item (flipped) */}
+                {/* Bottom ornament for active */}
                 {isActive && (
-                  <img 
-                    src={sponserHook.src} 
-                    alt="bottom-ornament" 
-                    className="sidebar-active-ornament-flipped" 
-                  />
+                  <Image src={lowerFrame} alt="" className="sidebar-ornament-bottom" width={140} height={40} />
                 )}
               </React.Fragment>
             );
           })}
-        </div>
+        </aside>
 
-        {/* Center Logo Area */}
-        <div className="sponsor-center-display">
-          <div className="vertical-divider"></div>
-          
-          <div className="logo-glow-box">
-             {/* The name is kept clear via CSS z-index and pseudo-elements */}
-             <div className="placeholder-logo">{currentSponsor.name}</div>
-          </div>
-          
-          <div className="vertical-divider"></div>
+        {/* ── Right: Sponsor grid ── */}
+        <div
+          className="sponsor-grid"
+          data-category={active}
+          style={{ gridTemplateColumns: `repeat(${tierCols[active]}, 1fr)` }}
+        >
+          {filtered.map((s, i) => (
+            <a
+              key={i}
+              href={s.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sponsor-card"
+            >
+              <div className="sponsor-card-logo">
+                {s.logo ? (
+                  <Image src={s.logo} alt={s.name} width={160} height={56} style={{ objectFit: "contain" }} />
+                ) : (
+                  <span className="sponsor-card-placeholder">{s.name}</span>
+                )}
+              </div>
+              <p className="sponsor-card-label">{s.label}</p>
+            </a>
+          ))}
         </div>
-
-        {/* Right Info Area */}
-        <div className="sponsor-details">
-          <h2 className="detail-name">{currentSponsor.name}</h2>
-          <p className="detail-description">{currentSponsor.description}</p>
-          
-          <div className="ornate-divider">
-            <img src={vector.src} alt="Divider" />
-          </div>
-
-          <p className="detail-task">{currentSponsor.task}</p>
-          
-          <div className="prize-box">
-            PRIZE AMOUNT - <span className="prize-value">Rs. {currentSponsor.prize}</span>
-          </div>
-        </div>
-      </div>
-      
-      <div className="footer-ornament">
-        <img src={sponserOrnament.src} alt="Footer Ornament" />
       </div>
     </div>
   );
