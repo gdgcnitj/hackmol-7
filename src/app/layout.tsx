@@ -51,14 +51,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Google Developer Groups on Campus - NIT Jalandhar" }],
   creator: "GDGC NIT Jalandhar & IOTA Media Cell",
   publisher: "NIT Jalandhar",
-  metadataBase: new URL("https://hackmol.tech"),
+  metadataBase: new URL("https://hackmol.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "HackMol 7.0 — Into the Hollow of Innovation",
     description: "NIT Jalandhar's flagship 30-hour hackathon. Descend into the depths of innovation. Build real-world solutions. Win exciting prizes. March 28-29, 2026.",
-    url: "https://hackmol.tech",
+    url: "https://hackmol.com",
     siteName: "HackMol 7.0",
     images: [
       {
@@ -126,11 +126,11 @@ export default function RootLayout({
         "addressCountry": "IN"
       }
     },
-    "image": "https://hackmol.tech/og-image.png",
+    "image": "https://hackmol.com/og-image.png",
     "organizer": {
       "@type": "Organization",
       "name": "Google Developer Groups on Campus - NIT Jalandhar",
-      "url": "https://hackmol.tech"
+      "url": "https://hackmol.com"
     },
     "offers": {
       "@type": "Offer",
