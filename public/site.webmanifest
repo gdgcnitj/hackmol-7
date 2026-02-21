@@ -1,0 +1,18 @@
+{
+  "name": "HackMol 7.0 - Into the Hollow of Innovation",
+  "short_name": "HackMol 7.0",
+  "description": "NIT Jalandhar's flagship 36-hour hackathon. Descend. Discover. Develop.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080E1C",
+  "theme_color": "#4da8da",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

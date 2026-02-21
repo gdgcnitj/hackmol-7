@@ -31,7 +31,7 @@ export default function Hero() {
 
   // Countdown timer
   useEffect(() => {
-    const targetDate = new Date('2026-03-24T23:59:59').getTime();
+    const targetDate = new Date('2026-03-28T08:00:00').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
