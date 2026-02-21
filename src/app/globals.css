@@ -77,6 +77,16 @@ body {
   color: var(--foreground);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for fixed navbar */
+section[id],
+div[id] {
+  scroll-margin-top: 80px;
+}
+
 .font-cinzel {
   font-family: var(--font-cinzel), serif;
 }

@@ -51,7 +51,7 @@ export default function Sponsors() {
   const currentSponsor = sponsorData[activeTab];
 
   return (
-    <div className="sponsor-container">
+    <div className="sponsor-container" id="sponsors">
       <h1 className="sponsor-title">
         <span className="title-cyan">SPONSOR </span>
         <span className="title-silver">TRACKS</span>

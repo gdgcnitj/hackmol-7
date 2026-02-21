@@ -31,7 +31,7 @@ const timelineData = [
 
 export default function Timeline() {
   return (
-    <section className="timeline-section" id="schedule">
+    <section className="timeline-section" id="timeline">
       <div className="timeline-heading">
         <Image
           src="/images/timelineLeftBorder.png"

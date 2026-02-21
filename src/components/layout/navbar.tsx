@@ -2,11 +2,23 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 export default function Navbar() {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
             <div className="nav-logo">
                 <Link href="/">
                     <Image 
@@ -26,7 +38,10 @@ export default function Navbar() {
                 <a href="#faq">FAQ</a>
             </div>
             <div className="register-btn-wrapper">
-                <button className="register-btn">
+                <button 
+                    className="register-btn"
+                    onClick={() => window.open('https://hackmol-7.devfolio.co', '_blank')}
+                >
                     <Image 
                         src="/images/right-corner.png" 
                         alt="" 

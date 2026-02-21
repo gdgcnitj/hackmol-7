@@ -10,7 +10,7 @@ import FAQ from "@/components/landing/FAQ";
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <Hero />w
+      <Hero />
       <About />
       <Timeline />
       <Tracks />

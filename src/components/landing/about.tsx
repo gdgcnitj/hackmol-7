@@ -33,7 +33,7 @@ export default function About() {
 
 
     return (
-        <section className="about-section">
+        <section className="about-section" id="about">
 
             {/* Particles */}
             <div className="about-particles" id="about-particles"></div>
