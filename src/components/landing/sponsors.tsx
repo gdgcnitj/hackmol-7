@@ -32,8 +32,18 @@ const sponsors: Sponsor[] = [
    { name: "Sponsor 1", logo: "",                           label: "Cloud Partner",      link: "#",                       category: "gold" },
 
   /* Silver — 2 per row */
-  { name: "Devfolio",  logo: "/images/devfolio_white.png", label: "Platform Partner",   link: "https://devfolio.co",    category: "silver" },
-  { name: "Sponsor 2", logo: "",                           label: "Cloud Partner",      link: "#",                       category: "silver" },
+  { name: "Devfolio",
+    logo: "/images/devfolio_white.png",
+    label: "Platform Partner",
+    link: "https://devfolio.co",
+    category: "silver"
+  },
+  { name: "Gofr",
+    logo: "/images/gofr_logo.svg",
+    label: "Framework Partner",
+    link: "https://gofr.dev/",
+    category: "silver"
+  },
 
   /* Bronze — 3 per row */
   { name: "Sponsor 3", logo: "",                           label: "Design Partner",     link: "#",                       category: "bronze" },
@@ -42,10 +52,10 @@ const sponsors: Sponsor[] = [
 
   /* Community — 3 per row */
   {
-    name: "Community 1",
-    logo: "",
+    name: "GDGC NIT Jalandhar",
+    logo: "/images/gdgc-nitj.png",
     label: "Community Partner",
-    link: "#",
+    link: "https://github.com/gdgcnitj",
     category: "community"
   },
   {
