@@ -50,7 +50,7 @@ export default function Timeline() {
           title="HACKATHON"
           highlight="TIMELINE"
           highlightPosition="after"
-          description="Follow the journey through each milestone as the event unfolds."
+          description="Mark your descent. Each milestone brings you one step closer to the heart of Hallownest."
           className="timeline-section-heading"
         />
         <Image

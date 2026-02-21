@@ -48,7 +48,7 @@ export default function FAQ() {
           title="GOT"
           highlight="QUESTIONS?"
           highlightPosition="after"
-          description="We've got answers — find everything you need to know about HackMol 7.0."
+          description="Whispers from the depths. Everything you need before you descend into HackMol 7.0."
         />
 
         {/* Tab Buttons */}

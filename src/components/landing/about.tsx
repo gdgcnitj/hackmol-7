@@ -16,7 +16,7 @@ export default function About() {
                     title="ABOUT HACKMOL"
                     highlight="7.0"
                     highlightPosition="after"
-                    description="NIT Jalandhar's flagship 30-hour hackathon — where warriors of code forge groundbreaking solutions."
+                    description="Descend into 30 hours of creation. NIT Jalandhar's flagship hackathon — where builders forge the future."
                 />
 
                 {/* Main Content */}

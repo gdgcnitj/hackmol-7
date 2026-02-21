@@ -119,7 +119,7 @@ export default function Prizes() {
         title="PRIZES &"
         highlight="REWARDS"
         highlightPosition="after"
-        description="Compete for glory and claim rewards worth over ₹1,00,000 across all tracks."
+        description="The worthy shall be rewarded. Claim your geo — over ₹1,00,000 waiting for those who endure."
       />
  <Image
         src="/images/corner-left.png"

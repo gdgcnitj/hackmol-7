@@ -57,7 +57,7 @@ export default function Sponsors() {
         title="OUR"
         highlight="SPONSORS"
         highlightPosition="after"
-        description="Build with leading companies and compete for exclusive sponsor prizes."
+        description="The great houses of the kingdom. Their support lights the path through HackMol 7.0."
       />
       <div className="sponsor-layout">
         {/* Left Sidebar */}

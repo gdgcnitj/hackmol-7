@@ -30,7 +30,7 @@ export default function Speakers() {
         title="JUDGES &"
         highlight="MENTORS"
         highlightPosition="after"
-        description="Industry leaders and innovators who guide and evaluate your work."
+        description="The ancients of the hollow. Shaped by the depths — here to guide you through yours."
       />
 
       {/* SLIDER SECTION */}

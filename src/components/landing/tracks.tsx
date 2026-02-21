@@ -151,7 +151,7 @@ export default function Tracks() {
         title="HACKATHON"
         highlight="TRACKS"
         highlightPosition="after"
-        description="Choose your path — compete across fresher, main, and women's tracks."
+        description="Choose your nail. Three distinct paths — each one a trial forged for a different kind of builder."
       />
 
       <div className="tracks-cards">
