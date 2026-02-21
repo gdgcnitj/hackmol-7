@@ -144,7 +144,7 @@ bottom:30px;
 
 /* TEXT */
 .card-title {
-  font-family: "Inknut Antiqua", serif;
+  font-family: var(--font-cinzel), serif;
   font-size: 40px;
   letter-spacing: 2px;
   margin: 0;

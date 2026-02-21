@@ -151,6 +151,40 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+                <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Global error handler to suppress third-party script console noise
+              window.addEventListener('error', function(e) {
+                // Known third-party domains that get blocked by ad blockers
+                const blockedDomains = [
+                  'static.cloudflareinsights.com',
+                  'cdn.rudderlabs.com', 
+                  'js.sentry-cdn.com',
+                  'maps.googleapis.com',
+                  'www.google.com/recaptcha'
+                ];
+                
+                if (e.filename && blockedDomains.some(domain => e.filename.includes(domain))) {
+                  // Prevent these errors from logging to console
+                  e.preventDefault();
+                  return false;
+                }
+              });
+              
+              // Handle unhandled promise rejections from blocked scripts
+              window.addEventListener('unhandledrejection', function(e) {
+                const message = e.reason?.message || e.reason?.toString() || '';
+                if (message.includes('ERR_BLOCKED_BY_CLIENT') || 
+                    message.includes('Failed to load script') ||
+                    message.includes('NetworkError')) {
+                  e.preventDefault();
+                  return false;
+                }
+              });
+            `
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable} ${cinzelDecorative.variable} antialiased flex flex-col min-h-screen`}
