@@ -219,11 +219,6 @@ export default function Hero() {
 
   return (
     <>
-      {/* Background Effects */}
-      <div className="background-container">
-        <div className="radial-glow"></div>
-      </div>
-
       {/* Hero Section with scroll-driven frames */}
       <section className="hero-scroll-section" ref={sectionRef}>
         <div className="hero-canvas-wrapper">

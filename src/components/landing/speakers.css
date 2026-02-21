@@ -1,5 +1,5 @@
 .speakers-section {
-  background-color: #060812;
+  background-color: #080E1C;
   color: #ffffff;
   min-height: 100vh;
   padding: 5rem 1rem;
@@ -79,7 +79,7 @@
 
 .speaker-card {
   position: relative;
-  background: #070d17;
+  background: #0a1225;
   border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 24px;
   padding: 3rem 2rem;
@@ -206,7 +206,7 @@
 }
 
 .view-btn {
-  background: #0c1626;
+  background: #0c1629;
   border: 1px solid rgba(96, 165, 250, 0.4);
   padding: 0.8rem 2.5rem;
   color: #fff;
