@@ -9,9 +9,9 @@ const quickLinks = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/gdgcnitj/", icon: "/images/footerInstagram.svg" },
+  { label: "Instagram", href: "https://www.instagram.com/gdgcnitj", icon: "/images/footerInstagram.svg" },
   { label: "Twitter", href: "https://x.com/GDSCNitj", icon: "/images/footerTwitter.svg" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/dscnitj/?originalSubdomain=in", icon: "/images/footerLinkedIn.svg" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/dscnitj", icon: "/images/footerLinkedIn.svg" },
 ];
 
 export default function Footer() {
