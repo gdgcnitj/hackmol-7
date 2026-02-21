@@ -1,0 +1,295 @@
+.prizes-section {
+  position: relative;
+  padding: 100px 40px;
+  min-height: 100vh;
+   background:radial-gradient(50% 50% at 50% 50%, #3163A1 0%, #29568D 14.97%, #22497C 29.94%, #2B3765 77.79%, #070A16 100%);
+
+
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.left-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 200px;
+  height: auto;
+
+}
+
+.right-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 220px;
+  height: auto;
+
+  
+
+}
+
+/* HEADER */
+.prizes-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.main-title {
+  font-family: "Inknut Antiqua";
+  font-weight: 700;
+  letter-spacing: 6px;
+
+}
+
+.ornament {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.corner-img {
+  object-fit: contain;
+}
+
+.flip-x {
+  transform: scaleX(-1);
+}
+
+
+/* CARDS */
+.prizes-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.prize-card {
+
+  background: #0E1C37;
+  width: 320px;
+  height:500px;
+  padding: 0px 30px 50px 30px;
+  border-radius: 25px;
+  display:flex;
+    flex-direction:column;
+    /* gap:10px; */
+  align-items:center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+  position:relative;
+  top:20px;
+ 
+}
+
+.prize-card:hover {
+  transform: translateY(-8px);
+}
+
+.phighlight {
+  position:relative;
+  bottom:50px;
+    background: #0E1C37;
+  width: 320px;
+  height:600px;
+  padding: 0px 30px 50px 30px;
+  border-radius: 25px;
+  display:flex;
+    flex-direction:column;
+    gap:10px;
+  align-items:center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  transition: 0.3s ease;
+  width: 360px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+}
+
+/* ICON */
+
+.first-prize-icon{
+    width: 300.1640625;
+height: 300.80992126464844;
+ position:relative;
+ bottom:300px; 
+opacity: 1;
+
+
+}
+.icons{
+  display:block;
+  height:100px;
+  margin:0;
+
+}
+.dots{
+  width: 600.66839599609375;
+height: 200.67909240722656;
+  /* object-fit: contain; */
+opacity: 1;
+position:relative;
+bottom:40px;
+
+}
+.prize-icon {
+  width: 100.4609375;
+height: 100.88164520263672;
+
+opacity: 1;
+position:relative;
+bottom:30px;
+ 
+
+}
+.prize-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+   color: #FEFEFE;
+  text-align: center;
+
+}
+.prize-desc p {
+  margin: 0;
+  color: #FEFEFE;
+}
+
+/* FRAME WRAPPERS */
+.frame-top,
+.frame-bottom {
+  width: 140px;
+  position: relative;
+}
+
+.frame {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* TEXT */
+.card-title {
+  font-family: "Inknut Antiqua", serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.amount {
+  font-size: 20px;
+  margin: 0;
+  opacity: 0.9;
+}
+
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.line {
+  width: 40px;
+  height: 1px;
+  background: white;
+}
+
+.diamond {
+  width: 10px;
+  height: 10px;
+  background: white;
+  transform: rotate(45deg);
+  margin: 0 10px;
+}
+
+/* LIST */
+.prize-list {
+  list-style-type: disc;
+    text-align: left;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* SIDE CHARACTERS */
+.side-character {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.9;
+}
+
+.side-character.left {
+  bottom:120px;
+  left: 100px;
+}
+
+.side-character.right {
+  bottom:120px;
+  right: 100px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .side-character {
+    display: none;
+  }
+
+  .main-title {
+    font-size: 42px;
+  }
+}
+@media (max-width: 768px) {
+
+  /* Remove bottom shifting only on mobile */
+  .first-prize-icon {
+    bottom: 0 ;
+  }
+
+  .prize-icon {
+    bottom: 0 ;
+  }
+
+  .phighlight {
+    bottom: 0 ;
+  }
+
+  /* Remove fixed heights only on mobile */
+  .prize-card,
+  .phighlight {
+    height: auto ;
+  }
+
+  /* Stack cards vertically */
+  .prizes-container {
+    flex-direction: column ;
+    align-items: center;
+    gap: 60px;
+  }
+
+  /* Resize icons for mobile */
+  .first-prize-icon {
+    position:relative;
+    width: 180px;
+    top:-260px;
+    left:50px;
+  }
+
+  .prize-icon {
+    width: 100px;
+  }
+
+}
+@media (max-width: 768px) {
+  .phighlight {
+    order: -1;   /* moves first prize to top */
+  }
+}

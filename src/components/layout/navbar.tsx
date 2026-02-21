@@ -8,7 +8,7 @@ export default function Navbar() {
       {/* Links */}
       <div className="nav-links">
         <a href="#schedule">Schedule</a>
-        <a href="#">Prizes</a>
+        <a href="#prizes">Prizes</a>
         <a href="#">Rules</a>
         <a href="#tracks">Tracks</a>
         <a href="#">FAQ</a>
