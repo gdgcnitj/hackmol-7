@@ -269,7 +269,7 @@ body {
 
 .logo-overlay {
   position: absolute;
-  top: 15%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -277,20 +277,87 @@ body {
 }
 
 .logo-overlay img {
-  width: 500px;
+  width: 650px;
   max-width: 95vw;
+}
+
+/* Hero Tagline */
+
+.hero-tagline {
+  margin-top: 20px;
+  font-size: 26px;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* Countdown Timer */
+
+.countdown-overlay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.countdown-label {
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.countdown-timer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 70px;
+}
+
+.countdown-value {
+  font-size: 42px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-cinzel), serif;
+}
+
+.countdown-unit {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.countdown-separator {
+  font-size: 36px;
+  color: #ffffff;
+  font-weight: 400;
+  margin: 0 8px;
 }
 
 /* Devfolio Button */
 
 .devfolio-button-overlay {
   position: absolute;
-  top: 50%;
+  top: 58%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 11;
   text-align: center;
-  margin-top: 50px;
 }
 
 /* Character */
@@ -423,5 +490,104 @@ body {
 
   .character {
     width: 300px;
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+  }
+
+  .logo-overlay {
+    top: 15%;
+  }
+
+  .logo-overlay img {
+    width: 450px;
+  }
+
+  .countdown-overlay {
+    top: 43%;
+  }
+
+  .countdown-label {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .countdown-item {
+    min-width: 50px;
+  }
+
+  .countdown-value {
+    font-size: 28px;
+  }
+
+  .countdown-unit {
+    font-size: 10px;
+  }
+
+  .countdown-separator {
+    font-size: 24px;
+    margin: 0 4px;
+  }
+
+  .countdown-timer {
+    gap: 5px;
+  }
+
+  .devfolio-button-overlay {
+    top: 54%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+  }
+
+  .logo-overlay {
+    top: 18%;
+  }
+
+  .logo-overlay img {
+    width: 280px;
+  }
+
+  .countdown-overlay {
+    top: 42%;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .countdown-item {
+    min-width: 40px;
+  }
+
+  .countdown-value {
+    font-size: 20px;
+  }
+
+  .countdown-unit {
+    font-size: 8px;
+    margin-top: 3px;
+  }
+
+  .countdown-separator {
+    font-size: 18px;
+    margin: 0 2px;
+  }
+
+  .countdown-timer {
+    gap: 3px;
+  }
+
+  .devfolio-button-overlay {
+    top: 52%;
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,6 +20,38 @@ export default function Hero() {
   const frameIndexRef = useRef({ value: 0 });
   const lastRenderedFrame = useRef(-1);
   const framesRef = useRef<(ImageBitmap | null)[]>(new Array(FRAME_COUNT).fill(null));
+  
+  // Countdown state
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  // Countdown timer
+  useEffect(() => {
+    const targetDate = new Date('2026-03-24T23:59:59').getTime();
+    
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
+      }
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   // Load Devfolio SDK
   useEffect(() => {
@@ -204,6 +236,36 @@ export default function Hero() {
               className="logo-ornament"
               priority
             />
+            {/* Tagline */}
+            <div className="hero-tagline">
+              Descend. Discover. Develop.
+            </div>
+          </div>
+
+          {/* Countdown Timer */}
+          <div className="countdown-overlay">
+            <div className="countdown-label">Registration Ends In</div>
+            <div className="countdown-timer">
+              <div className="countdown-item">
+                <span className="countdown-value">{timeLeft.days}</span>
+                <span className="countdown-unit">Days</span>
+              </div>
+              <div className="countdown-separator">:</div>
+              <div className="countdown-item">
+                <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
+                <span className="countdown-unit">Hours</span>
+              </div>
+              <div className="countdown-separator">:</div>
+              <div className="countdown-item">
+                <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
+                <span className="countdown-unit">Minutes</span>
+              </div>
+              <div className="countdown-separator">:</div>
+              <div className="countdown-item">
+                <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
+                <span className="countdown-unit">Seconds</span>
+              </div>
+            </div>
           </div>
 
           {/* Devfolio Apply Button */}
@@ -211,7 +273,7 @@ export default function Hero() {
             <div 
               className="apply-button" 
               data-hackathon-slug="hackmol-7" 
-              data-button-theme="light"
+              data-button-theme="dark"
               style={{ height: '44px', width: '312px' }}
             ></div>
           </div>

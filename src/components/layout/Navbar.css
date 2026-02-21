@@ -140,13 +140,15 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .navbar {
-    padding: 10px 20px;
-    font-size: 12px;
+    display: none;
   }
 
-  .nav-links {
-    gap: 20px;
-    display: none;
+  .logo-ornament {
+    max-width: 90%;
+  }
+
+  .character {
+    width: 300px;
   }
 
   .register-btn {
