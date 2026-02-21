@@ -48,11 +48,12 @@
 
 /* Description */
 .section-heading__description {
-  font-family: var(--font-cinzel), serif;
-  font-size: clamp(0.72rem, 1.4vw, 0.82rem);
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.42);
-  line-height: 1.9;
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(0.78rem, 1.4vw, 0.88rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.75;
   max-width: min(520px, 90vw);
   margin: 0 auto;
 }
