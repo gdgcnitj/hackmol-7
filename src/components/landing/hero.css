@@ -281,6 +281,18 @@ body {
   max-width: 95vw;
 }
 
+/* Devfolio Button */
+
+.devfolio-button-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  text-align: center;
+  margin-top: 50px;
+}
+
 /* Character */
 
 .character-container {

@@ -8,7 +8,7 @@ import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 150;
+const FRAME_COUNT = 138;
 
 function getCurrentFrame(index: number): string {
   return `/frames/${String(index + 1).padStart(3, "0")}.png`;
@@ -20,6 +20,18 @@ export default function Hero() {
   const frameIndexRef = useRef({ value: 0 });
   const lastRenderedFrame = useRef(-1);
   const framesRef = useRef<(ImageBitmap | null)[]>(new Array(FRAME_COUNT).fill(null));
+
+  // Load Devfolio SDK
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -102,8 +114,12 @@ export default function Hero() {
     // Load initial batch (priority)
     const PRELOAD_BATCH = 25; // Adjusted batch size
     (async () => {
+      // Load first frame immediately and render it
+      await loadFrame(0);
+      renderFrame(0);
+      
       const loadPromises = [];
-      for (let i = 0; i < FRAME_COUNT; i++) {
+      for (let i = 1; i < FRAME_COUNT; i++) {
         // High priority: first batch
         if (i < PRELOAD_BATCH) {
           loadPromises.push(loadFrame(i));
@@ -114,9 +130,8 @@ export default function Hero() {
           loadFrame(i);
         }
       }
-      // Wait for first batch to be ready before first render
-      await Promise.all(loadPromises.slice(0, PRELOAD_BATCH));
-      renderFrame(0);
+      // Wait for first batch to be ready
+      await Promise.all(loadPromises.slice(0, PRELOAD_BATCH - 1));
     })();
 
     // Continuous Render Loop
@@ -180,6 +195,16 @@ export default function Hero() {
               className="logo-ornament"
               priority
             />
+          </div>
+
+          {/* Devfolio Apply Button */}
+          <div className="devfolio-button-overlay">
+            <div 
+              className="apply-button" 
+              data-hackathon-slug="hackmol-7" 
+              data-button-theme="light"
+              style={{ height: '44px', width: '312px' }}
+            ></div>
           </div>
 
           {/* Canvas for frame animation */}
