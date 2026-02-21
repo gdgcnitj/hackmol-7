@@ -6,15 +6,15 @@ import "./faq.css"; // Import your custom CSS
 
 const CATEGORY_DATA = {
   GENERAL: [
-    { question: "What is Hackmol 7.0?", answer: "Hackmol 7.0 is a flagship hackathon organized to foster innovation and creativity among students." },
+    { question: "What is Hackmol 7.0?", answer: "HackMol 7.0 is NIT Jalandhar's flagship 30-hour hackathon organized to foster innovation and creativity among students nationwide." },
     { question: "Who is eligible to participate in the hackathon?", answer: "All university students are eligible to participate, regardless of their major or year of study." },
-    { question: "When and where will the hackathon take place?", answer: "The event is scheduled to take place at our main campus. Detailed schedules will be sent via email." },
+    { question: "When and where will the hackathon take place?", answer: "March 28-29, 2026 (30 hours) at NIT Jalandhar campus. Starts 8 AM on March 28 and ends 2 PM on March 29." },
     { question: "Is this hackathon online or offline?", answer: "This is a fully offline, in-person event to ensure the best collaborative experience." },
-    { question: "What's the cost?", answer: "Admission is free and includes mentors, workshops, food, $wag, resources, and an unforgettable experience!" },
+    { question: "What's the cost?", answer: "Admission is free and includes mentors, workshops, food, swag, resources, and an unforgettable experience!" },
   ],
   REGISTER: [
     { question: "How do I register for Hackmol 7.0?", answer: "You can register through our official portal by clicking the 'Register Now' button on the home page." },
-    { question: "Is there a registration deadline?", answer: "Yes, registrations usually close one week before the event starts. Keep an eye on our socials!" },
+    { question: "Is there a registration deadline?", answer: "Yes, registrations close on February 24, 2026. Don't miss out!" },
     { question: "Can I register as an individual?", answer: "Yes, you can register individually and we will help you find a team during the networking session." }
   ],
   PAY: [

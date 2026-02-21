@@ -78,14 +78,12 @@ export default function About() {
                             </h2>
 
                             <p className="description">
-                                The seventh edition of hackMol, organised by GDGC NIT Jalandhar,
-                                is your battleground for innovation. This 30- hour hackthon united
-                                warriors of code- both seasoned champions and rising contenders-
-                                to forge groundbreaking solutions across digital realms. The seventh
-                                edition of hackMol, organised by GDGC NIT Jalandhar, is your battleground
-                                for innovation. This 30- hour hackthon united warriors of code- both
-                                seasoned champions and rising contenders- to forge groundbreaking solutions
-                                across digital realms.
+                                The seventh edition of HackMol, organised by GDGC NIT Jalandhar,
+                                is your battleground for innovation. This 30-hour hackathon unites
+                                warriors of code—both seasoned champions and rising contenders—
+                                to forge groundbreaking solutions across digital realms. March 28-29, 2026.
+                                Descend into the depths of innovation, discover new possibilities,
+                                and develop real-world solutions that leave a lasting impact.
                             </p>
 
                         </div>

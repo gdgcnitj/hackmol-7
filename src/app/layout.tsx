@@ -27,15 +27,15 @@ const cinzelDecorative = Cinzel_Decorative({
 });
 
 export const metadata: Metadata = {
-  title: "HackMol 7.0 — Into the Hollow of Innovation | NIT Jalandhar",
-  description: "HackMol 7.0 is the flagship annual hackathon of NIT Jalandhar. A 36-hour onsite innovation marathon where ideas descend into reality. Join 500+ developers nationwide. Descend. Discover. Develop.",
+  title: "HackMol 7.0 - Into the Hollow of Innovation | NIT Jalandhar",
+  description: "HackMol 7.0 is the flagship annual hackathon of NIT Jalandhar. A 30-hour onsite innovation marathon where ideas descend into reality. Join 500+ developers nationwide. Descend. Discover. Develop.",
   keywords: [
     "HackMol 7.0",
     "hackathon",
     "NIT Jalandhar",
     "NITJ hackathon",
     "student hackathon India",
-    "36-hour hackathon",
+    "30-hour hackathon",
     "onsite hackathon",
     "coding competition",
     "tech innovation",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "HackMol 7.0 — Into the Hollow of Innovation",
-    description: "NIT Jalandhar's flagship 36-hour hackathon. Descend into the depths of innovation. Build real-world solutions. Win exciting prizes. March 2026.",
+    description: "NIT Jalandhar's flagship 30-hour hackathon. Descend into the depths of innovation. Build real-world solutions. Win exciting prizes. March 28-29, 2026.",
     url: "https://hackmol.tech",
     siteName: "HackMol 7.0",
     images: [
@@ -73,8 +73,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HackMol 7.0 — Into the Hollow of Innovation | NIT Jalandhar",
-    description: "Join NIT Jalandhar's flagship 36-hour hackathon. Descend. Discover. Develop. March 2026.",
+    title: "HackMol 7.0 - Into the Hollow of Innovation | NIT Jalandhar",
+    description: "Join NIT Jalandhar's flagship 30-hour hackathon. Descend. Discover. Develop. March 28-29, 2026.",
     images: ["/og-image.png"],
     creator: "@gdgc_nitj",
   },
@@ -138,7 +138,8 @@ export default function RootLayout({
       "price": "0",
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "validFrom": "2026-02-21T00:00:00+05:30"
+      "validFrom": "2026-02-21T00:00:00+05:30",
+      "validThrough": "2026-02-24T23:59:59+05:30"
     }
   };
 
