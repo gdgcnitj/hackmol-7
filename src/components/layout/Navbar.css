@@ -40,27 +40,84 @@
   opacity: 0.7;
 }
 
+.register-btn-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .register-btn {
   position: relative;
-  padding: 8px 32px;
-  border: 1px solid white;
-  border-radius: 999px;
+  padding: 8px 36px;
   text-transform: uppercase;
   background: transparent;
   color: white;
   cursor: pointer;
+  border: none;
   transition: all 0.3s ease;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 400;
+  min-width: 140px;
+  display: block;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+.ornament {
+  position: absolute !important;
+  width: 30px !important;
+  height: 30px !important;
+  opacity: 1;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  filter: brightness(1.2);
+  object-fit: contain;
+}
+
+.ornament-top-left {
+  top: -7px !important;
+  left: -7px !important;
+  transform: scaleX(-1) !important;
+}
+
+.ornament-top-right {
+  top: -7px !important;
+  right: -7px !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+.ornament-bottom-left {
+  bottom: -7px !important;
+  top: auto !important;
+  left: -7px !important;
+  transform: scaleX(-1) scaleY(-1) !important;
+}
+
+.ornament-bottom-right {
+  bottom: -7px !important;
+  top: auto !important;
+  right: -7px !important;
+  left: auto !important;
+  transform: scaleY(-1) !important;
+}
+
+.register-btn:hover .ornament {
+  filter: brightness(1.5) drop-shadow(0 0 8px rgba(77, 168, 218, 0.8));
 }
 
 .register-btn:hover {
-  background: white;
-  color: black;
+  color: rgba(77, 168, 218, 1);
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .navbar {
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-size: 12px;
   }
 
@@ -70,18 +127,76 @@
   }
 
   .register-btn {
-    padding: 6px 20px;
+    padding: 6px 28px;
     font-size: 12px;
+    min-width: 110px;
+  }
+
+  .ornament {
+    width: 25px !important;
+    height: 25px !important;
+  }
+
+  .ornament-top-left,
+  .ornament-top-right {
+    top: -6px !important;
+  }
+
+  .ornament-top-left,
+  .ornament-bottom-left {
+    left: -6px !important;
+  }
+
+  .ornament-top-right,
+  .ornament-bottom-right {
+    right: -6px !important;
+  }
+
+  .ornament-bottom-left,
+  .ornament-bottom-right {
+    bottom: -6px !important;
   }
 }
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 8px 16px;
+    padding: 8px 12px;
   }
 
   .nav-logo img {
-    width: 80px;
+    width: 70px !important;
     height: auto;
+  }
+
+  .register-btn {
+    padding: 5px 20px;
+    font-size: 10px;
+    min-width: 90px;
+    letter-spacing: 1.5px;
+  }
+
+  .ornament {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .ornament-top-left,
+  .ornament-top-right {
+    top: -5px !important;
+  }
+
+  .ornament-top-left,
+  .ornament-bottom-left {
+    left: -5px !important;
+  }
+
+  .ornament-top-right,
+  .ornament-bottom-right {
+    right: -5px !important;
+  }
+
+  .ornament-bottom-left,
+  .ornament-bottom-right {
+    bottom: -5px !important;
   }
 }
