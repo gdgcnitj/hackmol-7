@@ -141,12 +141,23 @@ export default function RootLayout({
       "availability": "https://schema.org/InStock",
       "validFrom": "2026-02-21T00:00:00+05:30",
       "validThrough": "2026-02-24T23:59:59+05:30"
-    }
+    },
+    "sponsor": [
+      {
+        "@type": "Organization",
+        "name": "Devfolio",
+        "url": "https://devfolio.co",
+        "logo": "https://hackmol.com/images/devfolio_white.png"
+      }
+    ]
   };
 
   return (
     <html lang="en">
       <head>
+        <meta name="sponsored-by" content="Devfolio" />
+        <meta name="platform-partner" content="Devfolio" />
+        <link rel="preload" href="/images/devfolio_white.png" as="image" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

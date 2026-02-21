@@ -12,6 +12,49 @@
   align-items: center;
 }
 
+/* ══════════════════════════════════════════
+   Platform Partner Section (Always Visible) 
+   ══════════════════════════════════════════ */
+.platform-partner-section {
+  width: 100%;
+  max-width: 800px;
+  margin: clamp(24px, 3vw, 40px) auto clamp(32px, 4vw, 48px) auto;
+  text-align: center;
+  padding: clamp(24px, 3vw, 36px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.platform-partner-title {
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 clamp(16px, 2vw, 24px) 0;
+}
+
+.platform-partner-link {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.platform-partner-link:hover {
+  transform: translateY(-2px);
+}
+
+.platform-partner-link img {
+  opacity: 0.9;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platform-partner-link:hover img {
+  opacity: 1;
+}
+
 /* ── 2-column layout: sidebar + grid ── */
 .sponsor-layout {
   display: grid;

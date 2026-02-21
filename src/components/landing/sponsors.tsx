@@ -29,12 +29,19 @@ const categories: { key: Category; title: string }[] = [
 
 const sponsors: Sponsor[] = [
   /* Gold — 1 per row */
-   { name: "Sponsor 1", logo: "",                           label: "Cloud Partner",      link: "#",                       category: "gold" },
+  { 
+    name: "Sponser 1",
+    logo: "",
+    label: "Title Sponsor",
+    link: "#",
+    category: "gold"
+  },
 
   /* Silver — 2 per row */
-  { name: "Devfolio",
+  { 
+    name: "Devfolio",
     logo: "/images/devfolio_white.png",
-    label: "Platform Partner",
+    label: "Official Platform Partner",
     link: "https://devfolio.co",
     category: "silver"
   },
@@ -138,6 +145,25 @@ export default function Sponsors() {
         description="The great houses of the kingdom. Their support lights the path through HackMol 7.0."
       />
 
+      {/* Always visible platform partner section */}
+      <div className="platform-partner-section">
+        <h3 className="platform-partner-title">Official Platform Partner</h3>
+        <a 
+          href="https://devfolio.co" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="platform-partner-link"
+        >
+          <img 
+            src="/images/devfolio_white.png" 
+            alt="Devfolio" 
+            width="200" 
+            height="70"
+            style={{ objectFit: "contain" }}
+          />
+        </a>
+      </div>
+
       <div className="sponsor-layout">
         {/* ── Left: Category filters ── */}
         <aside className="sponsor-sidebar">
@@ -183,7 +209,14 @@ export default function Sponsors() {
             >
               <div className="sponsor-card-logo">
                 {s.logo ? (
-                  <Image src={s.logo} alt={s.name} width={160} height={56} style={{ objectFit: "contain" }} />
+                  <Image 
+                    src={s.logo} 
+                    alt={s.name === "Devfolio" ? "Devfolio" : `${s.name} - ${s.label}`} 
+                    width={160} 
+                    height={56} 
+                    style={{ objectFit: "contain" }}
+                    priority={s.name === "Devfolio"} 
+                  />
                 ) : (
                   <span className="sponsor-card-placeholder">Logo</span>
                 )}
@@ -193,6 +226,19 @@ export default function Sponsors() {
             </a>
           ))}
         </div>
+      </div>
+
+      {/* Hidden sponsors section for crawlers */}
+      <div className="sponsors-seo-section" style={{ opacity: 0, position: 'absolute', left: '-9999px' }}>
+        {sponsors.filter(s => s.logo).map((sponsor, i) => (
+          <img 
+            key={i}
+            src={sponsor.logo} 
+            alt={sponsor.name === "Devfolio" ? "Devfolio" : sponsor.name} 
+            width="1" 
+            height="1"
+          />
+        ))}
       </div>
     </div>
   );

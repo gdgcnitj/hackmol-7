@@ -1,0 +1,25 @@
+{
+  "sponsors": [
+    {
+      "name": "Devfolio",
+      "category": "Platform Partner",
+      "logo": "/images/devfolio_white.png",
+      "website": "https://devfolio.co",
+      "tier": "gold"
+    },
+    {
+      "name": "Gofr",
+      "category": "Framework Partner", 
+      "logo": "/images/gofr_logo.svg",
+      "website": "https://gofr.dev/",
+      "tier": "silver"
+    },
+    {
+      "name": "GDGC NIT Jalandhar",
+      "category": "Community Partner",
+      "logo": "/images/gdgc-nitj.png", 
+      "website": "https://github.com/gdgcnitj",
+      "tier": "community"
+    }
+  ]
+}
