@@ -13,8 +13,7 @@
   letter-spacing: 2px;
   font-size: 14px;
   font-weight: 300;
-  background: linear-gradient(to bottom, rgba(8, 14, 28, 0.9) 0%, rgba(8, 14, 28, 0.7) 70%, transparent 100%);
-  backdrop-filter: blur(10px);
+  background: transparent;
 }
 
 .nav-logo {

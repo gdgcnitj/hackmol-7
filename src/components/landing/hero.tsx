@@ -111,12 +111,29 @@ export default function Hero() {
       }
     };
 
+    // Initial setup - set canvas size FIRST
+    setCanvasSize();
+    
+    // Fill with background color initially
+    context.fillStyle = '#080E1C'; // Match the midnight background
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Continuous Render Loop
+    let rafId: number;
+    const tick = () => {
+      renderFrame(frameIndexRef.current.value);
+      rafId = requestAnimationFrame(tick);
+    };
+
     // Load initial batch (priority)
     const PRELOAD_BATCH = 25; // Adjusted batch size
     (async () => {
       // Load first frame immediately and render it
       await loadFrame(0);
       renderFrame(0);
+      
+      // Start render loop after first frame is ready
+      rafId = requestAnimationFrame(tick);
       
       const loadPromises = [];
       for (let i = 1; i < FRAME_COUNT; i++) {
@@ -133,14 +150,6 @@ export default function Hero() {
       // Wait for first batch to be ready
       await Promise.all(loadPromises.slice(0, PRELOAD_BATCH - 1));
     })();
-
-    // Continuous Render Loop
-    let rafId: number;
-    const tick = () => {
-      renderFrame(frameIndexRef.current.value);
-      rafId = requestAnimationFrame(tick);
-    };
-    rafId = requestAnimationFrame(tick);
 
     const handleResize = () => {
       setCanvasSize();

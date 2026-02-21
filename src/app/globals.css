@@ -84,3 +84,34 @@ body {
 .font-cinzel-decorative {
   font-family: var(--font-cinzel-decorative), serif;
 }
+
+/* Custom Scrollbar Styles */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(77, 168, 218, 0.5) rgba(15, 24, 41, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 24, 41, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(77, 168, 218, 0.5);
+  border-radius: 10px;
+  border: 2px solid rgba(8, 14, 28, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 168, 218, 0.8);
+  border-color: rgba(8, 14, 28, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(77, 168, 218, 1);
+}
