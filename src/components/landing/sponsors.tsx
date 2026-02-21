@@ -116,21 +116,8 @@ const tierCols: Record<Category, number> = {
 
 /* ─── Component ─── */
 export default function Sponsors() {
-  const [active, setActive] = useState<Category>("gold");
+  const [active, setActive] = useState<Category>("silver");
   const filtered = sponsors.filter((s) => s.category === active);
-
-  // Auto-rotate categories every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActive((current) => {
-        const currentIndex = categories.findIndex((c) => c.key === current);
-        const nextIndex = (currentIndex + 1) % categories.length;
-        return categories[nextIndex].key;
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="sponsor-container" id="sponsors">
