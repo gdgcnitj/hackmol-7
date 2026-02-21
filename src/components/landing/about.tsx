@@ -1,53 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import SectionHeading from "@/components/ui/SectionHeading";
 import "./about.css";
 
 export default function About() {
 
-    useEffect(() => {
-        const container = document.getElementById("about-particles");
-        if (!container) return;
-
-        const particleCount = 60;
-
-        for (let i = 0; i < particleCount; i++) {
-            const p = document.createElement("div");
-            p.className = "about-particle";
-
-            // Random position
-            p.style.left = Math.random() * 100 + "%";
-            p.style.top = Math.random() * 100 + "%";
-
-            // Random animation delay
-            p.style.animationDelay = Math.random() * 6 + "s";
-
-            container.appendChild(p);
-        }
-
-        return () => {
-            container.innerHTML = "";
-        };
-    }, []);
-
-
     return (
         <section className="about-section" id="about">
-
-            {/* Particles */}
-            <div className="about-particles" id="about-particles"></div>
 
             <div className="container">
 
                 {/* Title */}
-                <div className="title-section">
-                    <h1 className="main-title">
-                        ABOUT HACKMOL <span className="version">7.0</span>
-                    </h1>
-
-                    <div className="title-underline"></div>
-                </div>
+                <SectionHeading
+                    title="ABOUT HACKMOL"
+                    highlight="7.0"
+                    highlightPosition="after"
+                    description="NIT Jalandhar's flagship 30-hour hackathon — where warriors of code forge groundbreaking solutions."
+                />
 
                 {/* Main Content */}
                 <div className="content-section">

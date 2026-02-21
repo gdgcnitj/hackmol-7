@@ -12,39 +12,6 @@
   );
 }
 
-.tracks-heading {
-  text-align: center;
-  margin-bottom: 72px;
-  position: relative;
-  padding-bottom: 20px;
-}
-
-.tracks-heading-title {
-  font-family: var(--font-trajan, var(--font-cinzel)), serif;
-  font-weight: 600;
-  font-size: 48px;
-  color: #ffffff;
-}
-
-.tracks-heading-title .highlight {
-  color: #74dbee;
-}
-
-.tracks-heading-rule {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 3px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.85),
-    transparent
-  );
-}
-
 .tracks-cards {
   display: flex;
   align-items: flex-end;

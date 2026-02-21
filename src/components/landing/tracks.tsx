@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SectionHeading from "@/components/ui/SectionHeading";
 import "./tracks.css";
 
 interface TrackData {
@@ -146,12 +147,12 @@ function TrackCard({ track }: { track: TrackData }) {
 export default function Tracks() {
   return (
     <section className="tracks-section">
-      <div className="tracks-heading">
-        <h2 className="tracks-heading-title">
-          <span className="highlight">Main</span> Tracks
-        </h2>
-        <div className="tracks-heading-rule" />
-      </div>
+      <SectionHeading
+        title="MAIN"
+        highlight="TRACKS"
+        highlightPosition="after"
+        description="Choose your path — compete across fresher, main, and women's tracks."
+      />
 
       <div className="tracks-cards">
         {tracksData.map((track, i) => (

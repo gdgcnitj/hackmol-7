@@ -14,60 +14,6 @@
   transform: scaleX(-1);
 }
 
-/* --- Header --- */
-.speakers-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 4rem;
-  text-align: center;
-}
-
-.title-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.main-title {
-  font-size: clamp(2rem, 7vw, 4rem);
-  letter-spacing: 0.2em;
-  font-weight: 300;
-  margin: 0;
-}
-
-.side-ornament {
-  width: clamp(50px, 10vw, 110px);
-  opacity: 0.8;
-}
-
-.subtitle-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-.subtitle-arrow {
-  width: clamp(30px, 3vw, 60px);
-  height: auto;
-  opacity: 0.8;
-}
-
-.subtitle-text {
-  font-size: clamp(0.75rem, 1.5vw, 1.1rem);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: #9ca3af;
-}
-
-.union-asset {
-  width: clamp(120px, 20vw, 240px);
-  margin-top: 0.5rem;
-  opacity: 0.7;
-}
-
 /* --- Slider & Cards --- */
 .slider-container {
   position: relative;

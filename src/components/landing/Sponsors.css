@@ -16,41 +16,6 @@
   align-items: center;
 }
 
-.sponsor-title {
-  font-size: 2.5rem;
-  /* Conserved font family */
-  font-family: "Trajan Pro 3", serif;
-  font-weight: 600;
-  letter-spacing: 4px;
-  color: #ededed;
-  text-transform: uppercase;
-  margin-bottom: 50px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 15px;
-}
-
-/* The Tapered Line below the title */
-.sponsor-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 1.5px; /* Thin, elegant line */
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-.title-cyan {
-  color: #74dbee;
-}
-
 .sponsor-layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;

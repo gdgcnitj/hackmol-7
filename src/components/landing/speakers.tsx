@@ -3,6 +3,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import Image from "next/image";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,9 +11,6 @@ import "swiper/css/pagination";
 import "./speakers.css";
 
 // Asset imports
-import leftOrnament from "../../../public/images/leftOrnament.png";
-import arrowAsset from "../../../public/images/arrow_2.png";
-import bottomUnion from "../../../public/images/Union.png";
 import maskCorner from "../../../public/images/Maskgroup.png";
 import speaker1 from "../../../public/images/speakerDummy.jpg";
 
@@ -28,31 +26,10 @@ export default function Speakers() {
   return (
     <div className="speakers-section">
       {/* HEADER SECTION */}
-      <div className="speakers-header">
-        <div className="title-row">
-          <div className="relative">
-            <Image src={leftOrnament.src} fill alt="" className="side-ornament" />
-          </div>
-          <h1 className="cinzel-font main-title">SPEAKERS</h1>
-          <div className="relative">
-            <Image src={leftOrnament.src} fill alt="" className="side-ornament flip-x" />
-          </div>
-        </div>
-
-        <div className="subtitle-row">
-          <div className="relative">
-            <Image src={arrowAsset.src} fill alt="" className="subtitle-arrow" />
-          </div>
-          <span className="cinzel-font subtitle-text">Voices of the Hollow</span>
-          <div className="relative">
-            <Image src={arrowAsset.src} fill alt="" className="subtitle-arrow flip-x" />
-          </div>
-        </div>
-
-        <div className="header-base relative">
-          <Image src={bottomUnion.src} fill alt="" className="union-asset" />
-        </div>
-      </div>
+      <SectionHeading
+        title="SPEAKERS"
+        description="Voices of the Hollow — learn from industry leaders and innovators."
+      />
 
       {/* SLIDER SECTION */}
       <div className="slider-container">

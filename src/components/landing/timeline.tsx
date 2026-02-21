@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SectionHeading from "@/components/ui/SectionHeading";
 import "./timeline.css";
 
 const timelineData = [
@@ -40,14 +41,13 @@ export default function Timeline() {
           height={130}
           className="timeline-corner-left"
         />
-
-        <h2 className="timeline-heading-title">
-          {"DESCEND INTO "}
-          <span className="highlight">HOLLOWNEST</span>
-        </h2>
-
-        <div className="timeline-heading-rule" />
-
+        <SectionHeading
+          title="DESCEND INTO"
+          highlight="HOLLOWNEST"
+          highlightPosition="after"
+          description="Follow the journey through each milestone as the event unfolds."
+          className="timeline-section-heading"
+        />
         <Image
           src="/images/timelineRightBorder.png"
           alt=""

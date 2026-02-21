@@ -80,6 +80,7 @@
 "use client";
 
 import Image from "next/image";
+import SectionHeading from "@/components/ui/SectionHeading";
 import "./Prizes.css";
 
 // Asset imports
@@ -87,8 +88,6 @@ import "./Prizes.css";
 import batFirst from "../../../public/images/bat-first.png";
 import batSecond from "../../../public/images/bat-second.png";
 import batThird from "../../../public/images/bat-third.png";
-import prize1 from "../../../public/images/prizearrow.png";
-import prize2 from "../../../public/images/prizearrow2.png";
 import upperframe from "../../../public/images/upperframe.png";
 import lowerframe from "../../../public/images/lowerframe.png";
 
@@ -116,17 +115,12 @@ export default function Prizes() {
     <div className="prizes-section" id="prizes">
 
       {/* HEADER */}
-      <div className="prizes-header">
-        <div className="relative ornament">
-          <Image src={prize1} fill alt="" className="corner-img" />
-        </div>
-
-        <h1 className="main-title">PRIZES</h1>
-
-        <div className="relative ornament">
-          <Image src={prize2} fill alt="" className="corner-img flip-x" />
-        </div>
-      </div>
+      <SectionHeading
+        title="PRIZES &"
+        highlight="REWARDS"
+        highlightPosition="after"
+        description="Compete for glory and claim rewards worth over ₹1,00,000 across all tracks."
+      />
  <Image
         src="/images/corner-left.png"
         alt="left corner"

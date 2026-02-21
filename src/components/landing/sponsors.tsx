@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import SectionHeading from '@/components/ui/SectionHeading';
 import './Sponsors.css';
 import sponserOrnament from "../../../public/images/SponserOrnament.png";
 import vector from "../../../public/images/Vector.png";
@@ -52,10 +53,12 @@ export default function Sponsors() {
 
   return (
     <div className="sponsor-container" id="sponsors">
-      <h1 className="sponsor-title">
-        <span className="title-cyan">SPONSOR </span>
-        <span className="title-silver">TRACKS</span>
-      </h1>
+      <SectionHeading
+        title="SPONSOR"
+        highlight="TRACKS"
+        highlightPosition="after"
+        description="Build with leading companies and compete for exclusive sponsor prizes."
+      />
       <div className="sponsor-layout">
         {/* Left Sidebar */}
         <div className="sponsor-sidebar">

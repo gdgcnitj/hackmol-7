@@ -17,44 +17,6 @@
   font-family: var(--font-cinzel), serif;
 }
 
-/* Header Styles */
-.faq-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.faq-title {
-  font-size: 2rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .faq-title { font-size: 3rem; }
-}
-
-.faq-subtitle {
-  color: #d1d5db;
-  letter-spacing: 0.15em;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  line-height: 1.6;
-  opacity: 0.8;
-  max-width: 40rem;
-}
-
-@media (min-width: 768px) {
-  .faq-subtitle { font-size: 0.875rem; }
-}
-
-.desktop-only {
-  display: none;
-}
-@media (min-width: 768px) {
-  .desktop-only { display: block; }
-}
-
 /* Tab Styles */
 .faq-tabs {
   display: flex;

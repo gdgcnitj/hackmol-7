@@ -1,0 +1,58 @@
+/* ═══════════════════════════════════════════
+   SectionHeading — shared across all sections
+   ═══════════════════════════════════════════ */
+
+.section-heading {
+  text-align: center;
+  padding: 0 clamp(1rem, 5vw, 2rem);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+/* Title */
+.section-heading__title {
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(237, 237, 237, 0.95);
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Highlighted / accent word */
+.section-heading__highlight {
+  color: #4da8da;
+}
+
+/* Divider — single short accent bar */
+.section-heading__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(14px, 2.5vw, 22px) auto clamp(12px, 2vw, 18px);
+}
+
+.section-heading__divider-bar {
+  width: clamp(32px, 6vw, 52px);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #4da8da 40%,
+    #4da8da 60%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* Description */
+.section-heading__description {
+  font-family: var(--font-cinzel), serif;
+  font-size: clamp(0.72rem, 1.4vw, 0.82rem);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.9;
+  max-width: min(520px, 90vw);
+  margin: 0 auto;
+}

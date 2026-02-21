@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import SectionHeading from '@/components/ui/SectionHeading';
 import "./faq.css"; // Import your custom CSS
 
 const CATEGORY_DATA = {
@@ -43,13 +44,12 @@ export default function FAQ() {
       <div className="faq-container">
         
         {/* Header Section */}
-        <div className="faq-header">
-          <h2 className="faq-title cinzel-font">Got Questions?</h2>
-          <p className="faq-subtitle cinzel-font">
-            We&apos;ve got answers. Find everything you <br className="desktop-only" />
-            need to know about Hackmol 7.0 here.
-          </p>
-        </div>
+        <SectionHeading
+          title="GOT"
+          highlight="QUESTIONS?"
+          highlightPosition="after"
+          description="We've got answers — find everything you need to know about HackMol 7.0."
+        />
 
         {/* Tab Buttons */}
         <div className="faq-tabs">

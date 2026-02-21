@@ -2,9 +2,7 @@
   position: relative;
   padding: 100px 40px;
   min-height: 100vh;
-   background:radial-gradient(50% 50% at 50% 50%, #3163A1 0%, #29568D 14.97%, #22497C 29.94%, #2B3765 77.79%, #080E1C 100%);
-
-
+  background: #080E1C;
   color: white;
   text-align: center;
   overflow: hidden;
@@ -30,36 +28,6 @@
 
   
 
-}
-
-/* HEADER */
-.prizes-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 80px;
-}
-
-.main-title {
-  font-family: "Inknut Antiqua";
-  font-weight: 700;
-  letter-spacing: 6px;
-
-}
-
-.ornament {
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.corner-img {
-  object-fit: contain;
-}
-
-.flip-x {
-  transform: scaleX(-1);
 }
 
 
