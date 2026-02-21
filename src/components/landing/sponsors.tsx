@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import "./Sponsors.css";
@@ -175,9 +175,10 @@ export default function Sponsors() {
                 {s.logo ? (
                   <Image src={s.logo} alt={s.name} width={160} height={56} style={{ objectFit: "contain" }} />
                 ) : (
-                  <span className="sponsor-card-placeholder">{s.name}</span>
+                  <span className="sponsor-card-placeholder">Logo</span>
                 )}
               </div>
+              <h3 className="sponsor-card-name">{s.name}</h3>
               <p className="sponsor-card-label">{s.label}</p>
             </a>
           ))}

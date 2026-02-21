@@ -333,7 +333,7 @@ export default function Hero() {
             />
           </div>
           <p className="hero-loading-text">
-            Loading experience… {loadProgress}%
+            Loading… {loadProgress}%
           </p>
         </div>
       </div>
