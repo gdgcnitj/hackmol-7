@@ -27,8 +27,10 @@ export default function Speakers() {
     <div className="speakers-section">
       {/* HEADER SECTION */}
       <SectionHeading
-        title="SPEAKERS"
-        description="Voices of the Hollow — learn from industry leaders and innovators."
+        title="JUDGES &"
+        highlight="MENTORS"
+        highlightPosition="after"
+        description="Industry leaders and innovators who guide and evaluate your work."
       />
 
       {/* SLIDER SECTION */}

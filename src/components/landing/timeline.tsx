@@ -42,8 +42,8 @@ export default function Timeline() {
           className="timeline-corner-left"
         />
         <SectionHeading
-          title="DESCEND INTO"
-          highlight="HOLLOWNEST"
+          title="HACKATHON"
+          highlight="TIMELINE"
           highlightPosition="after"
           description="Follow the journey through each milestone as the event unfolds."
           className="timeline-section-heading"

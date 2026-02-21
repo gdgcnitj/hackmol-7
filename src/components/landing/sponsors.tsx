@@ -54,8 +54,8 @@ export default function Sponsors() {
   return (
     <div className="sponsor-container" id="sponsors">
       <SectionHeading
-        title="SPONSOR"
-        highlight="TRACKS"
+        title="OUR"
+        highlight="SPONSORS"
         highlightPosition="after"
         description="Build with leading companies and compete for exclusive sponsor prizes."
       />

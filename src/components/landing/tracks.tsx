@@ -148,7 +148,7 @@ export default function Tracks() {
   return (
     <section className="tracks-section">
       <SectionHeading
-        title="MAIN"
+        title="HACKATHON"
         highlight="TRACKS"
         highlightPosition="after"
         description="Choose your path — compete across fresher, main, and women's tracks."
