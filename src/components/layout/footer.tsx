@@ -21,7 +21,8 @@ const archiveLinks = [
 
 const communityLinks: { label: string; href: string; Icon: IconType }[] = [
   { label: "GitHub",    href: "https://github.com/gdgcnitj",                              Icon: FaGithub   },
-  { label: "WhatsApp",  href: "https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU?mode=gi_t", Icon: FaWhatsapp },
+  { label: "WhatsApp Support",  href: "https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU?mode=gi_t", Icon: FaWhatsapp },
+  { label: "Find Teammate",  href: "https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2?mode=gi_t", Icon: FaWhatsapp },
 ];
 
 const socialLinks: { label: string; href: string; Icon: IconType }[] = [
@@ -67,7 +68,7 @@ export default function Footer() {
               height={184}
               className="footer-logo"
             />
-            <p className="footer-brand-org">GDG on Campus · NIT Jalandhar</p>
+            <p className="footer-brand-org">Organised by: GDGC NIT Jalandhar</p>
           </div>
 
           <div className="footer-venue">
@@ -139,7 +140,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 GDG on Campus, NIT Jalandhar. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} GDG on Campus, NIT Jalandhar. All rights reserved.</p>
       </div>
     </footer>
   );
