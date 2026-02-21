@@ -14,7 +14,6 @@
   font-size: clamp(1.5rem, 3.5vw, 2.6rem);
   font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: rgba(237, 237, 237, 0.95);
   line-height: 1.25;
   margin: 0;
@@ -48,7 +47,7 @@
 
 /* Description */
 .section-heading__description {
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: var(--font-cinzel), serif;
   font-size: clamp(0.78rem, 1.4vw, 0.88rem);
   font-weight: 300;
   letter-spacing: 0.02em;
