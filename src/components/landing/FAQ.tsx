@@ -7,85 +7,110 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import "./faq.css";
 
 const CATEGORY_DATA = {
-  GENERAL: [
+  ABOUT: [
     {
-      question: "What is Hackmol 7.0?",
+      question: "What is HackMol 7.0?",
       answer:
-        "HackMol 7.0 is NIT Jalandhar\u2019s flagship 30-hour hackathon organized to foster innovation and creativity among students nationwide.",
+        "HackMol 7.0 is NIT Jalandhar\u2019s flagship annual hackathon \u2014 a gruelling 30-hour descent where students from across India converge to build, break, and innovate. Themed around the hauntingly beautiful world of Hollow Knight, this edition invites the bold to venture into Hallownest and prove their worth.",
     },
     {
-      question: "Who is eligible to participate in the hackathon?",
+      question: "Who is eligible to participate?",
       answer:
-        "All university students are eligible to participate, regardless of their major or year of study.",
+        "Any currently enrolled undergraduate or postgraduate student from any college or university in India is welcome to enter the realm. You do not need to be from a CS or IT background \u2014 every discipline has a place in Hallownest.",
     },
     {
-      question: "When and where will the hackathon take place?",
+      question: "When and where does it take place?",
       answer:
-        "March 28\u201329, 2026 (30 hours) at NIT Jalandhar campus. Starts 8 AM on March 28 and ends 2 PM on March 29.",
+        "The hackathon runs for 30 hours \u2014 from 8:00 AM on March 28, 2026 to 2:00 PM on March 29, 2026 \u2014 on the campus of NIT Jalandhar, Punjab, India.",
     },
     {
-      question: "Is this hackathon online or offline?",
+      question: "How large can a team be?",
       answer:
-        "This is a fully offline, in-person event to ensure the best collaborative experience.",
+        "Teams can have 2 to 4 members. Solo registrations are also accepted; you will be given an opportunity to form a team during the pre-event networking session.",
     },
     {
-      question: "What\u2019s the cost?",
+      question: "Is this an online or offline event?",
       answer:
-        "Admission is free and includes mentors, workshops, food, swag, resources, and an unforgettable experience!",
+        "HackMol 7.0 is a fully offline, in-person hackathon. The experience \u2014 the mentors, the workshops, the late-night grind \u2014 is designed to be lived, not streamed.",
     },
   ],
   REGISTER: [
     {
-      question: "How do I register for Hackmol 7.0?",
+      question: "How do I register?",
       answer:
-        "You can register through our official portal by clicking the \u2018Register Now\u2019 button on the home page.",
+        "Click the \u2018Register Now\u2019 button on this page. You will be redirected to our Devfolio portal where you can create or join a team, submit your details, and complete your application.",
     },
     {
-      question: "Is there a registration deadline?",
+      question: "What is the registration deadline?",
       answer:
-        "Yes, registrations close on February 24, 2026. Don\u2019t miss out!",
+        "Applications close on February 24, 2026. Do not wait \u2014 spots in Hallownest are limited and shortlisting is competitive.",
     },
     {
-      question: "Can I register as an individual?",
+      question: "When will I hear back after applying?",
       answer:
-        "Yes, you can register individually and we will help you find a team during the networking session.",
+        "Shortlisted teams will receive a confirmation email by March 20, 2026. Check your spam folder and ensure you applied with an active email address.",
+    },
+    {
+      question: "Can all-female or mixed-gender teams participate?",
+      answer:
+        "Absolutely. We actively encourage diverse teams. There is a dedicated Women\u2019s Track with its own prize pool to celebrate and amplify underrepresented builders.",
+    },
+    {
+      question: "Is it mandatory to submit a PPT before the event?",
+      answer:
+        "Yes. Shortlisted teams must submit a presentation of their project idea by March 26, 2026. This helps mentors prepare to guide you during the hackathon.",
     },
   ],
-  PAY: [
+  PAYMENTS: [
     {
-      question: "Is there any hidden fee?",
+      question: "Is there a registration or participation fee?",
       answer:
-        "None at all. The event is completely free for all shortlisted participants.",
+        "None. Entering Hallownest costs nothing. HackMol 7.0 is entirely free for all selected participants \u2014 no hidden charges, no surprises.",
     },
     {
-      question: "Do I need to pay for food?",
+      question: "Are meals provided during the event?",
       answer:
-        "No, meals and snacks are provided free of charge throughout the duration of the hackathon.",
+        "Yes. All meals, snacks, and beverages throughout the 30-hour hackathon are provided free of charge. You focus on building; we\u2019ll keep you fuelled.",
+    },
+    {
+      question: "Will accommodation be arranged?",
+      answer:
+        "On-campus accommodation is available for outstation participants. Details will be shared in your acceptance email. Local participants are welcome to use the rest areas on-site.",
     },
   ],
-  EXPENSE: [
+  LOGISTICS: [
     {
       question: "Will travel expenses be reimbursed?",
       answer:
-        "Travel reimbursement is provided on a case-by-case basis depending on sponsorships. Check your acceptance email for details.",
+        "Travel reimbursement is available for outstation participants on a merit and sponsorship basis. The reimbursement policy and maximum limits will be detailed in your acceptance email \u2014 keep your travel receipts safe.",
     },
     {
-      question: "What should I bring with me?",
+      question: "What should I bring?",
       answer:
-        "Bring your laptop, charger, and any hardware you plan to use. Sleeping bags are recommended for overnight stay!",
+        "Bring your laptop, charger, necessary hardware components, a valid college ID, and a sleeping bag or blanket for the overnight stretch. Stickers, lucky charms, and the will to descend are optional but encouraged.",
+    },
+    {
+      question: "Is there a code of conduct?",
+      answer:
+        "Yes. HackMol follows a strict code of conduct to ensure a safe, inclusive, and fair environment for all. Harassment, plagiarism, or unsportsmanlike behaviour will result in immediate disqualification.",
+    },
+    {
+      question: "Who do I contact if I have more questions?",
+      answer:
+        "Reach out to us on Instagram @gdgcnitj or email us at dsc@nitj.ac.in.",
     },
   ],
 };
 
 export default function FAQ() {
-  const [activeTab, setActiveTab] = useState("GENERAL");
-  const [openIndex, setOpenIndex] = useState(-1);
+  const [activeTab, setActiveTab] = useState("ABOUT");
+  const [openIndex, setOpenIndex] = useState(0);
 
   const tabs = Object.keys(CATEGORY_DATA);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
-    setOpenIndex(-1);
+    setOpenIndex(0);
   };
 
   return (
@@ -157,7 +182,9 @@ export default function FAQ() {
                 </button>
 
                 <div className="faq-answer-wrapper">
-                  <div className="faq-answer-content">{item.answer}</div>
+                  <div className="faq-answer-overflow">
+                    <div className="faq-answer-content">{item.answer}</div>
+                  </div>
                 </div>
               </div>
             )

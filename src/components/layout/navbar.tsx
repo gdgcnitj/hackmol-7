@@ -33,6 +33,7 @@ export default function Navbar() {
             <div className="nav-links">
                 <a href="#about">About</a>
                 <a href="#tracks">Tracks</a>
+                <a href="#prizes">Prizes</a>
                 <a href="#timeline">Timeline</a>
                 <a href="#sponsors">Sponsors</a>
                 <a href="#faq">FAQ</a>

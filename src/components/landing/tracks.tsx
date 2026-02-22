@@ -86,7 +86,7 @@ function TrackCard({ track }: { track: TrackData }) {
       : "tracks-card tracks-card--side";
 
   return (
-    <div className={cardClass} id="tracks">
+    <div className={cardClass}>
       <div className="tracks-card-header">
         <h3 className="tracks-card-name">{track.name}</h3>
       </div>
@@ -146,7 +146,7 @@ function TrackCard({ track }: { track: TrackData }) {
 
 export default function Tracks() {
   return (
-    <section className="tracks-section">
+    <section className="tracks-section" id="tracks">
       <SectionHeading
         title="HACKATHON"
         highlight="TRACKS"
