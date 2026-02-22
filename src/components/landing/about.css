@@ -1,221 +1,289 @@
-@import url("https://fonts.cdnfonts.com/css/trajan-pro");
+/* ═══════════════════════════════════════════
+   About Section
+   ═══════════════════════════════════════════ */
 
-/* Main Section */
-
+/* ── Section shell ── */
 .about-section {
-    background: #080E1C;
+    background: #080e1c;
     color: white;
-
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    /* Let content dictate height — avoids large blank space below stats */
+    padding-bottom: clamp(40px, 6vw, 80px);
 }
 
-/* Container */
-
-.container {
+/* ── Scoped container ── */
+.about-container {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 60px 40px;
+    /* Remove bottom padding — section padding-bottom handles it */
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px) 0;
     position: relative;
     z-index: 2;
 }
 
-/* Content */
-
-.content-section {
+/* ══════════════════════════════════════════
+   Content row  (image + text panel)
+   ══════════════════════════════════════════ */
+.about-content {
     display: flex;
     align-items: center;
-    z-index: 0;
+    margin-bottom: clamp(48px, 7vw, 96px);
+    gap: 0;                         /* overlap controlled by margin-left below */
 }
 
-/* Image */
-
-.image-container {
-    flex: 0 0 500px;
-    /* margin-right: -80px; */
+/* ── Team image ── */
+.about-image-wrap {
+    /* Fluid width: never smaller than 240 px, never bigger than 500 px */
+    flex: 0 0 clamp(240px, 38%, 500px);
+    position: relative;
     z-index: 3;
-    position: relative;
 }
 
-.team-image {
+.about-team-img {
     width: 100%;
-    border-radius: 25px;
-
-    /* box-shadow:
-        0 0 30px rgba(79, 195, 247, 0.25),
-        0 20px 60px rgba(0, 0, 0, 0.4); */
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    /* Subtle depth shadow aligned with theme */
+    box-shadow:
+        0 0 14px rgba(77, 168, 218, 0.07),
+        0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* Text */
-
-.text-container {
+/* ── Text panel ── */
+.about-text-wrap {
     flex: 1;
+    min-width: 0;                   /* prevent flex child from overflowing */
     position: relative;
-    padding: 60px 50px;
+    padding: clamp(28px, 5vw, 60px) clamp(20px, 4vw, 50px);
     z-index: 1;
     transform: skewX(-6deg);
     margin-left: -40px;
 }
 
-.tilt-background {
+.about-tilt-bg {
     position: absolute;
     inset: 0;
-
-    border-radius: 30px;
+    border-radius: 24px;
     background-image: url("/images/tilt_bg.png");
     filter: brightness(200%);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-
-    /* box-shadow:
-        0 0 40px rgba(79, 195, 247, 0.2),
-        inset 0 0 20px rgba(255, 255, 255, 0.05); */
-
     transform: skewX(6deg);
     z-index: 0;
+    pointer-events: none;
 }
 
-.text-content {
-    margin-left: 40px;
-    margin-right: 20px;
+.about-text-inner {
     position: relative;
     z-index: 1;
     transform: skewX(6deg);
+    margin-left: clamp(16px, 4vw, 40px);
+    margin-right: clamp(8px, 2vw, 20px);
 }
 
-.subtitle {
-    margin-top: 10px;
-    font-family: "Trajan Pro 3", "Trajan Pro", serif;
-    font-size: 32px;
+.about-subtitle {
+    margin-top: 8px;
+    font-family: var(--font-trajan);
+    font-size: clamp(18px, 2.4vw, 32px);
     font-weight: bold;
-    color: #4fc3f7;
+    color: #4da8da;
     text-transform: uppercase;
+    line-height: 1.35;
 }
 
-.subtitle span {
+.about-subtitle span {
     color: #ffffff;
 }
 
-.description {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-family: "Perpetua", "Georgia", serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #e0e0e0;
+.about-desc {
+    margin-top: 14px;
+    margin-bottom: 8px;
+    font-family: var(--font-perpetua);
+    font-size: clamp(14px, 1.35vw, 18px);
+    line-height: 1.75;
+    color: rgba(224, 224, 224, 0.9);
     text-align: justify;
 }
 
-/* Stats */
-
-.stats-section {
+/* ══════════════════════════════════════════
+   Stats grid
+   ══════════════════════════════════════════ */
+.about-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: clamp(4px, 1.5vw, 16px);
 }
 
-.stat-card {
-    height: 250px;
-    scale: 1.2;
+.about-stat-card {
+    /*
+      aspect-ratio matches the PNG frame's native ~2.3:1 landscape shape.
+      This means the card height always equals (column-width ÷ 2.3), so
+      background-size: contain fills edge-to-edge with zero transparent
+      dead-zones — that was the source of the large vertical gaps on mobile
+      and the uneven empty bands on desktop.
+    */
+    aspect-ratio: 2.3 / 1;
+    width: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 14px rgba(77, 168, 218, 0.18));
+    transition: transform 0.28s ease, filter 0.28s ease;
+    cursor: default;
+    will-change: transform;
+}
+
+.about-stat-card:hover {
+    transform: translateY(-5px) scale(1.04);
+    filter: drop-shadow(0 8px 22px rgba(77, 168, 218, 0.32));
+}
+
+.card-1 { background-image: url("/images/Frame_1.png"); }
+.card-2 { background-image: url("/images/Frame_2.png"); }
+.card-3 { background-image: url("/images/Frame_3.png"); }
+.card-4 { background-image: url("/images/Frame_4.png"); }
+
+/*
+  The frame images contain a decorative ornament on their left side.
+  translateX shifts the text block rightward to sit in the open area
+  of the frame — this replaces the old hardcoded margin-left: 100px
+  with a fluid percentage that scales with the card.
+*/
+.about-stat-inner {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 10px;
+    transform: translateX(clamp(44px, 26%, 130px));
+    padding-bottom: 4px;
+    max-width: 60%;
 }
 
-.card-1 {
-    background-image: url("/images/Frame_1.png");
-}
-
-.card-2 {
-    background-image: url("/images/Frame_2.png");
-}
-
-.card-3 {
-    background-image: url("/images/Frame_3.png");
-}
-
-.card-4 {
-    background-image: url("/images/Frame_4.png");
-}
-
-.stat-number {
-    font-family: "Trajan Pro 3", "Trajan Pro", serif;
+.about-stat-number {
+    font-family: var(--font-trajan);
     font-weight: bold;
-    font-size: 30px;
-    margin-bottom: 2px;
+    font-size: clamp(20px, 2.6vw, 42px);
     line-height: 1;
-    margin-left: 100px;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
-.stat-label {
-    font-family: "Perpetua", "Georgia", serif;
-    font-size: 11px;
-    margin-top: 0;
-    line-height: 1.1;
+.about-stat-label {
+    font-family: var(--font-perpetua);
+    font-size: clamp(10px, 1.1vw, 16px);
+    margin-top: 8px;
+    line-height: 1.3;
     text-align: center;
-    color: #e0e0e0;
-    margin-left: 100px;
+    color: rgba(224, 224, 224, 0.85);
+    width: 100%;
+    margin-top: -4px;
 }
 
-/* Responsive */
+/* ══════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════ */
 
+/* ── Tablet — stacked layout, 2-col stats ── */
 @media (max-width: 1024px) {
-    .content-section {
+    .about-content {
         flex-direction: column;
+        align-items: stretch;
     }
 
-    .image-container {
-        max-width: 500px;
+    .about-image-wrap {
+        flex: none;
+        max-width: 480px;
         width: 100%;
+        align-self: center;
+        margin-bottom: 0;
     }
 
-    .stats-section {
+    /* Remove skew — too disorienting stacked */
+    .about-text-wrap {
+        transform: none;
+        margin-left: 0;
+        padding: clamp(24px, 4vw, 48px) clamp(20px, 4vw, 40px);
+    }
+
+    .about-tilt-bg  { transform: none; }
+    .about-text-inner { transform: none; margin-left: 0; margin-right: 0; }
+
+    .about-stats {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .text-container {
-        transform: none;
-        margin-left: 0;
+    /* No explicit height — aspect-ratio on base rule handles sizing */
+
+    .about-stat-number {
+        font-size: clamp(22px, 4.8vw, 38px);
     }
 
-    .text-content {
-        transform: none;
+    .about-stat-label {
+        font-size: clamp(11px, 2vw, 17px);
     }
 
-    .tilt-background {
-        transform: none;
+    .about-stat-inner {
+        transform: translateX(clamp(28px, 24%, 96px));
+        max-width: 58%;
     }
-
 }
 
-@media (max-width: 640px) {
-    .main-title {
-        font-size: 32px;
+/* ── Mobile — 2-col stats, full-width image ── */
+@media (max-width: 600px) {
+    .about-image-wrap {
+        max-width: 100%;
     }
 
-    .image-container {
-        flex: 0 0 250px;
+    .about-subtitle {
+        font-size: clamp(17px, 5vw, 24px);
     }
 
-    .subtitle {
-        font-size: 24px;
+    .about-desc {
+        font-size: clamp(13px, 3.5vw, 16px);
     }
 
-    .description {
-        font-size: 16px;
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: clamp(8px, 2vw, 20px);
     }
 
-    .stats-section {
-        grid-template-columns: 1fr;
+    /* No explicit height — aspect-ratio on base rule handles sizing */
+
+    .about-stat-number {
+        font-size: clamp(18px, 6.5vw, 32px);
+        white-space: nowrap;
     }
 
-    .container {
-        padding: 40px 20px;
+    .about-stat-label {
+        font-size: clamp(10px, 2.8vw, 15px);
+        width: 100%;
+    }
+
+    .about-stat-inner {
+        transform: translateX(clamp(20px, 22%, 70px));
+        max-width: 56%;
+    }
+}
+
+/* ── Small phones ── */
+@media (max-width: 380px) {
+    .about-container {
+        padding: 32px 16px;
+    }
+
+    .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .about-stat-inner {
+        transform: translateX(18%);
     }
 }
