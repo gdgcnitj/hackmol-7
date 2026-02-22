@@ -114,27 +114,12 @@ export default function Prizes() {
   return (
     <div className="prizes-section" id="prizes">
 
-      {/* HEADER */}
+      {/* SectionHeading auto-renders corner ornaments */}
       <SectionHeading
         title="PRIZES &"
         highlight="REWARDS"
         highlightPosition="after"
         description="The worthy shall be rewarded. Claim your geo — over ₹1,00,000 waiting for those who endure."
-      />
- <Image
-        src="/images/corner-left.png"
-        alt="left corner"
-        width={200}
-        height={300}
-        className="left-corner"
-      />
-
-      <Image
-        src="/images/right-corner.png"
-        alt="right corner"
-        width={200}
-        height={300}
-        className="right-corner "
       />
 
       {/* CARDS */}

@@ -2,10 +2,51 @@
    SectionHeading — shared across all sections
    ═══════════════════════════════════════════ */
 
+/* Full-bleed wrapper — escapes any max-width container so corners
+   always reach the viewport edges, regardless of nesting depth.    */
+.section-heading__wrapper {
+  position: relative;
+  z-index: 2;
+  /* Full-bleed trick: works when the direct parent has no h-padding */
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Internal top padding: title sits below the corner ornaments */
+  padding-top: clamp(60px, 7vw, 96px);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+/* Corner ornaments */
+.section-heading__corner {
+  position: absolute;
+  top: clamp(32px, 4vw, 48px);
+  opacity: 0.55;
+  width: clamp(64px, 8vw, 130px) !important;
+  height: auto !important;
+  pointer-events: none;
+}
+
+.section-heading__corner--left {
+  left: clamp(16px, 3vw, 32px);
+}
+
+.section-heading__corner--right {
+  right: clamp(16px, 3vw, 32px);
+}
+
+@media (max-width: 768px) {
+  .section-heading__corner {
+    display: none;
+  }
+}
+
+/* Inner content block */
 .section-heading {
   text-align: center;
   padding: 0 clamp(1rem, 5vw, 2rem);
-  margin-bottom: clamp(40px, 6vw, 72px);
 }
 
 /* Title */

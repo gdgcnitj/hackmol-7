@@ -38,29 +38,13 @@ const timelineData = [
 export default function Timeline() {
   return (
     <section className="timeline-section" id="timeline">
-      <div className="timeline-heading">
-        <Image
-          src="/images/timelineLeftBorder.png"
-          alt=""
-          width={130}
-          height={130}
-          className="timeline-corner-left"
-        />
-        <SectionHeading
-          title="HACKATHON"
-          highlight="TIMELINE"
-          highlightPosition="after"
-          description="Mark your descent. Each milestone brings you one step closer to the heart of Hallownest."
-          className="timeline-section-heading"
-        />
-        <Image
-          src="/images/timelineRightBorder.png"
-          alt=""
-          width={130}
-          height={130}
-          className="timeline-corner-right"
-        />
-      </div>
+      {/* SectionHeading auto-renders corner ornaments */}
+      <SectionHeading
+        title="HACKATHON"
+        highlight="TIMELINE"
+        highlightPosition="after"
+        description="Mark your descent. Each milestone brings you one step closer to the heart of Hallownest."
+      />
 
       <div className="timeline-content">
         <div className="timeline-grid">

@@ -66,18 +66,18 @@ export default function About() {
                 <div className="stats-section">
 
                     <div className="stat-card card-1">
-                        <div className="stat-number">200+</div>
-                        <div className="stat-label">Projects Submitted</div>
+                        <div className="stat-number">17437+</div>
+                        <div className="stat-label">Participants</div>
                     </div>
 
                     <div className="stat-card card-2">
-                        <div className="stat-number">200+</div>
+                        <div className="stat-number">413+</div>
                         <div className="stat-label">Projects Submitted</div>
                     </div>
 
                     <div className="stat-card card-3">
-                        <div className="stat-number">200+</div>
-                        <div className="stat-label">Projects Submitted</div>
+                        <div className="stat-number">100+</div>
+                        <div className="stat-label">Sponsors</div>
                     </div>
 
                     <div className="stat-card card-4">

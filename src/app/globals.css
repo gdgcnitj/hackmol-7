@@ -71,6 +71,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Scroll offset for fixed navbar */

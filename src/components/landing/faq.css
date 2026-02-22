@@ -1,141 +1,363 @@
+/* ══════════════════════════════════════════
+   FAQ Section — Gothic theme, fully responsive
+   ══════════════════════════════════════════ */
+
 .faq-section {
+  position: relative;
   min-height: 100vh;
- background-image: linear-gradient(180deg, #080E1C 0%, #080E1C 100%);
-  color: white;
-  padding: 5rem 1.5rem;
+  background: #080e1c;
+  color: #fff;
+  /* No horizontal padding here — SectionHeading full-bleed trick requires
+     the direct parent to be full viewport width with no horizontal padding */
+  padding: 0 0 clamp(60px, 8vw, 100px);
+  overflow: hidden;
 }
 
+/* ── Side knight characters ── */
+.faq-knight {
+  position: absolute;
+  bottom: clamp(60px, 10vw, 120px);
+  width: clamp(100px, 12vw, 180px);
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.faq-knight--left {
+  left: clamp(16px, 4vw, 100px);
+}
+
+.faq-knight--right {
+  right: clamp(16px, 4vw, 100px);
+}
+
+/* ── Container ── */
 .faq-container {
-  max-width: 56rem;
+  position: relative;
+  max-width: 54rem;
   margin: 0 auto;
+  padding: 0 clamp(16px, 5vw, 40px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
 }
 
-.cinzel-font {
-  font-family: var(--font-cinzel), serif;
-}
+/* ═══════════════════════════════════════════
+   Tab buttons
+   ═══════════════════════════════════════════ */
 
-/* Tab Styles */
 .faq-tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: clamp(8px, 1.2vw, 16px);
+  margin-bottom: clamp(28px, 4vw, 48px);
   width: 100%;
 }
 
 .faq-tab-btn {
-  transition: all 0.3s ease;
-  font-size: 13px;
-  letter-spacing: 0.2em;
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(10px, 1.1vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  font-weight: 500;
-  padding: 1rem 2.5rem;
+  padding: clamp(10px, 1.2vw, 14px) clamp(18px, 2.5vw, 32px);
   border-radius: 9999px;
-  border: 2px solid white;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
   background: transparent;
-  color: white;
+  color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
-  min-width: 160px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: clamp(100px, 12vw, 150px);
+  white-space: nowrap;
 }
 
 .faq-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(77, 168, 218, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(77, 168, 218, 0.06);
+}
+
+.faq-tab-btn:focus-visible {
+  outline: 2px solid #4da8da;
+  outline-offset: 2px;
 }
 
 .faq-tab-btn.active {
-  background: white;
-  color: black;
+  background: linear-gradient(135deg, rgba(77, 168, 218, 0.15), rgba(77, 168, 218, 0.08));
+  border-color: rgba(77, 168, 218, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(77, 168, 218, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Accordion Styles */
+/* ═══════════════════════════════════════════
+   Accordion list
+   ═══════════════════════════════════════════ */
+
 .faq-accordion-list {
   width: 100%;
-  max-width: 48rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: clamp(12px, 1.6vw, 20px);
 }
 
+/* ── Individual FAQ item ── */
 .faq-item {
-  transition: all 0.3s ease;
-  border: 1px solid #1e293b;
-  background-color: #0a1225;
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 28, 55, 0.7) 0%,
+    rgba(10, 18, 37, 0.9) 100%
+  );
+  border-radius: clamp(12px, 1.5vw, 20px);
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item:hover {
+  border-color: rgba(77, 168, 218, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 28, 55, 0.85) 0%,
+    rgba(12, 22, 41, 0.95) 100%
+  );
 }
 
 .faq-item.is-open {
-  border-color: rgba(59, 130, 246, 0.4);
-  background-color: #0c1629;
-  box-shadow: 0px 0px 25px 0px rgba(59, 130, 246, 0.2);
+  border-color: rgba(77, 168, 218, 0.35);
+  box-shadow: 0 0 30px rgba(77, 168, 218, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* ── Question button ── */
 .faq-question-btn {
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: clamp(16px, 2vw, 24px) clamp(16px, 2.5vw, 28px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: clamp(12px, 1.5vw, 18px);
   text-align: left;
   background: transparent;
   border: none;
   cursor: pointer;
   outline: none;
+  transition: background 0.3s ease;
 }
 
-.question-text {
-  font-size: 0.875rem;
-  font-weight: 300;
-  letter-spacing: 0.025em;
-  color: #d1d5db;
-  transition: color 0.3s;
+.faq-question-btn:focus-visible {
+  background: rgba(77, 168, 218, 0.05);
 }
 
-@media (min-width: 768px) {
-  .question-text { font-size: 1.125rem; }
+/* ── Question number ── */
+.faq-question-number {
+  font-family: "Trajan Pro 3", "Trajan Pro", serif;
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 400;
+  color: rgba(77, 168, 218, 0.4);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  min-width: clamp(24px, 2.5vw, 32px);
+  transition: color 0.3s ease;
 }
 
-.faq-item.is-open .question-text {
-  color: white;
+.faq-item.is-open .faq-question-number {
+  color: #4da8da;
 }
 
-.chevron-icon {
-  transition: transform 0.3s ease, color 0.3s ease;
-  color: #6b7280;
+/* ── Question text ── */
+.faq-question-text {
+  flex: 1;
+  font-family: var(--font-perpetua, "Perpetua"), serif;
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: rgba(209, 213, 219, 0.8);
+  transition: color 0.3s ease;
 }
 
-.faq-item.is-open .chevron-icon {
+.faq-item:hover .faq-question-text,
+.faq-item.is-open .faq-question-text {
+  color: #ffffff;
+}
+
+/* ── Chevron icon ── */
+.faq-chevron {
+  flex-shrink: 0;
+  color: rgba(107, 114, 128, 0.6);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s ease;
+}
+
+.faq-item.is-open .faq-chevron {
   transform: rotate(180deg);
-  color: #60a5fa;
+  color: #4da8da;
 }
 
-/* Answer Animation */
+/* ── Answer panel — slide animation ── */
 .faq-answer-wrapper {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   opacity: 0;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.35s ease;
 }
 
 .faq-item.is-open .faq-answer-wrapper {
-  max-height: 200px;
+  grid-template-rows: 1fr;
   opacity: 1;
 }
 
 .faq-answer-content {
-  padding: 0 2rem 2rem 2rem;
-  font-size: 0.875rem;
-  color: #9ca3af;
-  font-weight: 300;
-  line-height: 1.6;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 1rem;
+  overflow: hidden;
+  font-family: var(--font-perpetua, "Perpetua"), serif;
+  font-size: clamp(13px, 1.2vw, 16px);
+  font-weight: 400;
+  color: rgba(156, 163, 175, 0.85);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
 }
 
-@media (min-width: 768px) {
-  .faq-answer-content { font-size: 1rem; }
+.faq-item.is-open .faq-answer-content {
+  padding: 0 clamp(16px, 2.5vw, 28px) clamp(18px, 2vw, 28px);
+  padding-left: clamp(52px, 6vw, 78px); /* align with question text */
+  border-top: 1px solid rgba(77, 168, 218, 0.1);
+  padding-top: clamp(14px, 1.5vw, 20px);
+}
+
+/* ═══════════════════════════════════════════
+   Responsive — Tablet (≤ 1024px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .faq-knight {
+    opacity: 0.5;
+    width: clamp(80px, 10vw, 130px);
+  }
+
+  .faq-knight--left {
+    left: 8px;
+  }
+
+  .faq-knight--right {
+    right: 8px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive — Small tablet / large phone (≤ 768px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 60px 16px;
+  }
+
+  .faq-knight {
+    display: none;
+  }
+
+  .faq-tabs {
+    gap: 8px;
+  }
+
+  .faq-tab-btn {
+    padding: 10px 16px;
+    min-width: auto;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .faq-question-btn {
+    padding: 16px;
+    gap: 10px;
+  }
+
+  .faq-item.is-open .faq-answer-content {
+    padding-left: 50px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive — Phone (≤ 480px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 48px 12px;
+  }
+
+  .faq-tabs {
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .faq-tab-btn {
+    padding: 8px 12px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    border-width: 1px;
+  }
+
+  .faq-question-number {
+    display: none;
+  }
+
+  .faq-question-btn {
+    padding: 14px 12px;
+    gap: 8px;
+  }
+
+  .faq-question-text {
+    font-size: 14px;
+  }
+
+  .faq-answer-content {
+    font-size: 13px;
+  }
+
+  .faq-item.is-open .faq-answer-content {
+    padding: 0 12px 16px;
+    padding-top: 12px;
+  }
+
+  .faq-item {
+    border-radius: 12px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Responsive — Tiny screens (≤ 360px)
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 360px) {
+  .faq-section {
+    padding: 40px 8px;
+  }
+
+  .faq-corner {
+    width: 48px;
+  }
+
+  .faq-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .faq-tab-btn {
+    padding: 7px 10px;
+    font-size: 8px;
+  }
+
+  .faq-question-text {
+    font-size: 13px;
+  }
+
+  .faq-answer-content {
+    font-size: 12px;
+    line-height: 1.65;
+  }
 }

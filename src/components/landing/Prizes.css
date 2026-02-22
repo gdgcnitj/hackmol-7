@@ -1,35 +1,14 @@
 .prizes-section {
   position: relative;
-  padding: 100px 40px;
+  /* No horizontal padding — SectionHeading full-bleed trick requires
+     the direct parent to be full viewport width */
+  padding: 0 0 100px;
   min-height: 100vh;
   background: #080E1C;
   color: white;
   text-align: center;
   overflow: hidden;
 }
-
-.left-corner {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: 200px;
-  height: auto;
-
-}
-
-.right-corner {
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  width: 220px;
-  height: auto;
-
-  
-
-}
-
 
 /* CARDS */
 .prizes-container {
@@ -215,6 +194,8 @@ bottom:30px;
     font-size: 42px;
   }
 }
+
+
 @media (max-width: 768px) {
 
   /* Remove bottom shifting only on mobile */

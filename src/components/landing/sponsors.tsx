@@ -137,13 +137,16 @@ export default function Sponsors() {
   const filtered = sponsors.filter((s) => s.category === active);
 
   return (
-    <div className="sponsor-container" id="sponsors">
+    <section className="sponsors-section" id="sponsors">
+      {/* SectionHeading is first child of section root — no h-padding here */}
       <SectionHeading
         title="OUR"
         highlight="SPONSORS"
         highlightPosition="after"
         description="The great houses of the kingdom. Their support lights the path through HackMol 7.0."
       />
+
+      <div className="sponsor-container">
 
       {/* Always visible platform partner section */}
       <div className="platform-partner-section">
@@ -240,6 +243,7 @@ export default function Sponsors() {
           />
         ))}
       </div>
-    </div>
+      </div>
+    </section>
   );
 }

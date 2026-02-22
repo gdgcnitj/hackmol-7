@@ -6,40 +6,6 @@
   color: #ffffff;
 }
 
-.timeline-heading {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 96px;
-  padding-bottom: 24px;
-}
-
-.timeline-section-heading {
-  margin-bottom: 0;
-}
-
-.timeline-corner-left {
-  position: absolute;
-  left: clamp(16px, 3vw, 32px);
-  top: clamp(32px, 4vw, 48px);
-  opacity: 0.55;
-  width: clamp(64px, 8vw, 130px) !important;
-  height: auto !important;
-  pointer-events: none;
-}
-
-.timeline-corner-right {
-  position: absolute;
-  right: clamp(16px, 3vw, 32px);
-  top: clamp(32px, 4vw, 48px);
-  opacity: 0.55;
-  width: clamp(64px, 8vw, 130px) !important;
-  height: auto !important;
-  pointer-events: none;
-}
-
 .timeline-content {
   position: relative;
   max-width: 1400px;
