@@ -1,81 +1,58 @@
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { 
+  FaLeaf, 
+  FaTractor, 
+  FaHeartbeat, 
+  FaBrain, 
+  FaGraduationCap, 
+  FaShieldAlt, 
+  FaNetworkWired,
+} from "react-icons/fa";
+import { SiBlockchaindotcom } from "react-icons/si";
 import "./tracks.css";
+
+interface InnovationArea {
+  name: string;
+  icon: React.ReactNode;
+}
 
 interface TrackData {
   name: string;
   image: string;
   variant: "side" | "center";
-  prizes: { label: string; amount: string }[];
-  bullets: { title: string; items: string[] };
+  description: string;
 }
+
+const innovationAreas: InnovationArea[] = [
+  { name: "Green Technology", icon: <FaLeaf /> },
+  { name: "Blockchain / Web3", icon: <SiBlockchaindotcom /> },
+  { name: "Agriculture & Rural Tech", icon: <FaTractor /> },
+  { name: "MedTech / Healthcare", icon: <FaHeartbeat /> },
+  { name: "AI & Machine Learning", icon: <FaBrain /> },
+  { name: "Smart Education", icon: <FaGraduationCap /> },
+  { name: "Cybersecurity", icon: <FaShieldAlt /> },
+  { name: "Internet of Things (IoT)", icon: <FaNetworkWired /> },
+];
 
 const tracksData: TrackData[] = [
   {
     name: "FRESHER'S TRACK",
     image: "/images/tracksFreshersTrack.png",
     variant: "side",
-    prizes: [
-      { label: "WINNER", amount: "10,000" },
-      { label: "1ST RUNNER UP", amount: "5000" },
-      { label: "2ND RUNNER UP", amount: "3000" },
-    ],
-    bullets: {
-      title: "Hollow Knight",
-      items: [
-        "Best Duo Of Hallownest",
-        "Void & Light Champions",
-        "Pure Bond Award",
-        "Unbreakable Soul Pair",
-        "Dreambound Duo",
-        "Eternal Flame Of The Abyss",
-        "Partners Of The Pale Light",
-      ],
-    },
+    description: "Exclusively for first-year students. Take your first step into the world of hackathons and showcase your innovative ideas.",
   },
   {
     name: "MAIN TRACK",
     image: "/images/tracksMainTrack.png",
     variant: "center",
-    prizes: [
-      { label: "WINNER", amount: "50,000" },
-      { label: "1ST RUNNER UP", amount: "30,000" },
-      { label: "2ND RUNNER UP", amount: "30,000" },
-    ],
-    bullets: {
-      title: "Hollow Knight",
-      items: [
-        "Best Duo Of Hallownest",
-        "Void & Light Champions",
-        "Pure Bond Award",
-        "Unbreakable Soul Pair",
-        "Dreambound Duo",
-        "Eternal Flame Of The Abyss",
-        "Partners Of The Pale Light",
-      ],
-    },
+    description: "Open to all participants. Compete with the best minds and build groundbreaking solutions that push the boundaries of innovation.",
   },
   {
     name: "WOMEN'S TRACK",
     image: "/images/tracksWomenTrack.png",
     variant: "side",
-    prizes: [
-      { label: "WINNER", amount: "10,000" },
-      { label: "1ST RUNNER UP", amount: "5000" },
-      { label: "2ND RUNNER UP", amount: "3000" },
-    ],
-    bullets: {
-      title: "Hollow Knight",
-      items: [
-        "Best Duo Of Hallownest",
-        "Void & Light Champions",
-        "Pure Bond Award",
-        "Unbreakable Soul Pair",
-        "Dreambound Duo",
-        "Eternal Flame Of The Abyss",
-        "Partners Of The Pale Light",
-      ],
-    },
+    description: "Empowering women in tech. Dedicated track for all-women teams to create impactful solutions and lead the change.",
   },
 ];
 
@@ -113,31 +90,7 @@ function TrackCard({ track }: { track: TrackData }) {
         </div>
 
         <div className="tracks-card-content">
-          <div className="tracks-prizes">
-            {track.prizes.map((prize, i) => (
-              <div key={i} className="tracks-prize-item">
-                <div className="tracks-prize-label">{prize.label}</div>
-                <div className="tracks-prize-amount">
-                  <Image
-                    src="/images/tracksBerries.png"
-                    alt="geo"
-                    width={22}
-                    height={22}
-                  />
-                  <span>{prize.amount}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="tracks-awards">
-            <div className="tracks-awards-title">{track.bullets.title}</div>
-            <ul className="tracks-awards-list">
-              {track.bullets.items.map((award, i) => (
-                <li key={i}>{award}</li>
-              ))}
-            </ul>
-          </div>
+          <p className="tracks-card-description">{track.description}</p>
         </div>
       </div>
     </div>
@@ -151,13 +104,29 @@ export default function Tracks() {
         title="HACKATHON"
         highlight="TRACKS"
         highlightPosition="after"
-        description="Choose your nail. Three distinct paths — each one a trial forged for a different kind of builder."
+        description="Choose your path. Three distinct tracks — each one a trial forged for a different kind of builder."
       />
 
       <div className="tracks-cards">
         {tracksData.map((track, i) => (
           <TrackCard key={i} track={track} />
         ))}
+      </div>
+
+      <div className="tracks-innovation">
+        <h3 className="tracks-innovation-title">AREAS OF INNOVATION</h3>
+        <p className="tracks-innovation-subtitle">
+          Participants may build solutions in (but not limited to):
+        </p>
+        
+        <div className="tracks-innovation-grid">
+          {innovationAreas.map((area, i) => (
+            <div key={i} className="tracks-innovation-item">
+              <div className="tracks-innovation-icon">{area.icon}</div>
+              <span className="tracks-innovation-name">{area.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

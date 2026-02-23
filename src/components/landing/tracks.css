@@ -1,30 +1,23 @@
 .tracks-section {
   position: relative;
   width: 100%;
-  padding: 80px 0 100px;
+  padding: clamp(64px, 10vh, 100px) 0 clamp(80px, 12vh, 120px);
   color: #ffffff;
-  background: radial-gradient(
-    ellipse 75% 55% at 50% 45%,
-    #355f9b 0%,
-    #15345f 30%,
-    #08162b 55%,
-    #080E1C 85%
-  );
 }
 
 .tracks-cards {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 40px;
-  max-width: 1024px;
+  gap: clamp(24px, 4vw, 40px);
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 clamp(16px, 4vw, 48px);
 }
 
 .tracks-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   background: radial-gradient(
     ellipse at 50% 50%,
@@ -32,48 +25,76 @@
     #02122B 70%
   );
   border: 1px solid #6fa8ff;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 8px 40px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease-out backwards;
+  will-change: transform;
+}
+
+.tracks-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.tracks-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.tracks-card:nth-child(3) {
+  animation-delay: 0.3s;
 }
 
 .tracks-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 50px rgba(19, 58, 142, 0.4);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 12px 40px rgba(19, 58, 142, 0.3),
+    0 20px 60px rgba(111, 168, 255, 0.2);
+  border-color: rgba(111, 168, 255, 0.8);
+}
+
+.tracks-card:hover .tracks-card-overlay img {
+  transform: scale(1.05);
 }
 
 .tracks-card--side {
-  flex: 0 1 340px;
+  flex: 0 1 min(340px, 100%);
   min-width: 0;
 }
 
 .tracks-card--center {
-  flex: 0 1 460px;
+  flex: 0 1 min(460px, 100%);
   min-width: 0;
-  margin-bottom: 60px;
+  margin-bottom: clamp(40px, 6vw, 60px);
 }
 
 .tracks-card-header {
-  padding: 18px 20px 14px;
+  padding: clamp(16px, 2vw, 20px) clamp(18px, 2.5vw, 24px) clamp(12px, 1.5vw, 16px);
   text-align: center;
 }
 
 .tracks-card--center .tracks-card-header {
-  padding: 22px 24px 16px;
+  padding: clamp(20px, 2.5vw, 24px) clamp(22px, 3vw, 28px) clamp(14px, 2vw, 18px);
 }
 
 .tracks-card-name {
   font-family: var(--font-trajan, var(--font-cinzel)), serif;
   font-weight: 300;
-  font-size: 22px;
+  font-size: clamp(18px, 2.2vw, 22px);
   letter-spacing: 0.04em;
   color: #ffffff;
   text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.tracks-card:hover .tracks-card-name {
+  color: #b8d4ff;
 }
 
 .tracks-card--center .tracks-card-name {
-  font-size: 26px;
+  font-size: clamp(22px, 2.6vw, 28px);
 }
 
 .tracks-card-separator-wrap {
@@ -85,11 +106,18 @@
   width: 100%;
   height: auto;
   display: block;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.tracks-card:hover .tracks-card-separator {
+  opacity: 1;
 }
 
 .tracks-card-body {
   position: relative;
   flex: 1;
+  min-height: 200px;
 }
 
 .tracks-card-overlay {
@@ -99,7 +127,7 @@
   transform: translate(-50%, -50%);
   width: 65%;
   height: 90%;
-  opacity: 100;
+  opacity: 1;
   pointer-events: none;
   z-index: 0;
   display: flex;
@@ -111,198 +139,352 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .tracks-card-content {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 20px 24px 28px;
+  padding: clamp(24px, 3vw, 32px) clamp(20px, 2.5vw, 28px) clamp(28px, 3.5vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tracks-card--center .tracks-card-content {
-  padding: 24px 32px 36px;
+  padding: clamp(28px, 3.5vw, 36px) clamp(28px, 3.5vw, 36px) clamp(36px, 4vw, 44px);
 }
 
-.tracks-prizes {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.tracks-prize-label {
-  font-family: var(--font-trajan), serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-
-.tracks-card--center .tracks-prize-label {
-  font-size: 17px;
-}
-
-.tracks-prize-amount {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 4px 12px;
-  margin-top: 4px;
-  width: fit-content;
-}
-
-.tracks-prize-amount img {
-  flex-shrink: 0;
-}
-
-.tracks-prize-amount span {
-  font-family: var(--font-perpetua-std), serif;
-  font-weight: 600;
-  font-size: 15px;
-  color: #000000;
-}
-
-.tracks-card--center .tracks-prize-amount span {
-  font-size: 17px;
-}
-
-.tracks-awards {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.tracks-awards-title {
-  font-family: var(--font-trajan), serif;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 0.08em;
-  color: #ffffff;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.tracks-card--center .tracks-awards-title {
-  font-size: 18px;
-}
-
-.tracks-awards-list {
-  list-style: disc;
-  padding-left: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.tracks-awards-list li {
+.tracks-card-description {
   font-family: var(--font-perpetua), serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1.7;
   color: #FFFFFF;
-  line-height: 1.45;
+  text-align: center;
+  max-width: 90%;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
 }
 
-.tracks-card--center .tracks-awards-list li {
-  font-size: 16px;
+.tracks-card:hover .tracks-card-description {
+  opacity: 1;
 }
 
-@media (max-width: 1250px) {
-  .tracks-card--side {
-    flex-basis: 280px;
+.tracks-card--center .tracks-card-description {
+  font-size: clamp(16px, 1.7vw, 18px);
+  max-width: 85%;
+}
+
+/* Innovation Areas Section */
+.tracks-innovation {
+  max-width: 1400px;
+  margin: clamp(64px, 10vh, 96px) auto 0;
+  padding: 0 clamp(16px, 4vw, 48px);
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.tracks-innovation-title {
+  font-family: var(--font-trajan, var(--font-cinzel)), serif;
+  font-weight: 600;
+  font-size: clamp(22px, 3vw, 30px);
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: clamp(10px, 1.5vh, 16px);
+}
+
+.tracks-innovation-subtitle {
+  font-family: var(--font-perpetua), serif;
+  font-weight: 400;
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: #b8d4ff;
+  margin-bottom: clamp(28px, 4vh, 40px);
+  opacity: 0.9;
+}
+
+.tracks-innovation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(16px, 2vw, 20px);
+  margin-top: clamp(24px, 4vh, 36px);
+}
+
+.tracks-innovation-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 16px);
+  padding: clamp(14px, 1.8vw, 18px) clamp(16px, 2vw, 22px);
+  background: rgba(19, 58, 142, 0.25);
+  border: 1px solid rgba(111, 168, 255, 0.3);
+  border-radius: 10px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  animation: fadeInUp 0.5s ease-out backwards;
+  will-change: transform;
+}
+
+.tracks-innovation-item:nth-child(1) { animation-delay: 0.5s; }
+.tracks-innovation-item:nth-child(2) { animation-delay: 0.55s; }
+.tracks-innovation-item:nth-child(3) { animation-delay: 0.6s; }
+.tracks-innovation-item:nth-child(4) { animation-delay: 0.65s; }
+.tracks-innovation-item:nth-child(5) { animation-delay: 0.7s; }
+.tracks-innovation-item:nth-child(6) { animation-delay: 0.75s; }
+.tracks-innovation-item:nth-child(7) { animation-delay: 0.8s; }
+.tracks-innovation-item:nth-child(8) { animation-delay: 0.85s; }
+
+.tracks-innovation-item:hover {
+  background: rgba(19, 58, 142, 0.45);
+  border-color: rgba(111, 168, 255, 0.6);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 4px 16px rgba(19, 58, 142, 0.3),
+    0 8px 24px rgba(111, 168, 255, 0.15);
+}
+
+.tracks-innovation-item:hover .tracks-innovation-icon {
+  transform: scale(1.15) rotate(5deg);
+  color: #8fc3ff;
+}
+
+.tracks-innovation-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: #6fa8ff;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tracks-innovation-name {
+  font-family: var(--font-perpetua), serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: #ffffff;
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+.tracks-innovation-item:hover .tracks-innovation-name {
+  color: #dceeff;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  .tracks-card--center {
-    flex-basis: 400px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 1100px) {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design - Industry Grade */
+
+/* Large Desktop */
+@media (min-width: 1441px) {
   .tracks-cards {
-    gap: 24px;
-    padding: 0 24px;
+    max-width: 1400px;
   }
-
-  .tracks-card--side {
-    flex-basis: 260px;
+  
+  .tracks-innovation {
+    max-width: 1400px;
   }
-
-  .tracks-card--center {
-    flex-basis: 360px;
-    margin-bottom: 40px;
-  }
-
-  .tracks-card-name {
-    font-size: 18px;
-  }
-
-  .tracks-card--center .tracks-card-name {
-    font-size: 22px;
+  
+  .tracks-innovation-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 1024px) {
+/* Desktop */
+@media (max-width: 1440px) and (min-width: 1200px) {
+  .tracks-card--side {
+    flex-basis: min(320px, 100%);
+  }
+
+  .tracks-card--center {
+    flex-basis: min(440px, 100%);
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .tracks-card--side {
+    flex-basis: min(300px, 100%);
+  }
+
+  .tracks-card--center {
+    flex-basis: min(400px, 100%);
+    margin-bottom: clamp(32px, 5vw, 48px);
+  }
+
+  .tracks-innovation-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .tracks-section {
+    padding: clamp(48px, 8vh, 72px) 0 clamp(64px, 10vh, 88px);
+  }
+
   .tracks-cards {
     flex-direction: column;
     align-items: center;
-    gap: 36px;
+    gap: clamp(28px, 4vh, 40px);
+    max-width: 600px;
   }
 
   .tracks-card--side,
   .tracks-card--center {
     flex-basis: auto;
     width: 100%;
-    max-width: 520px;
+    max-width: 100%;
     margin-bottom: 0;
   }
 
-  .tracks-heading-title {
-    font-size: 36px;
+  .tracks-card--center {
+    order: -1;
+  }
+
+  .tracks-innovation {
+    margin-top: clamp(48px, 8vh, 72px);
+  }
+
+  .tracks-innovation-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+/* Mobile Large */
+@media (max-width: 767px) and (min-width: 480px) {
   .tracks-section {
-    padding: 56px 0 64px;
-  }
-
-  .tracks-heading {
-    margin-bottom: 48px;
-  }
-
-  .tracks-heading-title {
-    font-size: 28px;
-  }
-
-  .tracks-heading-rule {
-    width: 240px;
+    padding: clamp(40px, 7vh, 56px) 0 clamp(56px, 9vh, 72px);
   }
 
   .tracks-cards {
-    padding: 0 16px;
-    gap: 28px;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(24px, 4vh, 32px);
   }
 
-  .tracks-card-content {
+  .tracks-card--side,
+  .tracks-card--center {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .tracks-card--center {
+    order: -1;
+  }
+
+  .tracks-card-body {
+    min-height: 180px;
+  }
+
+  .tracks-innovation {
+    margin-top: clamp(40px, 7vh, 56px);
+  }
+
+  .tracks-innovation-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px 20px 28px;
+    gap: clamp(12px, 2vh, 16px);
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 479px) {
+  .tracks-section {
+    padding: clamp(32px, 6vh, 48px) 0 clamp(48px, 8vh, 64px);
   }
 
-  .tracks-card--center .tracks-card-content {
-    padding: 20px 24px 28px;
+  .tracks-cards {
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(20px, 3.5vh, 28px);
   }
 
-  .tracks-card-name {
-    font-size: 17px;
+  .tracks-card--side,
+  .tracks-card--center {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
   }
 
-  .tracks-card--center .tracks-card-name {
-    font-size: 20px;
+  .tracks-card--center {
+    order: -1;
+  }
+
+  .tracks-card-body {
+    min-height: 160px;
+  }
+
+  .tracks-card-overlay {
+    width: 70%;
+    height: 85%;
+  }
+
+  .tracks-innovation {
+    margin-top: clamp(36px, 6vh, 48px);
+  }
+
+  .tracks-innovation-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tracks-innovation-item {
+    gap: 10px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .tracks-card,
+  .tracks-innovation-item {
+    animation: none;
+  }
+
+  .tracks-card:hover,
+  .tracks-innovation-item:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .tracks-card {
+    border-width: 2px;
+  }
+
+  .tracks-innovation-item {
+    border-width: 2px;
   }
 }
 

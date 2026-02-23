@@ -42,7 +42,7 @@
 
 .timeline-content {
   position: relative;
-  max-width: 1024px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: clamp(24px, 4vw, 56px) clamp(24px, 6vw, 80px) clamp(64px, 8vw, 96px);
 }

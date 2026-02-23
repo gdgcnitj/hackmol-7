@@ -19,7 +19,7 @@
   gap: clamp(20px, 2.5vw, 40px);
   margin: clamp(100px, 12vw, 140px) auto clamp(48px, 6vw, 80px);
   padding: 0 clamp(20px, 5vw, 60px);
-  max-width: 1024px;
+  max-width: 1400px;
   flex-wrap: nowrap;
 }
 
@@ -285,7 +285,7 @@
   gap: clamp(20px, 3vw, 32px);
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 60px);
-  max-width: 1024px;
+  max-width: 1400px;
   flex-wrap: wrap;
 }
 
