@@ -52,6 +52,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Google Developer Groups on Campus - NIT Jalandhar" }],
   creator: "GDGC NIT Jalandhar & IOTA Media Cell",
   publisher: "NIT Jalandhar",
+  applicationName: "HackMol 7.0",
+  category: "Technology",
   metadataBase: new URL("https://hackmol.com"),
   alternates: {
     canonical: "/",
@@ -77,7 +79,8 @@ export const metadata: Metadata = {
     title: "HackMol 7.0 - Into the Hollow of Innovation | NIT Jalandhar",
     description: "Join NIT Jalandhar's flagship 30-hour hackathon. Descend. Discover. Develop. March 28-29, 2026.",
     images: ["/og-image.png"],
-    creator: "@gdgc_nitj",
+    creator: "@GDSCNitj",
+    site: "@GDSCNitj",
   },
   robots: {
     index: true,
@@ -97,7 +100,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   verification: {
-    google: "your-google-verification-code",
+    google: "dxUBhkPvidgnshXZ9hg7wPgh4sMPCgaORzOFmAmsLVY",
   },
 };
 
@@ -139,8 +142,8 @@ export default function RootLayout({
       "price": "0",
       "priceCurrency": "INR",
       "availability": "https://schema.org/InStock",
-      "validFrom": "2026-02-21T00:00:00+05:30",
-      "validThrough": "2026-02-24T23:59:59+05:30"
+      "validFrom": "2026-02-24T00:00:00+05:30",
+      "validThrough": "2026-03-24T23:59:59+05:30"
     },
     "sponsor": [
       {
@@ -155,6 +158,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="dxUBhkPvidgnshXZ9hg7wPgh4sMPCgaORzOFmAmsLVY" />
+        <meta name="theme-color" content="#080e1c" />
+        <meta name="color-scheme" content="dark" />
         <meta name="sponsored-by" content="Devfolio" />
         <meta name="platform-partner" content="Devfolio" />
         <link rel="preload" href="/images/devfolio_white.png" as="image" />
