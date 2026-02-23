@@ -84,91 +84,112 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import "./Prizes.css";
 
 // Asset imports
-
 import batFirst from "../../../public/images/bat-first.png";
 import batSecond from "../../../public/images/bat-second.png";
 import batThird from "../../../public/images/bat-third.png";
 import upperframe from "../../../public/images/upperframe.png";
 import lowerframe from "../../../public/images/lowerframe.png";
 
-const prizesData = [
+const topPrizesData = [
   {
     title: "2nd Prize",
-    amount: "Rs. XXXX",
+    amount: "₹30,000",
     icon: batSecond,
+    rank: "2nd",
   },
   {
     title: "1st Prize",
-    amount: "Rs. XXXX",
+    amount: "₹50,000",
     icon: batFirst,
     highlight: true,
+    rank: "1st",
   },
   {
     title: "3rd Prize",
-    amount: "Rs. XXXX",
+    amount: "₹10,000",
     icon: batThird,
+    rank: "3rd",
+  },
+];
+
+const specialPrizesData = [
+  {
+    title: "Best Freshers Team",
+    amount: "₹10,000",
+    category: "Special Category",
+  },
+  {
+    title: "Best Women's Team",
+    amount: "₹10,000",
+    category: "Special Category",
   },
 ];
 
 export default function Prizes() {
   return (
     <div className="prizes-section" id="prizes">
-
-      {/* SectionHeading auto-renders corner ornaments */}
       <SectionHeading
         title="PRIZES &"
         highlight="REWARDS"
         highlightPosition="after"
-        description="The worthy shall be rewarded. Claim your geo — over ₹1,00,000 waiting for those who endure."
+        description="Glory awaits the worthy. Over ₹1,10,000 in prizes for those who dare to conquer."
       />
 
-      {/* CARDS */}
-      <div className="prizes-container">
-        {prizesData.map((prize, index) => (
+      {/* TOP 3 PRIZES */}
+      <div className="top-prizes-container">
+        {topPrizesData.map((prize, index) => (
           <div
             key={index}
-            className={` ${prize.highlight ? "phighlight" : "prize-card"}`}
+            className={`prize-card ${prize.highlight ? "prize-highlight" : ""}`}
+            data-prize={prize.rank}
           >
-            
-            <div className="icons">
+            <div className="prize-icon-wrapper">
               {prize.highlight && (
-                <div className="highlight-overlay">
-                  <Image src="/images/dotsbg.png" width={600} height={200} alt="highlight background" className="dots" />
-                </div>
+                <Image
+                  src="/images/dotsbg.png"
+                  width={600}
+                  height={200}
+                  alt=""
+                  className="highlight-dots"
+                />
               )}
               <Image
                 src={prize.icon}
                 alt={prize.title}
-                width={100}
-                height={100}
-                className={` ${prize.title === '1st Prize' ? 'first-prize-icon' : 'prize-icon'}`}
-               
+                width={prize.highlight ? 280 : 150}
+                height={prize.highlight ? 280 : 150}
+                className="prize-icon"
+                priority={prize.highlight}
               />
+            </div>
+
+            <div className="prize-content">
+              <div className="frame-decorator">
+                <Image src={upperframe} alt="" className="frame-img" />
               </div>
-      <div className="prize-desc">
-  <div className="frame-top">
-    <Image src={upperframe} alt="" className="frame" />
-  </div>
 
-  <p className="card-title">{prize.title}</p>
-  <p className="cinzel-font amount">{prize.amount}</p>
+              <h3 className="prize-rank">{prize.rank}</h3>
+              <p className="prize-amount">{prize.amount}</p>
 
-  <div className="frame-bottom">
-    <Image src={lowerframe} alt="" className="frame" />
-  </div>
-</div>
-          
-            <ol className="prize-list">
-  <li>Goodies</li>
-  <li>Geeks for Geeks (800/- INR coupon on all courses)</li>
-  <li>Echo-ar Free Premium Tier Services</li>
-  <li>Online Mock Interviews from Interview Buddy</li>
-  <li>Lifetime Upgrades of Taskade Unlimited</li>
-  <li>1 Year of 1Passwords Families</li>
-  <li>3 Months of Draftbit Starter</li>
-  <li>Sashido Credits</li>
-  <li>30 Days Free Receipt Credits</li>
-   </ol>
+              <div className="frame-decorator">
+                <Image src={lowerframe} alt="" className="frame-img" />
+              </div>
+            </div>
+
+            <p className="prize-bonus">+ Swags & Goodies</p>
+          </div>
+        ))}
+      </div>
+
+      {/* SPECIAL CATEGORY PRIZES */}
+      <div className="special-prizes-container">
+        {specialPrizesData.map((prize, index) => (
+          <div key={index} className="special-prize-card">
+            <div className="special-prize-header">
+              <span className="category-badge">{prize.category}</span>
+            </div>
+            <h4 className="special-prize-title">{prize.title}</h4>
+            <p className="special-prize-amount">{prize.amount}</p>
           </div>
         ))}
       </div>
@@ -176,7 +197,7 @@ export default function Prizes() {
       {/* SIDE CHARACTERS */}
       <Image
         src="/images/knight-right.png"
-        alt="left character"
+        alt="Knight decoration"
         width={200}
         height={300}
         className="side-character left"
@@ -184,7 +205,7 @@ export default function Prizes() {
 
       <Image
         src="/images/knight-left.png"
-        alt="right character"
+        alt="Knight decoration"
         width={200}
         height={300}
         className="side-character right"
