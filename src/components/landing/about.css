@@ -14,7 +14,7 @@
 
 /* ── Scoped container ── */
 .about-container {
-    max-width: 1280px;
+    max-width: 1024px;
     margin: 0 auto;
     /* Remove bottom padding — section padding-bottom handles it */
     padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px) 0;

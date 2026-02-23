@@ -35,7 +35,7 @@
 /* ── Container ── */
 .faq-container {
   position: relative;
-  max-width: 54rem;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 clamp(16px, 5vw, 40px);
   display: flex;

@@ -17,6 +17,8 @@
   gap: clamp(16px, 2.5vw, 36px);
   flex-wrap: wrap;
   row-gap: 12px;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .contact-label-group {

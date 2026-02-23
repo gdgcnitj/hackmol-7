@@ -16,11 +16,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: clamp(24px, 3vw, 40px);
+  gap: clamp(20px, 2.5vw, 40px);
   margin: clamp(100px, 12vw, 140px) auto clamp(48px, 6vw, 80px);
   padding: 0 clamp(20px, 5vw, 60px);
-  max-width: 1400px;
-  flex-wrap: wrap;
+  max-width: 1024px;
+  flex-wrap: nowrap;
 }
 
 /* ══════════════════════════════════════════
@@ -36,7 +36,7 @@
   border-radius: 8px;
   padding: clamp(90px, 11vw, 110px) clamp(20px, 3vw, 24px) clamp(28px, 3.5vw, 32px);
   width: 100%;
-  max-width: min(300px, 90vw);
+  max-width: min(280px, 28vw);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +44,7 @@
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
   border: 1px solid #6fa8ff;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 1;
 }
 
 .prize-card::before {
@@ -79,7 +80,7 @@
    HIGHLIGHTED PRIZE (1st Place)
    ══════════════════════════════════════════ */
 .prize-highlight {
-  max-width: min(360px, 90vw);
+  max-width: min(320px, 32vw);
   padding: clamp(140px, 17vw, 165px) clamp(24px, 3.5vw, 28px) clamp(32px, 4vw, 38px);
   background: radial-gradient(
     ellipse at 50% 40%,
@@ -93,6 +94,7 @@
     0 0 60px rgba(77, 168, 218, 0.2);
   margin-bottom: clamp(-12px, -1.5vw, -20px);
   animation: prize-glow 3s ease-in-out infinite;
+  flex-shrink: 1;
 }
 
 @keyframes prize-glow {
@@ -283,7 +285,7 @@
   gap: clamp(20px, 3vw, 32px);
   margin: 0 auto;
   padding: 0 clamp(20px, 5vw, 60px);
-  max-width: 1000px;
+  max-width: 1024px;
   flex-wrap: wrap;
 }
 
@@ -392,7 +394,15 @@
   }
 
   .top-prizes-container {
-    gap: clamp(20px, 2.5vw, 32px);
+    gap: clamp(16px, 2vw, 24px);
+  }
+  
+  .prize-card {
+    max-width: min(260px, 30vw);
+  }
+  
+  .prize-highlight {
+    max-width: min(300px, 35vw);
   }
 }
 
@@ -405,6 +415,15 @@
     align-items: center;
     gap: clamp(36px, 5vw, 48px);
     margin-bottom: clamp(48px, 6vw, 64px);
+    flex-wrap: nowrap;
+  }
+  
+  .prize-card {
+    max-width: min(300px, 90vw);
+  }
+  
+  .prize-highlight {
+    max-width: min(360px, 90vw);
   }
 
   /* Reset highlight elevation on mobile */

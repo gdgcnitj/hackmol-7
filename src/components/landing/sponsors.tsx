@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import "./Sponsors.css";
@@ -24,7 +24,7 @@ const categories: { key: Category; title: string }[] = [
   { key: "gold",      title: "Gold Sponsors" },
   { key: "silver",    title: "Silver Sponsors" },
   { key: "bronze",    title: "Bronze Sponsors" },
-  { key: "community", title: "Community" },
+  { key: "community", title: "Community Partners" },
 ];
 
 const sponsors: Sponsor[] = [
@@ -112,12 +112,8 @@ const tierCols: Record<Category, number> = {
 
 /* ─── Component ─── */
 export default function Sponsors() {
-  const [active, setActive] = useState<Category>("silver");
-  const filtered = sponsors.filter((s) => s.category === active);
-
   return (
     <section className="sponsors-section" id="sponsors">
-      {/* SectionHeading is first child of section root — no h-padding here */}
       <SectionHeading
         title="OUR"
         highlight="SPONSORS"
@@ -126,82 +122,85 @@ export default function Sponsors() {
       />
 
       <div className="sponsor-container">
-      <div className="sponsor-layout">
-        {/* ── Left: Category filters ── */}
-        <aside className="sponsor-sidebar">
-          {categories.map((cat) => {
-            const isActive = active === cat.key;
-            return (
-              <React.Fragment key={cat.key}>
-                {/* Top ornament for active */}
-                {isActive && (
-                  <Image src={upperFrame} alt="" className="sidebar-ornament-top" width={140} height={40} />
-                )}
-                
-                <button
-                  className={`sidebar-item ${isActive ? "active" : ""}`}
-                  onClick={() => setActive(cat.key)}
-                >
-                  <Image src={sponserTag} alt="" className="sidebar-item-icon" width={18} height={18} />
-                  {cat.title}
-                </button>
+        {categories.map((cat) => {
+          const categorySponsors = sponsors.filter((s) => s.category === cat.key);
+          
+          // Skip if no sponsors in this category
+          if (categorySponsors.length === 0) return null;
 
-                {/* Bottom ornament for active */}
-                {isActive && (
-                  <Image src={lowerFrame} alt="" className="sidebar-ornament-bottom" width={140} height={40} />
-                )}
-              </React.Fragment>
-            );
-          })}
-        </aside>
-
-        {/* ── Right: Sponsor grid ── */}
-        <div
-          className="sponsor-grid"
-          data-category={active}
-          style={{ gridTemplateColumns: `repeat(${tierCols[active]}, 1fr)` }}
-        >
-          {filtered.map((s, i) => (
-            <a
-              key={i}
-              href={s.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sponsor-card"
-            >
-              <div className="sponsor-card-logo">
-                {s.logo ? (
+          return (
+            <div key={cat.key} className="sponsor-tier">
+              <div className="sponsor-tier-header">
+                <Image 
+                  src={upperFrame} 
+                  alt="" 
+                  className="tier-ornament-top" 
+                  width={140} 
+                  height={40}
+                />
+                <div className="sponsor-tier-title-wrapper">
                   <Image 
-                    src={s.logo} 
-                    alt={s.name === "Devfolio" ? "Devfolio" : `${s.name} - ${s.label}`} 
-                    width={160} 
-                    height={56} 
-                    style={{ objectFit: "contain" }}
-                    priority={s.name === "Devfolio"} 
+                    src={sponserTag} 
+                    alt="" 
+                    className="tier-icon" 
+                    width={18} 
+                    height={18}
                   />
-                ) : (
-                  <span className="sponsor-card-placeholder">Logo</span>
-                )}
+                  <h2 className="sponsor-tier-title">{cat.title}</h2>
+                </div>
+                <Image 
+                  src={lowerFrame} 
+                  alt="" 
+                  className="tier-ornament-bottom" 
+                  width={140} 
+                  height={40}
+                />
               </div>
-              <h3 className="sponsor-card-name">{s.name}</h3>
-              <p className="sponsor-card-label">{s.label}</p>
-            </a>
+              
+              <div
+                className="sponsor-grid"
+                data-category={cat.key}
+                style={{ gridTemplateColumns: `repeat(${tierCols[cat.key]}, 1fr)` }}
+              >
+                {categorySponsors.map((s, i) => (
+                  <div
+                    key={i}
+                    className="sponsor-card"
+                  >
+                    <div className="sponsor-card-logo">
+                      {s.logo ? (
+                        <Image 
+                          src={s.logo} 
+                          alt={s.name === "Devfolio" ? "Devfolio" : `${s.name} - ${s.label}`} 
+                          width={160} 
+                          height={56} 
+                          style={{ objectFit: "contain" }}
+                          priority={s.name === "Devfolio"} 
+                        />
+                      ) : (
+                        <span className="sponsor-card-placeholder">Logo</span>
+                      )}
+                    </div>
+                    <p className="sponsor-card-label">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Hidden sponsors section for crawlers */}
+        <div className="sponsors-seo-section" style={{ opacity: 0, position: 'absolute', left: '-9999px' }}>
+          {sponsors.filter(s => s.logo).map((sponsor, i) => (
+            <img 
+              key={i}
+              src={sponsor.logo} 
+              alt={sponsor.name === "Devfolio" ? "Devfolio" : sponsor.name} 
+              width="1" 
+              height="1"
+            />
           ))}
         </div>
-      </div>
-
-      {/* Hidden sponsors section for crawlers */}
-      <div className="sponsors-seo-section" style={{ opacity: 0, position: 'absolute', left: '-9999px' }}>
-        {sponsors.filter(s => s.logo).map((sponsor, i) => (
-          <img 
-            key={i}
-            src={sponsor.logo} 
-            alt={sponsor.name === "Devfolio" ? "Devfolio" : sponsor.name} 
-            width="1" 
-            height="1"
-          />
-        ))}
-      </div>
       </div>
     </section>
   );
