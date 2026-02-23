@@ -10,10 +10,10 @@ import type {
 
 export const navLinks: NavLink[] = [
   { label: "About",    href: "#about" },
-  { label: "Tracks",   href: "#tracks" },
-  { label: "Prizes",   href: "#prizes" },
   { label: "Timeline", href: "#timeline" },
+  { label: "Tracks",   href: "#tracks" },
   { label: "Sponsors", href: "#sponsors" },
+  { label: "Prizes",   href: "#prizes" },
   { label: "FAQ",      href: "#faq" },
 ];
 

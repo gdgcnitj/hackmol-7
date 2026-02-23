@@ -1,0 +1,85 @@
+/* ── Shared floating button base ── */
+.floating-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(77, 168, 218, 0.5);
+  background: rgba(8, 14, 28, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
+    background 0.3s ease;
+  box-shadow: 0 0 12px rgba(77, 168, 218, 0.1);
+  text-decoration: none;
+}
+
+.floating-btn:hover {
+  background: rgba(77, 168, 218, 0.2);
+  border-color: rgba(77, 168, 218, 0.8);
+  box-shadow: 0 0 20px rgba(77, 168, 218, 0.3);
+}
+
+/* ── Desktop: Back to top ── */
+.floating-back-to-top {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+}
+
+.floating-back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ── Mobile: Register ── */
+.floating-register {
+  display: none; /* hidden on desktop */
+}
+
+.floating-register-text {
+  font-family: var(--font-trajan), serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  /* Hide back-to-top on mobile */
+  .floating-back-to-top {
+    display: none;
+  }
+
+  /* Show register FAB on mobile */
+  .floating-register {
+    display: flex;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 28px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-register {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 16px;
+  }
+
+  .floating-register-text {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+}
