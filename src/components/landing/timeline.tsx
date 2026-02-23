@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import "./timeline.css";
@@ -36,9 +39,30 @@ const timelineData = [
 ];
 
 export default function Timeline() {
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cards = cardsRef.current?.querySelectorAll(".timeline-card");
+    if (!cards) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="timeline-section" id="timeline">
-      {/* SectionHeading auto-renders corner ornaments */}
       <SectionHeading
         title="HACKATHON"
         highlight="TIMELINE"
@@ -70,9 +94,13 @@ export default function Timeline() {
           </div>
 
           <div className="timeline-right">
-            <div className="timeline-cards">
+            <div className="timeline-cards" ref={cardsRef}>
               {timelineData.map((item, index) => (
-                <div key={index} className="timeline-card">
+                <div
+                  key={index}
+                  className="timeline-card"
+                  style={{ "--stagger": index } as React.CSSProperties}
+                >
                   <div className="timeline-card-bullet">
                     <Image
                       src={

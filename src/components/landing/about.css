@@ -168,7 +168,7 @@
 .about-stat-number {
     font-family: var(--font-trajan);
     font-weight: bold;
-    font-size: clamp(20px, 2.6vw, 42px);
+    font-size: clamp(15px, 1.7vw, 26px);
     line-height: 1;
     color: #ffffff;
     letter-spacing: 0.02em;
@@ -177,13 +177,13 @@
 
 .about-stat-label {
     font-family: var(--font-perpetua);
-    font-size: clamp(10px, 1.1vw, 16px);
-    margin-top: 8px;
+    font-size: clamp(11px, 1.2vw, 15px);
     line-height: 1.3;
     text-align: center;
     color: rgba(224, 224, 224, 0.85);
     width: 100%;
-    margin-top: -4px;
+    margin-top: 2px;
+    white-space: nowrap;
 }
 
 /* ══════════════════════════════════════════
@@ -222,16 +222,17 @@
     /* No explicit height — aspect-ratio on base rule handles sizing */
 
     .about-stat-number {
-        font-size: clamp(22px, 4.8vw, 38px);
+        font-size: clamp(15px, 3vw, 24px);
     }
 
     .about-stat-label {
-        font-size: clamp(11px, 2vw, 17px);
+        font-size: clamp(11px, 1.8vw, 15px);
+        white-space: nowrap;
     }
 
     .about-stat-inner {
         transform: translateX(clamp(28px, 24%, 96px));
-        max-width: 58%;
+        max-width: 62%;
     }
 }
 
@@ -257,18 +258,19 @@
     /* No explicit height — aspect-ratio on base rule handles sizing */
 
     .about-stat-number {
-        font-size: clamp(18px, 6.5vw, 32px);
+        font-size: clamp(13px, 4vw, 20px);
         white-space: nowrap;
     }
 
     .about-stat-label {
-        font-size: clamp(10px, 2.8vw, 15px);
+        font-size: clamp(9px, 2.4vw, 13px);
+        white-space: nowrap;
         width: 100%;
     }
 
     .about-stat-inner {
         transform: translateX(clamp(20px, 22%, 70px));
-        max-width: 56%;
+        max-width: 62%;
     }
 }
 

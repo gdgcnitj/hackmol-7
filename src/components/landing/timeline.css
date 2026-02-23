@@ -1,3 +1,37 @@
+/* ══════════════════════════════════════════
+   Keyframes
+   ══════════════════════════════════════════ */
+
+/* Vessel gentle float */
+@keyframes vessel-float {
+  0%, 100% { transform: scale(0.9) translateY(0px); }
+  50%       { transform: scale(0.9) translateY(-14px); }
+}
+
+/* Card slide-in from right */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Bullet pulse */
+@keyframes bullet-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.25); }
+}
+
+/* Left-border shimmer sweep */
+@keyframes border-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 .timeline-section {
   position: relative;
   width: 100%;
@@ -43,6 +77,8 @@
   inset: 0;
   transform: scale(0.9);
   pointer-events: none;
+  /* Float animation */
+  animation: vessel-float 5s ease-in-out infinite;
 }
 
 .timeline-character-vessel img {
@@ -56,14 +92,38 @@
   flex-direction: column;
 }
 
-/* ══ orphaned subheading styles removed ══ */
+/* ══ Cards list with connector line ══ */
 .timeline-cards {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
 }
 
+/* Vertical connector line — draws in when section enters view */
+.timeline-cards::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(77, 168, 218, 0.15) 8%,
+    rgba(77, 168, 218, 0.5) 40%,
+    rgba(77, 168, 218, 0.5) 60%,
+    rgba(77, 168, 218, 0.15) 92%,
+    transparent 100%
+  );
+  transform-origin: top;
+  transform: scaleY(0);
+  animation: line-draw 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  border-radius: 2px;
+}
 
+/* ══ Card base — hidden until JS adds .is-visible ══ */
 .timeline-card {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -74,12 +134,48 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-left: 2px solid rgba(77, 168, 218, 0.35);
   border-radius: 0 10px 10px 0;
-  transition: background 0.22s ease, border-left-color 0.22s ease;
+  position: relative;
+  overflow: hidden;
+  /* Initial hidden state for entrance animation */
+  opacity: 0;
+  transform: translateX(36px);
+  transition:
+    background 0.25s ease,
+    border-left-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Triggered by IntersectionObserver */
+.timeline-card.is-visible {
+  animation: card-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1)
+    calc(var(--stagger) * 90ms) forwards;
+}
+
+/* Shimmer pseudo-element — sweeps on hover */
+.timeline-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(77, 168, 218, 0.06) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: -200% center;
+  transition: background-position 0s;
+  pointer-events: none;
 }
 
 .timeline-card:hover {
-  background: rgba(77, 168, 218, 0.04);
-  border-left-color: rgba(77, 168, 218, 0.7);
+  background: rgba(77, 168, 218, 0.05);
+  border-left-color: rgba(77, 168, 218, 0.8);
+  box-shadow: 0 0 20px rgba(77, 168, 218, 0.08), inset 0 0 20px rgba(77, 168, 218, 0.02);
+}
+
+.timeline-card:hover::after {
+  animation: border-shimmer 0.65s ease forwards;
 }
 
 .timeline-card-bullet {
@@ -89,8 +185,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
   pointer-events: none;
+}
+
+/* Alternate bullets pulse */
+.timeline-card:nth-child(even) .timeline-card-bullet {
+  animation: bullet-pulse 2.8s ease-in-out infinite;
+}
+.timeline-card:nth-child(odd) .timeline-card-bullet {
+  animation: bullet-pulse 2.8s ease-in-out 1.4s infinite;
 }
 
 .timeline-card-bullet img {
@@ -134,6 +237,11 @@
   text-transform: uppercase;
   white-space: nowrap;
   text-align: right;
+  transition: color 0.25s ease;
+}
+
+.timeline-card:hover .timeline-card-date {
+  color: #7ec8ee;
 }
 
 @media (max-width: 1024px) {
@@ -171,5 +279,25 @@
   .timeline-card-date {
     text-align: left;
     opacity: 0.85;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-character-vessel {
+    animation: none;
+  }
+  .timeline-card {
+    opacity: 1;
+    transform: none;
+  }
+  .timeline-card.is-visible {
+    animation: none;
+  }
+  .timeline-card-bullet,
+  .timeline-card:nth-child(even) .timeline-card-bullet,
+  .timeline-card:nth-child(odd)  .timeline-card-bullet {
+    animation: none;
+    opacity: 0.7;
   }
 }
