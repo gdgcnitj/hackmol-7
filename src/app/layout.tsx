@@ -164,6 +164,20 @@ export default function RootLayout({
         <meta name="sponsored-by" content="Devfolio" />
         <meta name="platform-partner" content="Devfolio" />
         <link rel="preload" href="/images/devfolio_white.png" as="image" />
+        
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5ZGV0B6C4"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Z5ZGV0B6C4');
+            `
+          }}
+        />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
