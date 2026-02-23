@@ -317,6 +317,26 @@ body {
   max-width: 95vw;
 }
 
+/* Hero Content Backdrop — atmospheric dark zone behind all content */
+
+.hero-content-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 80% 55% at 50% 48%,
+      rgba(8, 14, 28, 0.55) 0%,
+      rgba(8, 14, 28, 0.35) 40%,
+      rgba(8, 14, 28, 0.12) 65%,
+      transparent 100%
+    );
+}
+
 /* Hero Tagline */
 
 .hero-tagline {
@@ -344,7 +364,7 @@ body {
 .countdown-label {
   font-size: 16px;
   letter-spacing: 2.5px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
   margin-bottom: 15px;
   font-weight: 400;
@@ -362,6 +382,11 @@ body {
   flex-direction: column;
   align-items: center;
   min-width: 70px;
+  padding: 14px 18px;
+  background: rgba(8, 14, 28, 0.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 12px;
 }
 
 .countdown-value {
@@ -372,19 +397,19 @@ body {
 }
 
 .countdown-unit {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 2px;
-  color: #ffffff;
+  color: rgba(200, 220, 240, 0.7);
   text-transform: uppercase;
-  margin-top: 5px;
+  margin-top: 6px;
   font-weight: 400;
 }
 
 .countdown-separator {
   font-size: 36px;
-  color: #ffffff;
-  font-weight: 400;
-  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+  margin: 0 4px;
 }
 
 /* Hero Register Button */
@@ -412,6 +437,7 @@ body {
   font-weight: 400;
   min-width: 180px;
   display: block;
+  white-space: nowrap;
   font-family: var(--font-cinzel), serif;
 }
 
@@ -626,6 +652,8 @@ body {
 
   .countdown-item {
     min-width: 50px;
+    padding: 10px 14px;
+    border-radius: 10px;
   }
 
   .countdown-value {
@@ -638,7 +666,7 @@ body {
 
   .countdown-separator {
     font-size: 24px;
-    margin: 0 4px;
+    margin: 0 2px;
   }
 
   .countdown-timer {
@@ -647,6 +675,38 @@ body {
 
   .hero-register-overlay {
     top: 60%;
+  }
+
+  .hero-register-overlay .register-btn {
+    font-size: 14px;
+    padding: 10px 36px;
+    letter-spacing: 1.5px;
+    min-width: 150px;
+  }
+
+  .hero-register-overlay .ornament {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .hero-register-overlay .ornament-top-left {
+    top: -5px !important;
+    left: -5px !important;
+  }
+
+  .hero-register-overlay .ornament-top-right {
+    top: -5px !important;
+    right: -5px !important;
+  }
+
+  .hero-register-overlay .ornament-bottom-left {
+    bottom: -5px !important;
+    left: -5px !important;
+  }
+
+  .hero-register-overlay .ornament-bottom-right {
+    bottom: -5px !important;
+    right: -5px !important;
   }
 
   .scroll-indicator {
@@ -685,6 +745,8 @@ body {
 
   .countdown-item {
     min-width: 40px;
+    padding: 8px 10px;
+    border-radius: 8px;
   }
 
   .countdown-value {
@@ -698,7 +760,7 @@ body {
 
   .countdown-separator {
     font-size: 18px;
-    margin: 0 2px;
+    margin: 0 1px;
   }
 
   .countdown-timer {
@@ -707,6 +769,38 @@ body {
 
   .hero-register-overlay {
     top: 52%;
+  }
+
+  .hero-register-overlay .register-btn {
+    font-size: 12px;
+    padding: 9px 28px;
+    letter-spacing: 1.5px;
+    min-width: 130px;
+  }
+
+  .hero-register-overlay .ornament {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .hero-register-overlay .ornament-top-left {
+    top: -4px !important;
+    left: -4px !important;
+  }
+
+  .hero-register-overlay .ornament-top-right {
+    top: -4px !important;
+    right: -4px !important;
+  }
+
+  .hero-register-overlay .ornament-bottom-left {
+    bottom: -4px !important;
+    left: -4px !important;
+  }
+
+  .hero-register-overlay .ornament-bottom-right {
+    bottom: -4px !important;
+    right: -4px !important;
   }
 
   .scroll-indicator {

@@ -330,6 +330,9 @@ export default function Hero() {
       {/* Hero Section with scroll-driven frames */}
       <section className="hero-scroll-section" ref={sectionRef}>
         <div className="hero-canvas-wrapper">
+          {/* Atmospheric backdrop — soft dark gradient behind content zone */}
+          <div className="hero-content-backdrop"></div>
+
           {/* Logo OVERLAY */}
           <div className="logo-overlay">
             <Image
