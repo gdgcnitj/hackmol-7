@@ -391,7 +391,7 @@ body {
 
 .devfolio-button-overlay {
   position: absolute;
-  top: 58%;
+  top: 63%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 11;
@@ -576,7 +576,7 @@ body {
   }
 
   .devfolio-button-overlay {
-    top: 54%;
+    top: 60%;
   }
 
   .scroll-indicator {
@@ -646,5 +646,485 @@ body {
   .scroll-arrow {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* Height-based responsive adjustments for short screens */
+
+@media (max-height: 800px) {
+  .logo-overlay {
+    top: 10%;
+  }
+
+  .logo-overlay img {
+    width: 550px;
+  }
+
+  .hero-tagline {
+    font-size: 22px;
+    margin-top: 16px;
+  }
+
+  .countdown-overlay {
+    top: 42%;
+  }
+
+  .countdown-value {
+    font-size: 36px;
+  }
+
+  .countdown-item {
+    min-width: 60px;
+  }
+
+  .countdown-separator {
+    font-size: 32px;
+  }
+
+  .devfolio-button-overlay {
+    top: 62%;
+  }
+
+  .scroll-indicator {
+    bottom: 30px;
+  }
+}
+
+@media (max-height: 700px) {
+  .logo-overlay {
+    top: 8%;
+  }
+
+  .logo-overlay img {
+    width: 480px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-top: 12px;
+  }
+
+  .countdown-overlay {
+    top: 40%;
+  }
+
+  .countdown-label {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .countdown-value {
+    font-size: 30px;
+  }
+
+  .countdown-item {
+    min-width: 55px;
+  }
+
+  .countdown-unit {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+
+  .countdown-separator {
+    font-size: 26px;
+  }
+
+  .devfolio-button-overlay {
+    top: 61%;
+  }
+
+  .scroll-indicator {
+    bottom: 25px;
+  }
+}
+
+@media (max-height: 600px) {
+  .logo-overlay {
+    top: 6%;
+  }
+
+  .logo-overlay img {
+    width: 380px;
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+
+  .countdown-overlay {
+    top: 38%;
+  }
+
+  .countdown-label {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .countdown-value {
+    font-size: 24px;
+  }
+
+  .countdown-item {
+    min-width: 45px;
+  }
+
+  .countdown-unit {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+
+  .countdown-separator {
+    font-size: 20px;
+    margin: 0 4px;
+  }
+
+  .countdown-timer {
+    gap: 6px;
+  }
+
+  .devfolio-button-overlay {
+    top: 60%;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-height: 500px) {
+  .logo-overlay {
+    top: 4%;
+  }
+
+  .logo-overlay img {
+    width: 300px;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-top: 6px;
+  }
+
+  .countdown-overlay {
+    top: 36%;
+  }
+
+  .countdown-label {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+
+  .countdown-value {
+    font-size: 18px;
+  }
+
+  .countdown-item {
+    min-width: 35px;
+  }
+
+  .countdown-unit {
+    font-size: 7px;
+    margin-top: 2px;
+  }
+
+  .countdown-separator {
+    font-size: 16px;
+    margin: 0 3px;
+  }
+
+  .countdown-timer {
+    gap: 4px;
+  }
+
+  .devfolio-button-overlay {
+    top: 58%;
+  }
+
+  .scroll-indicator {
+    bottom: 15px;
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-height: 400px) {
+  .logo-overlay {
+    top: 3%;
+  }
+
+  .logo-overlay img {
+    width: 220px;
+  }
+
+  .hero-tagline {
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .countdown-overlay {
+    top: 32%;
+  }
+
+  .countdown-label {
+    font-size: 7px;
+    margin-bottom: 4px;
+    letter-spacing: 1.5px;
+  }
+
+  .countdown-value {
+    font-size: 14px;
+  }
+
+  .countdown-item {
+    min-width: 28px;
+  }
+
+  .countdown-unit {
+    font-size: 6px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
+
+  .countdown-separator {
+    font-size: 12px;
+    margin: 0 2px;
+  }
+
+  .countdown-timer {
+    gap: 2px;
+  }
+
+  .devfolio-button-overlay {
+    top: 54%;
+  }
+
+  .devfolio-button-overlay > div {
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+
+  .scroll-indicator {
+    bottom: 10px;
+  }
+
+  .scroll-arrow {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Combined height + width queries for mobile landscape */
+
+@media (max-width: 768px) and (max-height: 500px) {
+  .logo-overlay {
+    top: 3%;
+  }
+
+  .logo-overlay img {
+    width: 240px;
+  }
+
+  .hero-tagline {
+    font-size: 9px;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .countdown-overlay {
+    top: 34%;
+  }
+
+  .countdown-label {
+    font-size: 8px;
+    margin-bottom: 4px;
+  }
+
+  .countdown-value {
+    font-size: 16px;
+  }
+
+  .countdown-item {
+    min-width: 32px;
+  }
+
+  .countdown-unit {
+    font-size: 7px;
+  }
+
+  .countdown-separator {
+    font-size: 14px;
+  }
+
+  .devfolio-button-overlay {
+    top: 56%;
+  }
+
+  .devfolio-button-overlay > div {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 480px) and (max-height: 700px) {
+  .logo-overlay {
+    top: 8%;
+  }
+
+  .logo-overlay img {
+    width: 260px;
+  }
+
+  .hero-tagline {
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
+  .countdown-overlay {
+    top: 38%;
+  }
+
+  .countdown-value {
+    font-size: 18px;
+  }
+
+  .countdown-item {
+    min-width: 38px;
+  }
+
+  .devfolio-button-overlay {
+    top: 58%;
+  }
+}
+
+@media (max-width: 480px) and (max-height: 600px) {
+  .logo-overlay {
+    top: 5%;
+  }
+
+  .logo-overlay img {
+    width: 220px;
+  }
+
+  .hero-tagline {
+    font-size: 9px;
+    margin-top: 5px;
+  }
+
+  .countdown-overlay {
+    top: 35%;
+  }
+
+  .countdown-label {
+    font-size: 8px;
+    margin-bottom: 5px;
+  }
+
+  .countdown-value {
+    font-size: 16px;
+  }
+
+  .countdown-item {
+    min-width: 32px;
+  }
+
+  .countdown-unit {
+    font-size: 7px;
+  }
+
+  .countdown-separator {
+    font-size: 14px;
+  }
+
+  .devfolio-button-overlay {
+    top: 56%;
+  }
+
+  .devfolio-button-overlay > div {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 480px) and (max-height: 500px) {
+  .logo-overlay {
+    top: 3%;
+  }
+
+  .logo-overlay img {
+    width: 180px;
+  }
+
+  .hero-tagline {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+    margin-top: 3px;
+  }
+
+  .countdown-overlay {
+    top: 30%;
+  }
+
+  .countdown-label {
+    font-size: 7px;
+    margin-bottom: 3px;
+  }
+
+  .countdown-value {
+    font-size: 13px;
+  }
+
+  .countdown-item {
+    min-width: 26px;
+  }
+
+  .countdown-unit {
+    font-size: 6px;
+  }
+
+  .countdown-separator {
+    font-size: 11px;
+    margin: 0 1px;
+  }
+
+  .countdown-timer {
+    gap: 2px;
+  }
+
+  .devfolio-button-overlay {
+    top: 52%;
+  }
+
+  .devfolio-button-overlay > div {
+    transform: scale(0.75);
+  }
+
+  .scroll-indicator {
+    bottom: 8px;
+  }
+}
+
+@media (max-width: 380px) and (max-height: 700px) {
+  .logo-overlay img {
+    width: 240px;
+  }
+
+  .countdown-value {
+    font-size: 16px;
+  }
+
+  .countdown-item {
+    min-width: 35px;
   }
 }

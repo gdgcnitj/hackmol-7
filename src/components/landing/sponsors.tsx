@@ -100,27 +100,6 @@ const sponsors: Sponsor[] = [
     link: "#",
     category: "community"
   },
-  {
-    name: "Community 7",
-    logo: "",
-    label: "Community Partner",
-    link: "#",
-    category: "community"
-  },
-  {
-    name: "Community 8",
-    logo: "",
-    label: "Community Partner",
-    link: "#",
-    category: "community"
-  },
-  {
-    name: "Community 9",
-    logo: "",
-    label: "Community Partner",
-    link: "#",
-    category: "community"
-  },
 ];
 
 /* Column count per tier */
@@ -147,26 +126,6 @@ export default function Sponsors() {
       />
 
       <div className="sponsor-container">
-
-      {/* Always visible platform partner section */}
-      <div className="platform-partner-section">
-        <h3 className="platform-partner-title">Official Platform Partner</h3>
-        <a 
-          href="https://devfolio.co" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="platform-partner-link"
-        >
-          <img 
-            src="/images/devfolio_white.png" 
-            alt="Devfolio" 
-            width="200" 
-            height="70"
-            style={{ objectFit: "contain" }}
-          />
-        </a>
-      </div>
-
       <div className="sponsor-layout">
         {/* ── Left: Category filters ── */}
         <aside className="sponsor-sidebar">
