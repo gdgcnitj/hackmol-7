@@ -2,34 +2,35 @@ import Image from "next/image";
 import { FaInstagram, FaLinkedinIn, FaGithub, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import type { IconType } from "react-icons";
+import {
+  resourceLinks,
+  archiveLinks,
+  communityLinks as communityLinksData,
+  socialLinks as socialLinksData,
+} from "@/data/navigation";
+import { siteConfig } from "@/data/site";
 import "./footer.css";
 import FooterMap from "./FooterMap";
 
-const resourceLinks = [
-  { label: "Sponsorship Brochure", href: "https://drive.google.com/file/d/1xxk_nWFjG_9N0euqXvt3tSQumzSP-Qqt/view?usp=sharing" },
-  { label: "Code of Conduct", href: "https://devfolio.co/code-of-conduct" },
-  { label: "DevFolio", href: "https://hackmol-7.devfolio.co" },
-];
+/** Map icon identifiers from the data layer to actual icon components */
+const iconMap: Record<string, IconType> = {
+  FaGithub,
+  FaWhatsapp,
+  FaInstagram,
+  FaXTwitter,
+  FaLinkedinIn,
+};
 
-const archiveLinks = [
-  { label: "HackMol 6.0", href: "https://hackmol-6.devfolio.co" },
-  { label: "HackMol 5.0", href: "https://hackmol-5.devfolio.co" },
-  { label: "HackMol 4.0", href: "https://hackmol-4.devfolio.co" },
-  { label: "HackMol 3.0", href: "https://hackmol3.devfolio.co" },
-  { label: "HackMol 2.0", href: "https://hackmol.devfolio.co" },
-];
+/** Resolve icon strings to components for rendering */
+const communityLinks = communityLinksData.map((link) => ({
+  ...link,
+  Icon: iconMap[link.icon] ?? FaGithub,
+}));
 
-const communityLinks: { label: string; href: string; Icon: IconType }[] = [
-  { label: "GitHub",    href: "https://github.com/gdgcnitj",                              Icon: FaGithub   },
-  { label: "WhatsApp Support",  href: "https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU?mode=gi_t", Icon: FaWhatsapp },
-  { label: "Find Teammate",  href: "https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2?mode=gi_t", Icon: FaWhatsapp },
-];
-
-const socialLinks: { label: string; href: string; Icon: IconType }[] = [
-  { label: "Instagram", href: "https://www.instagram.com/gdgcnitj",          Icon: FaInstagram  },
-  { label: "Twitter",   href: "https://x.com/GDSCNitj",                      Icon: FaXTwitter   },
-  { label: "LinkedIn",  href: "https://www.linkedin.com/company/dscnitj",    Icon: FaLinkedinIn },
-];
+const socialLinks = socialLinksData.map((link) => ({
+  ...link,
+  Icon: iconMap[link.icon] ?? FaInstagram,
+}));
 
 export default function Footer() {
   return (
@@ -68,7 +69,7 @@ export default function Footer() {
               height={184}
               className="footer-logo"
             />
-            <p className="footer-brand-org">Organised by: GDGC NIT Jalandhar</p>
+            <p className="footer-brand-org">Organised by: {siteConfig.organiser}</p>
           </div>
 
           <div className="footer-venue">

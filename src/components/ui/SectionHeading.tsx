@@ -1,14 +1,7 @@
 import Image from "next/image";
 import "./SectionHeading.css";
 import ornament from "../../../public/images/SponserOrnament.png";
-
-interface SectionHeadingProps {
-  title: string;
-  highlight?: string;
-  highlightPosition?: "before" | "after";
-  description?: string;
-  className?: string;
-}
+import type { SectionHeadingProps } from "@/types";
 
 export default function SectionHeading({
   title,

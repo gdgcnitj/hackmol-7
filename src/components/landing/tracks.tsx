@@ -10,51 +10,21 @@ import {
   FaNetworkWired,
 } from "react-icons/fa";
 import { SiBlockchaindotcom } from "react-icons/si";
+import type { TrackData } from "@/types";
+import { tracksData, innovationAreas } from "@/data/tracks";
 import "./tracks.css";
 
-interface InnovationArea {
-  name: string;
-  icon: React.ReactNode;
-}
-
-interface TrackData {
-  name: string;
-  image: string;
-  variant: "side" | "center";
-  description: string;
-}
-
-const innovationAreas: InnovationArea[] = [
-  { name: "Green Technology", icon: <FaLeaf /> },
-  { name: "Blockchain / Web3", icon: <SiBlockchaindotcom /> },
-  { name: "Agriculture & Rural Tech", icon: <FaTractor /> },
-  { name: "MedTech / Healthcare", icon: <FaHeartbeat /> },
-  { name: "AI & Machine Learning", icon: <FaBrain /> },
-  { name: "Smart Education", icon: <FaGraduationCap /> },
-  { name: "Cybersecurity", icon: <FaShieldAlt /> },
-  { name: "Internet of Things (IoT)", icon: <FaNetworkWired /> },
-];
-
-const tracksData: TrackData[] = [
-  {
-    name: "THE RISING LANTERNS",
-    image: "/images/tracksFreshersTrack.png",
-    variant: "side",
-    description: "Built especially for first-year students and beginners stepping into their first major hackathon. The Rising Lanterns track encourages learning, experimentation, and bold first attempts at innovation.",
-  },
-  {
-    name: "THE DEEPFORGE ARENA",
-    image: "/images/tracksMainTrack.png",
-    variant: "center",
-    description: "The ultimate battleground for seasoned builders and ambitious teams. The Deepforge Arena is where powerful ideas are transformed into impactful solutions across all major themes. Teams will be judged on innovation, technical depth, scalability, design, and real-world impact.",
-  },
-  {
-    name: "THE QUEEN'S VANGUARD",
-    image: "/images/tracksWomenTrack.png",
-    variant: "side",
-    description: "Dedicated to empowering and spotlighting women innovators in tech. The Queen's Vanguard honors teams with strong women representation who build impactful, creative, and technically sound solutions.",
-  },
-];
+/** Map icon names (from data layer) to actual React icon components */
+const iconMap: Record<string, React.ReactNode> = {
+  FaLeaf: <FaLeaf />,
+  SiBlockchaindotcom: <SiBlockchaindotcom />,
+  FaTractor: <FaTractor />,
+  FaHeartbeat: <FaHeartbeat />,
+  FaBrain: <FaBrain />,
+  FaGraduationCap: <FaGraduationCap />,
+  FaShieldAlt: <FaShieldAlt />,
+  FaNetworkWired: <FaNetworkWired />,
+};
 
 function TrackCard({ track }: { track: TrackData }) {
   const cardClass =
@@ -122,7 +92,7 @@ export default function Tracks() {
         <div className="tracks-innovation-grid">
           {innovationAreas.map((area, i) => (
             <div key={i} className="tracks-innovation-item">
-              <div className="tracks-innovation-icon">{area.icon}</div>
+              <div className="tracks-innovation-icon">{iconMap[area.iconName]}</div>
               <span className="tracks-innovation-name">{area.name}</span>
             </div>
           ))}

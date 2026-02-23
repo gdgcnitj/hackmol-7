@@ -1,0 +1,51 @@
+import type { TopPrize, SpecialPrize } from "@/types";
+
+export const topPrizes: TopPrize[] = [
+  {
+    title: "The Shadow Relic",
+    subtitle: "Second Place: ₹30,000",
+    amount: "₹30,000",
+    iconPath: "/images/bat-second.png",
+    rank: "2nd",
+    description:
+      "For the team delivering a highly impressive and technically strong solution.",
+  },
+  {
+    title: "The Abyss Crown",
+    subtitle: "First Place: ₹50,000",
+    amount: "₹50,000",
+    iconPath: "/images/bat-first.png",
+    highlight: true,
+    rank: "1st",
+    description:
+      "Awarded to the team that demonstrates exceptional innovation, execution, and impact.",
+  },
+  {
+    title: "The Crystal Honor",
+    subtitle: "Third Place: ₹10,000",
+    amount: "₹10,000",
+    iconPath: "/images/bat-third.png",
+    rank: "3rd",
+    description:
+      "Recognizing a standout project with strong potential and creativity.",
+  },
+];
+
+export const specialPrizes: SpecialPrize[] = [
+  {
+    title: "The Lantern of Beginnings",
+    subtitle: "Fresher's Track: ₹10,000",
+    amount: "₹10,000",
+    category: "Fresher's Track",
+    description:
+      "Celebrating the most promising and well-executed project by fresh innovators.",
+  },
+  {
+    title: "The Queen's Emblem",
+    subtitle: "Women Track: ₹10,000",
+    amount: "₹10,000",
+    category: "Women Track",
+    description:
+      "Awarded to the most outstanding women-led innovation of HackMOL 7.0.",
+  },
+];

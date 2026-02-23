@@ -81,59 +81,23 @@
 
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { topPrizes as topPrizesData, specialPrizes as specialPrizesData } from "@/data/prizes";
 import "./Prizes.css";
 
-// Asset imports
+// Asset imports (static images for Next.js optimisation)
 import batFirst from "../../../public/images/bat-first.png";
 import batSecond from "../../../public/images/bat-second.png";
 import batThird from "../../../public/images/bat-third.png";
 import upperframe from "../../../public/images/upperframe.png";
 import lowerframe from "../../../public/images/lowerframe.png";
+import type { StaticImageData } from "next/image";
 
-const topPrizesData = [
-  {
-    title: "The Shadow Relic",
-    subtitle: "Second Place: ₹30,000",
-    amount: "₹30,000",
-    icon: batSecond,
-    rank: "2nd",
-    description: "For the team delivering a highly impressive and technically strong solution.",
-  },
-  {
-    title: "The Abyss Crown",
-    subtitle: "First Place: ₹50,000",
-    amount: "₹50,000",
-    icon: batFirst,
-    highlight: true,
-    rank: "1st",
-    description: "Awarded to the team that demonstrates exceptional innovation, execution, and impact.",
-  },
-  {
-    title: "The Crystal Honor",
-    subtitle: "Third Place: ₹10,000",
-    amount: "₹10,000",
-    icon: batThird,
-    rank: "3rd",
-    description: "Recognizing a standout project with strong potential and creativity.",
-  },
-];
-
-const specialPrizesData = [
-  {
-    title: "The Lantern of Beginnings",
-    subtitle: "Fresher's Track: ₹10,000",
-    amount: "₹10,000",
-    category: "Fresher's Track",
-    description: "Celebrating the most promising and well-executed project by fresh innovators.",
-  },
-  {
-    title: "The Queen's Emblem",
-    subtitle: "Women Track: ₹10,000",
-    amount: "₹10,000",
-    category: "Women Track",
-    description: "Awarded to the most outstanding women-led innovation of HackMOL 7.0.",
-  },
-];
+/** Map icon paths from data layer to static imports */
+const prizeIconMap: Record<string, StaticImageData> = {
+  "/images/bat-first.png": batFirst,
+  "/images/bat-second.png": batSecond,
+  "/images/bat-third.png": batThird,
+};
 
 export default function Prizes() {
   return (
@@ -164,7 +128,7 @@ export default function Prizes() {
                 />
               )}
               <Image
-                src={prize.icon}
+                src={prizeIconMap[prize.iconPath] || prize.iconPath}
                 alt={prize.title}
                 width={prize.highlight ? 280 : 150}
                 height={prize.highlight ? 280 : 150}

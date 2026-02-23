@@ -5,15 +5,13 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HiChevronDown } from "react-icons/hi2";
+import { heroConfig } from "@/data/hero";
+import { siteConfig } from "@/data/site";
 import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FRAME_COUNT = 138;
-// Minimum frames that must be loaded before allowing smooth scroll animation
-const MIN_FRAMES_FOR_SCROLL = 40;
-// Concurrency limit for fetch requests (avoid network congestion)
-const CONCURRENT_LOAD_LIMIT = 6;
+const { frameCount: FRAME_COUNT, minFramesForScroll: MIN_FRAMES_FOR_SCROLL, concurrentLoadLimit: CONCURRENT_LOAD_LIMIT } = heroConfig;
 
 function getCurrentFrame(index: number): string {
   return `/frames/${String(index + 1).padStart(3, "0")}.webp`;
@@ -83,7 +81,7 @@ export default function Hero() {
 
   // Countdown timer
   useEffect(() => {
-    const targetDate = new Date('2026-03-28T08:00:00').getTime();
+    const targetDate = new Date(heroConfig.countdownTarget).getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -387,7 +385,7 @@ export default function Hero() {
           <div className="devfolio-button-overlay">
             <div 
               className="apply-button" 
-              data-hackathon-slug="hackmol-7" 
+              data-hackathon-slug={siteConfig.devfolioSlug}
               data-button-theme="dark"
               style={{ height: '44px', width: '312px' }}
             ></div>

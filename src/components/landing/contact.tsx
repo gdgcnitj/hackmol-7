@@ -1,19 +1,7 @@
 import Image from "next/image";
 import { FaLinkedinIn } from "react-icons/fa";
+import { contacts } from "@/data/contact";
 import "./contact.css";
-
-const contacts = [
-  {
-    name: "Adesh Anurag",
-    image: "/images/adesh.png",
-    linkedin: "https://www.linkedin.com/in/adesh-anurag-176a44254/",
-  },
-  {
-    name: "Chahat Kesharwani",
-    image: "/images/chahat.png",
-    linkedin: "https://www.linkedin.com/in/chahatkesharwani/",
-  },
-];
 
 export default function Contact() {
   return (

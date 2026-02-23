@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { navLinks } from "@/data/navigation";
+import { siteConfig } from "@/data/site";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -31,17 +33,14 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="nav-links">
-                <a href="#about">About</a>
-                <a href="#tracks">Tracks</a>
-                <a href="#prizes">Prizes</a>
-                <a href="#timeline">Timeline</a>
-                <a href="#sponsors">Sponsors</a>
-                <a href="#faq">FAQ</a>
+                {navLinks.map((link) => (
+                    <a key={link.href} href={link.href}>{link.label}</a>
+                ))}
             </div>
             <div className="register-btn-wrapper">
                 <button 
                     className="register-btn"
-                    onClick={() => window.open('https://hackmol-7.devfolio.co', '_blank')}
+                    onClick={() => window.open(siteConfig.devfolioUrl, '_blank')}
                 >
                     <Image 
                         src="/images/right-corner.png" 

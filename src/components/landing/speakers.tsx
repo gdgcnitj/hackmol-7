@@ -1,60 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { judgesData, mentorsData } from "@/data/speakers";
 
 import "./speakers.css";
 
 // Asset imports
 import maskCorner from "../../../public/images/Maskgroup.png";
-import hackmolLogo from "../../../public/images/hackmol_logo.png";
-
-interface PersonData {
-  name: string;
-  designation: string;
-  category: string;
-  image: StaticImageData;
-  linkedin?: string;
-  instagram?: string;
-}
-
-const judgesData: PersonData[] = [
-  {
-    name: "TO BE ANNOUNCED",
-    designation: "SDE @Microsoft",
-    category: "JUDGE",
-    image: hackmolLogo,
-    linkedin: "#",
-    instagram: "#",
-  },
-  {
-    name: "TO BE ANNOUNCED",
-    designation: "Product Manager @Google",
-    category: "JUDGE",
-    image: hackmolLogo,
-    linkedin: "#",
-    instagram: "#",
-  },
-  {
-    name: "TO BE ANNOUNCED",
-    designation: "Tech Lead @Amazon",
-    category: "JUDGE",
-    image: hackmolLogo,
-    linkedin: "#",
-    instagram: "#",
-  },
-];
-
-const mentorsData: PersonData[] = Array(5).fill({
-  name: "TO BE ANNOUNCED",
-  designation: "Senior Engineer @Meta",
-  category: "MENTOR",
-  image: hackmolLogo,
-  linkedin: "#",
-  instagram: "#",
-});
 
 export default function Speakers() {
   const [activeJudgeIndex, setActiveJudgeIndex] = useState(0);

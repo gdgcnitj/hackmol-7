@@ -3,22 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
+import type { StatItem } from "@/types";
+import { stats as STATS, aboutContent } from "@/data/about";
 import "./about.css";
-
-/* ─── Stat data ─────────────────────────────────────────────────────────── */
-interface StatItem {
-    end: number;
-    suffix: string;
-    label: string;
-    card: "card-1" | "card-2" | "card-3" | "card-4";
-}
-
-const STATS: StatItem[] = [
-    { end: 17437, suffix: "+", label: "Participants",       card: "card-1" },
-    { end: 413,   suffix: "+", label: "Projects Submitted", card: "card-2" },
-    { end: 100,   suffix: "+", label: "Sponsors",           card: "card-3" },
-    { end: 30,    suffix: "+", label: "Hours of Hacking",   card: "card-4" },
-];
 
 /* ─── Count-up hook ─────────────────────────────────────────────────────── */
 function useCountUp(target: number, duration = 1600, enabled = false): number {
@@ -89,10 +76,10 @@ export default function About() {
 
                 {/* Title */}
                 <SectionHeading
-                    title="ABOUT HACKMOL"
-                    highlight="7.0"
-                    highlightPosition="after"
-                    description="Descend into 30 hours of creation. NIT Jalandhar's flagship hackathon, where builders forge the future."
+                    title={aboutContent.heading.title}
+                    highlight={aboutContent.heading.highlight}
+                    highlightPosition={aboutContent.heading.highlightPosition}
+                    description={aboutContent.heading.description}
                 />
 
                 {/* Main Content */}
@@ -101,10 +88,10 @@ export default function About() {
                     {/* Image */}
                     <div className="about-image-wrap">
                         <Image
-                            src="/images/team.png"
-                            alt="HackMol Team at NIT Jalandhar"
-                            width={500}
-                            height={350}
+                            src={aboutContent.image.src}
+                            alt={aboutContent.image.alt}
+                            width={aboutContent.image.width}
+                            height={aboutContent.image.height}
                             className="about-team-img"
                             priority
                         />
@@ -115,13 +102,14 @@ export default function About() {
                         <div className="about-tilt-bg" aria-hidden="true" />
                         <div className="about-text-inner">
                             <h2 className="about-subtitle">
-                                Code Like a God,
+                                {aboutContent.subtitle}
                                 <br />
-                                <span>Leave a Legacy!</span>
+                                <span>{aboutContent.subtitleHighlight}</span>
                             </h2>
-                            <p className="about-desc">
-                                The seventh edition of HackMol, organised by GDGC NIT Jalandhar, is your battleground for innovation. <span className="hidden md:inline"> This 30-hour hackathon unites warriors of code, both seasoned champions and rising contenders to forge groundbreaking solutions across digital realms. March 28-29, 2026. Descend into the depths of innovation, discover new possibilities, and develop real-world solutions that leave a lasting impact.</span>
-                            </p>
+                            <p
+                                className="about-desc"
+                                dangerouslySetInnerHTML={{ __html: aboutContent.description }}
+                            />
                         </div>
                     </div>
 
