@@ -387,15 +387,85 @@ body {
   margin: 0 8px;
 }
 
-/* Devfolio Button */
+/* Hero Register Button */
 
-.devfolio-button-overlay {
+.hero-register-overlay {
   position: absolute;
   top: 63%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 11;
   text-align: center;
+}
+
+.hero-register-overlay .register-btn {
+  position: relative;
+  padding: 12px 48px;
+  text-transform: uppercase;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+  font-size: 16px;
+  font-weight: 400;
+  min-width: 180px;
+  display: block;
+  font-family: var(--font-cinzel), serif;
+}
+
+.hero-register-overlay .btn-text {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+.hero-register-overlay .ornament {
+  position: absolute !important;
+  width: 30px !important;
+  height: 30px !important;
+  opacity: 1;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  filter: brightness(1.2);
+  object-fit: contain;
+}
+
+.hero-register-overlay .ornament-top-left {
+  top: -7px !important;
+  left: -7px !important;
+  transform: scaleX(-1) !important;
+}
+
+.hero-register-overlay .ornament-top-right {
+  top: -7px !important;
+  right: -7px !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+.hero-register-overlay .ornament-bottom-left {
+  bottom: -7px !important;
+  top: auto !important;
+  left: -7px !important;
+  transform: scaleX(-1) scaleY(-1) !important;
+}
+
+.hero-register-overlay .ornament-bottom-right {
+  bottom: -7px !important;
+  top: auto !important;
+  right: -7px !important;
+  left: auto !important;
+  transform: scaleY(-1) !important;
+}
+
+.hero-register-overlay .register-btn:hover .ornament {
+  filter: brightness(1.5) drop-shadow(0 0 8px rgba(77, 168, 218, 0.8));
+}
+
+.hero-register-overlay .register-btn:hover {
+  color: rgba(77, 168, 218, 1);
 }
 
 /* Character */
@@ -575,7 +645,7 @@ body {
     gap: 5px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 60%;
   }
 
@@ -635,7 +705,7 @@ body {
     gap: 3px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 52%;
   }
 
@@ -681,7 +751,7 @@ body {
     font-size: 32px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 62%;
   }
 
@@ -731,7 +801,7 @@ body {
     font-size: 26px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 61%;
   }
 
@@ -786,7 +856,7 @@ body {
     gap: 6px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 60%;
   }
 
@@ -846,7 +916,7 @@ body {
     gap: 4px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 58%;
   }
 
@@ -908,11 +978,11 @@ body {
     gap: 2px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 54%;
   }
 
-  .devfolio-button-overlay > div {
+  .hero-register-overlay .register-btn {
     transform: scale(0.8);
     transform-origin: center;
   }
@@ -969,11 +1039,11 @@ body {
     font-size: 14px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 56%;
   }
 
-  .devfolio-button-overlay > div {
+  .hero-register-overlay .register-btn {
     transform: scale(0.85);
   }
 }
@@ -1004,7 +1074,7 @@ body {
     min-width: 38px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 58%;
   }
 }
@@ -1048,11 +1118,11 @@ body {
     font-size: 14px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 56%;
   }
 
-  .devfolio-button-overlay > div {
+  .hero-register-overlay .register-btn {
     transform: scale(0.85);
   }
 }
@@ -1102,11 +1172,11 @@ body {
     gap: 2px;
   }
 
-  .devfolio-button-overlay {
+  .hero-register-overlay {
     top: 52%;
   }
 
-  .devfolio-button-overlay > div {
+  .hero-register-overlay .register-btn {
     transform: scale(0.75);
   }
 

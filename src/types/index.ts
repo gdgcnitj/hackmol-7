@@ -206,13 +206,13 @@ export interface NavLink {
   href: string;
 }
 
-export interface FooterResourceLink extends SiteLink {}
+export type FooterResourceLink = SiteLink;
 
-export interface FooterArchiveLink extends SiteLink {}
+export type FooterArchiveLink = SiteLink;
 
-export interface FooterCommunityLink extends SocialLink {}
+export type FooterCommunityLink = SocialLink;
 
-export interface FooterSocialLink extends SocialLink {}
+export type FooterSocialLink = SocialLink;
 
 /* ═══════════════════════════════════════════════════════════════════════════
    SECTION HEADING (UI)

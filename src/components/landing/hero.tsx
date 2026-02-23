@@ -103,18 +103,6 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  // Load Devfolio SDK
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
-
   // Find nearest loaded frame (fallback when the exact frame isn't loaded yet)
   const findNearestLoadedFrame = useCallback((targetIndex: number): ImageBitmap | null => {
     const frames = framesRef.current;
@@ -299,6 +287,9 @@ export default function Hero() {
       },
     });
 
+    // Copy ref so the cleanup function captures the current value
+    const frames = framesRef.current;
+
     return () => {
       cancelled = true;
       window.removeEventListener("resize", handleResize);
@@ -307,7 +298,7 @@ export default function Hero() {
       ScrollTrigger.getAll().forEach(t => t.kill());
 
       // Cleanup bitmaps to free GPU memory
-      framesRef.current.forEach(bmp => bmp?.close());
+      frames.forEach(bmp => bmp?.close());
     };
   }, [findNearestLoadedFrame]);
 
@@ -381,14 +372,42 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Devfolio Apply Button */}
-          <div className="devfolio-button-overlay">
-            <div 
-              className="apply-button" 
-              data-hackathon-slug={siteConfig.devfolioSlug}
-              data-button-theme="dark"
-              style={{ height: '44px', width: '312px' }}
-            ></div>
+          {/* Register Button */}
+          <div className="hero-register-overlay">
+            <button
+              className="register-btn"
+              onClick={() => window.open(siteConfig.devfolioUrl, '_blank')}
+            >
+              <Image
+                src="/images/right-corner.png"
+                alt=""
+                width={30}
+                height={30}
+                className="ornament ornament-top-left"
+              />
+              <Image
+                src="/images/right-corner.png"
+                alt=""
+                width={30}
+                height={30}
+                className="ornament ornament-top-right"
+              />
+              <Image
+                src="/images/right-corner.png"
+                alt=""
+                width={30}
+                height={30}
+                className="ornament ornament-bottom-left"
+              />
+              <Image
+                src="/images/right-corner.png"
+                alt=""
+                width={30}
+                height={30}
+                className="ornament ornament-bottom-right"
+              />
+              <span className="btn-text">Register Now</span>
+            </button>
           </div>
 
           {/* Canvas for frame animation */}

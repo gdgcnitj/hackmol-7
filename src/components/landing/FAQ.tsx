@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { HiChevronDown } from "react-icons/hi2";
 import SectionHeading from "@/components/ui/SectionHeading";
 import type { FAQCategoryKey } from "@/types";
 import { faqData as CATEGORY_DATA } from "@/data/faq";
@@ -86,7 +86,7 @@ export default function FAQ() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="faq-question-text">{item.question}</span>
-                  <ChevronDown size={22} className="faq-chevron" />
+                  <HiChevronDown size={22} className="faq-chevron" />
                 </button>
 
                 <div className="faq-answer-wrapper">

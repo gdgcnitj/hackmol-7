@@ -5,6 +5,7 @@ import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -165,18 +166,7 @@ export default function RootLayout({
         <meta name="platform-partner" content="Devfolio" />
         <link rel="preload" href="/images/devfolio_white.png" as="image" />
         
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5ZGV0B6C4"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Z5ZGV0B6C4');
-            `
-          }}
-        />
+
         
         <script
           type="application/ld+json"
@@ -225,6 +215,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <Analytics />
+        <GoogleAnalytics gaId="G-Z5ZGV0B6C4" />
       </body>
     </html>
   );
