@@ -37,22 +37,22 @@ const innovationAreas: InnovationArea[] = [
 
 const tracksData: TrackData[] = [
   {
-    name: "FRESHER'S TRACK",
+    name: "THE RISING LANTERNS",
     image: "/images/tracksFreshersTrack.png",
     variant: "side",
-    description: "Exclusively for first-year students. Take your first step into the world of hackathons and showcase your innovative ideas.",
+    description: "Built especially for first-year students and beginners stepping into their first major hackathon. The Rising Lanterns track encourages learning, experimentation, and bold first attempts at innovation.",
   },
   {
-    name: "MAIN TRACK",
+    name: "THE DEEPFORGE ARENA",
     image: "/images/tracksMainTrack.png",
     variant: "center",
-    description: "Open to all participants. Compete with the best minds and build groundbreaking solutions that push the boundaries of innovation.",
+    description: "The ultimate battleground for seasoned builders and ambitious teams. The Deepforge Arena is where powerful ideas are transformed into impactful solutions across all major themes. Teams will be judged on innovation, technical depth, scalability, design, and real-world impact.",
   },
   {
-    name: "WOMEN'S TRACK",
+    name: "THE QUEEN'S VANGUARD",
     image: "/images/tracksWomenTrack.png",
     variant: "side",
-    description: "Empowering women in tech. Dedicated track for all-women teams to create impactful solutions and lead the change.",
+    description: "Dedicated to empowering and spotlighting women innovators in tech. The Queen's Vanguard honors teams with strong women representation who build impactful, creative, and technically sound solutions.",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function Tracks() {
         title="HACKATHON"
         highlight="TRACKS"
         highlightPosition="after"
-        description="Choose your path. Three distinct tracks — each one a trial forged for a different kind of builder."
+        description="Three legendary paths forged in the Hollow. Choose your arena and prove your worth."
       />
 
       <div className="tracks-cards">

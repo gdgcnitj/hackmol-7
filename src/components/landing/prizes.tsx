@@ -92,36 +92,46 @@ import lowerframe from "../../../public/images/lowerframe.png";
 
 const topPrizesData = [
   {
-    title: "2nd Prize",
+    title: "The Shadow Relic",
+    subtitle: "Second Place: ₹30,000",
     amount: "₹30,000",
     icon: batSecond,
     rank: "2nd",
+    description: "For the team delivering a highly impressive and technically strong solution.",
   },
   {
-    title: "1st Prize",
+    title: "The Abyss Crown",
+    subtitle: "First Place: ₹50,000",
     amount: "₹50,000",
     icon: batFirst,
     highlight: true,
     rank: "1st",
+    description: "Awarded to the team that demonstrates exceptional innovation, execution, and impact.",
   },
   {
-    title: "3rd Prize",
+    title: "The Crystal Honor",
+    subtitle: "Third Place: ₹10,000",
     amount: "₹10,000",
     icon: batThird,
     rank: "3rd",
+    description: "Recognizing a standout project with strong potential and creativity.",
   },
 ];
 
 const specialPrizesData = [
   {
-    title: "Best Freshers Team",
+    title: "The Lantern of Beginnings",
+    subtitle: "Fresher's Track: ₹10,000",
     amount: "₹10,000",
-    category: "Special Category",
+    category: "Fresher's Track",
+    description: "Celebrating the most promising and well-executed project by fresh innovators.",
   },
   {
-    title: "Best Women's Team",
+    title: "The Queen's Emblem",
+    subtitle: "Women Track: ₹10,000",
     amount: "₹10,000",
-    category: "Special Category",
+    category: "Women Track",
+    description: "Awarded to the most outstanding women-led innovation of HackMOL 7.0.",
   },
 ];
 
@@ -132,7 +142,7 @@ export default function Prizes() {
         title="PRIZES &"
         highlight="REWARDS"
         highlightPosition="after"
-        description="Glory awaits the worthy. Over ₹1,10,000 in prizes for those who dare to conquer."
+        description="The realm's greatest honors await. Over $1,080 in total prizes for those who dare to forge legendary solutions."
       />
 
       {/* TOP 3 PRIZES */}
@@ -168,8 +178,9 @@ export default function Prizes() {
                 <Image src={upperframe} alt="" className="frame-img" />
               </div>
 
-              <h3 className="prize-rank">{prize.rank}</h3>
-              <p className="prize-amount">{prize.amount}</p>
+              <h3 className="prize-title">{prize.title}</h3>
+              <p className="prize-subtitle">{prize.subtitle}</p>
+              <p className="prize-description">{prize.description}</p>
 
               <div className="frame-decorator">
                 <Image src={lowerframe} alt="" className="frame-img" />
@@ -189,7 +200,8 @@ export default function Prizes() {
               <span className="category-badge">{prize.category}</span>
             </div>
             <h4 className="special-prize-title">{prize.title}</h4>
-            <p className="special-prize-amount">{prize.amount}</p>
+            <p className="special-prize-subtitle">{prize.subtitle}</p>
+            <p className="special-prize-description">{prize.description}</p>
           </div>
         ))}
       </div>

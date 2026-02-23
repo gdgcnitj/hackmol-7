@@ -1,28 +1,100 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import Image from "next/image";
+import { useState, useEffect } from "react";
+import Image, { StaticImageData } from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
+import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import "./speakers.css";
 
 // Asset imports
 import maskCorner from "../../../public/images/Maskgroup.png";
-import speaker1 from "../../../public/images/speakerDummy.jpg";
+import hackmolLogo from "../../../public/images/hackmol_logo.png";
 
-const speakersData = Array(6).fill({
-  name: "DR. RAKESH SHARMA",
-  title: "ELDER SPEAKER",
-  description: "A GUIDE OF MANY PATHS, KNOWN FOR SHAPING MINDS AND IGNITING IDEAS.",
-  tags: ["INNOVATION", "INNOVATION", "INNOVATION"],
-  image: speaker1,
+interface PersonData {
+  name: string;
+  designation: string;
+  category: string;
+  image: StaticImageData;
+  linkedin?: string;
+  instagram?: string;
+}
+
+const judgesData: PersonData[] = [
+  {
+    name: "TO BE ANNOUNCED",
+    designation: "SDE @Microsoft",
+    category: "JUDGE",
+    image: hackmolLogo,
+    linkedin: "#",
+    instagram: "#",
+  },
+  {
+    name: "TO BE ANNOUNCED",
+    designation: "Product Manager @Google",
+    category: "JUDGE",
+    image: hackmolLogo,
+    linkedin: "#",
+    instagram: "#",
+  },
+  {
+    name: "TO BE ANNOUNCED",
+    designation: "Tech Lead @Amazon",
+    category: "JUDGE",
+    image: hackmolLogo,
+    linkedin: "#",
+    instagram: "#",
+  },
+];
+
+const mentorsData: PersonData[] = Array(5).fill({
+  name: "TO BE ANNOUNCED",
+  designation: "Senior Engineer @Meta",
+  category: "MENTOR",
+  image: hackmolLogo,
+  linkedin: "#",
+  instagram: "#",
 });
 
 export default function Speakers() {
+  const [activeJudgeIndex, setActiveJudgeIndex] = useState(0);
+  const [activeMentorIndex, setActiveMentorIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if screen is mobile/tablet
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Auto-scroll for judges carousel (only on mobile)
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const interval = setInterval(() => {
+      setActiveJudgeIndex((prev) => (prev + 1) % judgesData.length);
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
+  // Auto-scroll for mentors carousel (only on mobile)
+  useEffect(() => {
+    if (!isMobile) return;
+    
+    const interval = setInterval(() => {
+      setActiveMentorIndex((prev) => (prev + 1) % mentorsData.length);
+    }, 4500); // Change slide every 4.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
+
   return (
     <div className="speakers-section">
       {/* HEADER SECTION */}
@@ -30,82 +102,136 @@ export default function Speakers() {
         title="JUDGES &"
         highlight="MENTORS"
         highlightPosition="after"
-        description="The ancients of the hollow. Shaped by the depths — here to guide you through yours."
+        description="The ancients of the hollow. Shaped by the depths, here to guide you through yours."
       />
 
-      {/* SLIDER SECTION */}
-      <div className="slider-container">
-        <Swiper
-          modules={[Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          grabCursor={true}
-          navigation={{
-            nextEl: ".nav-btn.next",
-            prevEl: ".nav-btn.prev",
-          }}
-          pagination={{
-            clickable: true,
-            el: ".custom-pagination",
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1.5, centeredSlides: true },
-            1024: { slidesPerView: 2.5, centeredSlides: false },
-            1280: { slidesPerView: 3, centeredSlides: false },
-          }}
-          className="speaker-swiper"
-        >
-          {speakersData.map((person, index) => (
-            <SwiperSlide key={index} className="speaker-slide">
-              <div className="speaker-card">
-                <div className="relative">
-                  <Image src={maskCorner.src} fill alt="" className="card-corner top-l" />
-                </div>
-                <div className="relative">
-                  <Image src={maskCorner.src} fill alt="" className="card-corner bottom-r" />
-                </div>
-
-                <div className="avatar-wrapper">
-                  <div className="glow-effect"></div>
-                  <div className="image-border">
-                    <Image
-                      src={person.image}
-                      alt={person.name}
-                      width={160}
-                      height={160}
-                      className="avatar-img"
-                    />
-                  </div>
-                </div>
-
-                <h3 className="cinzel-font card-name">{person.name}</h3>
-                <p className="cinzel-font card-title">{person.title}</p>
-
-                <div className="divider">
-                  <div className="line l"></div>
-                  <div className="diamond"></div>
-                  <div className="line r"></div>
-                </div>
-
-                <p className="cinzel-font card-desc">{person.description}</p>
-
-                <div className="tag-list">
-                    {person.tags.map((tag: string, i: number) => (
-                    <span key={i} className="tag-pill">{tag}</span>
-                    ))}
-                </div>
-
-                <button className="cinzel-font view-btn">View Entry</button>
+      {/* JUDGES SECTION */}
+      <div className="category-wrapper">
+        <h2 className="category-title cinzel-font">JUDGES</h2>
+        <div className="carousel-container">
+          <div 
+            className="cards-grid judges-grid" 
+            style={isMobile ? { transform: `translateX(-${activeJudgeIndex * 100}%)` } : {}}
+          >
+            {judgesData.map((person, index) => (
+              <div key={`judge-${index}`} className="speaker-card">
+              <div className="card-corner-wrapper">
+                <Image src={maskCorner.src} fill alt="" className="card-corner top-l" />
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              <div className="card-corner-wrapper">
+                <Image src={maskCorner.src} fill alt="" className="card-corner bottom-r" />
+              </div>
 
-        {/* COMBINED CONTROLS FOR MOBILE & DESKTOP */}
-        <div className="swiper-controls-wrapper">
-          <button className="nav-btn prev">‹</button>
-          <div className="custom-pagination"></div>
-          <button className="nav-btn next">›</button>
+              <div className="avatar-wrapper">
+                <div className="image-border">
+                  <Image
+                    src={person.image}
+                    alt={person.name}
+                    width={350}
+                    height={350}
+                    className="avatar-img"
+                  />
+                </div>
+              </div>
+
+              <div className="card-content">
+                <h3 className="cinzel-font card-name">{person.name}</h3>
+                <p className="cinzel-font card-designation">{person.designation}</p>
+                <p className="cinzel-font card-category">{person.category}</p>
+              </div>
+
+              <div className="social-links">
+                {person.linkedin && (
+                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaLinkedin />
+                  </a>
+                )}
+                {person.instagram && (
+                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaInstagram />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+        
+        {/* Judges Navigation Dots */}
+        <div className="carousel-dots">
+          {judgesData.map((_, index) => (
+            <button
+              key={`judge-dot-${index}`}
+              className={`dot ${index === activeJudgeIndex ? "active" : ""}`}
+              onClick={() => setActiveJudgeIndex(index)}
+              aria-label={`Go to judge ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* MENTORS SECTION */}
+      <div className="category-wrapper">
+        <h2 className="category-title cinzel-font">MENTORS</h2>
+        <div className="carousel-container">
+          <div 
+            className="cards-grid mentors-grid"
+            style={isMobile ? { transform: `translateX(-${activeMentorIndex * 100}%)` } : {}}
+          >
+          {mentorsData.map((person, index) => (
+            <div key={`mentor-${index}`} className="speaker-card">
+              <div className="card-corner-wrapper">
+                <Image src={maskCorner.src} fill alt="" className="card-corner top-l" />
+              </div>
+              <div className="card-corner-wrapper">
+                <Image src={maskCorner.src} fill alt="" className="card-corner bottom-r" />
+              </div>
+
+              <div className="avatar-wrapper">
+                <div className="image-border">
+                  <Image
+                    src={person.image}
+                    alt={person.name}
+                    width={350}
+                    height={350}
+                    className="avatar-img"
+                  />
+                </div>
+              </div>
+
+              <div className="card-content">
+                <h3 className="cinzel-font card-name">{person.name}</h3>
+                <p className="cinzel-font card-designation">{person.designation}</p>
+                <p className="cinzel-font card-category">{person.category}</p>
+              </div>
+
+              <div className="social-links">
+                {person.linkedin && (
+                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaLinkedin />
+                  </a>
+                )}
+                {person.instagram && (
+                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <FaInstagram />
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+        
+        {/* Mentors Navigation Dots */}
+        <div className="carousel-dots">
+          {mentorsData.map((_, index) => (
+            <button
+              key={`mentor-dot-${index}`}
+              className={`dot ${index === activeMentorIndex ? "active" : ""}`}
+              onClick={() => setActiveMentorIndex(index)}
+              aria-label={`Go to mentor ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>

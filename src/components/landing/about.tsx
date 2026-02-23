@@ -92,7 +92,7 @@ export default function About() {
                     title="ABOUT HACKMOL"
                     highlight="7.0"
                     highlightPosition="after"
-                    description="Descend into 30 hours of creation. NIT Jalandhar's flagship hackathon — where builders forge the future."
+                    description="Descend into 30 hours of creation. NIT Jalandhar's flagship hackathon, where builders forge the future."
                 />
 
                 {/* Main Content */}
