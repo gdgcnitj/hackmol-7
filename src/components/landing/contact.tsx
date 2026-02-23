@@ -24,8 +24,8 @@ export default function Contact() {
               <Image
                 src={person.image}
                 alt={person.name}
-                width={40}
-                height={40}
+                width={46}
+                height={46}
                 className="contact-avatar"
               />
               <div className="contact-info">
