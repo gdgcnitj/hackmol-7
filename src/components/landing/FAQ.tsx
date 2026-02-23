@@ -19,11 +19,6 @@ const CATEGORY_DATA = {
         "Any currently enrolled undergraduate or postgraduate student from any college or university in India is welcome to enter the realm. You do not need to be from a CS or IT background \u2014 every discipline has a place in Hallownest.",
     },
     {
-      question: "When and where does it take place?",
-      answer:
-        "The hackathon runs for 30 hours \u2014 from 8:00 AM on March 28, 2026 to 2:00 PM on March 29, 2026 \u2014 on the campus of NIT Jalandhar, Punjab, India.",
-    },
-    {
       question: "How large can a team be?",
       answer:
         "Teams can have 2 to 4 members. Solo registrations are also accepted; you will be given an opportunity to form a team during the pre-event networking session.",
@@ -32,6 +27,11 @@ const CATEGORY_DATA = {
       question: "Is this an online or offline event?",
       answer:
         "HackMol 7.0 is a fully offline, in-person hackathon. The experience \u2014 the mentors, the workshops, the late-night grind \u2014 is designed to be lived, not streamed.",
+    },
+    {
+      question: "Why HackMol?",
+      answer:
+        "HackMol is happening alongside Utkansh — NIT Jalandhar's Annual Fest. So you get to witness a star night right in the middle of building. Code through the day, celebrate through the night.",
     },
   ],
   REGISTER: [
@@ -43,7 +43,7 @@ const CATEGORY_DATA = {
     {
       question: "What is the registration deadline?",
       answer:
-        "Applications close on February 24, 2026. Do not wait \u2014 spots in Hallownest are limited and shortlisting is competitive.",
+        "Applications close on March 24, 2026. Do not wait, spots in Hallownest are limited and shortlisting is competitive.",
     },
     {
       question: "When will I hear back after applying?",
@@ -61,11 +61,20 @@ const CATEGORY_DATA = {
         "Yes. Shortlisted teams must submit a presentation of their project idea by March 26, 2026. This helps mentors prepare to guide you during the hackathon.",
     },
   ],
-  PAYMENTS: [
+  LOGISTICS: [
     {
-      question: "Is there a registration or participation fee?",
+      question: "Will travel expenses be reimbursed?",
+      answer: "No travel reimbursements will be provided. Participants are responsible for their own transportation to and from the venue.",
+    },
+    {
+      question: "What should I bring?",
       answer:
-        "None. Entering Hallownest costs nothing. HackMol 7.0 is entirely free for all selected participants \u2014 no hidden charges, no surprises.",
+        "Bring your laptop, charger, necessary hardware components, a valid college ID.",
+    },
+    {
+      question: "Is there a code of conduct?",
+      answer:
+        "Yes. HackMol follows a strict code of conduct to ensure a safe, inclusive, and fair environment for all. Harassment, plagiarism, or unsportsmanlike behaviour will result in immediate disqualification.",
     },
     {
       question: "Are meals provided during the event?",
@@ -76,28 +85,6 @@ const CATEGORY_DATA = {
       question: "Will accommodation be arranged?",
       answer:
         "On-campus accommodation is available for outstation participants. Details will be shared in your acceptance email. Local participants are welcome to use the rest areas on-site.",
-    },
-  ],
-  LOGISTICS: [
-    {
-      question: "Will travel expenses be reimbursed?",
-      answer:
-        "Travel reimbursement is available for outstation participants on a merit and sponsorship basis. The reimbursement policy and maximum limits will be detailed in your acceptance email \u2014 keep your travel receipts safe.",
-    },
-    {
-      question: "What should I bring?",
-      answer:
-        "Bring your laptop, charger, necessary hardware components, a valid college ID, and a sleeping bag or blanket for the overnight stretch. Stickers, lucky charms, and the will to descend are optional but encouraged.",
-    },
-    {
-      question: "Is there a code of conduct?",
-      answer:
-        "Yes. HackMol follows a strict code of conduct to ensure a safe, inclusive, and fair environment for all. Harassment, plagiarism, or unsportsmanlike behaviour will result in immediate disqualification.",
-    },
-    {
-      question: "Who do I contact if I have more questions?",
-      answer:
-        "Reach out to us on Instagram @gdgcnitj or email us at dsc@nitj.ac.in.",
     },
   ],
 };
