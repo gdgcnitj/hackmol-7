@@ -45,10 +45,7 @@
     height: auto;
     border-radius: 20px;
     display: block;
-    /* Subtle depth shadow aligned with theme */
-    box-shadow:
-        0 0 14px rgba(77, 168, 218, 0.07),
-        0 8px 24px rgba(0, 0, 0, 0.25);
+    margin-left: clamp(20px, 5vw, 60px);
 }
 
 /* ── Text panel ── */
@@ -86,7 +83,7 @@
 
 .about-subtitle {
     margin-top: 8px;
-    margin-left: 24px;
+    margin-left: 36px;
     font-family: var(--font-trajan);
     font-size: clamp(18px, 2.4vw, 32px);
     font-weight: bold;
@@ -102,7 +99,7 @@
 .about-desc {
     margin-top: 14px;
     margin-bottom: 8px;
-    margin-left: 24px;
+    margin-left: 36px;
     margin-right: 40px;
     font-family: var(--font-perpetua);
     font-size: clamp(14px, 1.35vw, 18px);
@@ -208,6 +205,10 @@
         margin-bottom: 0;
     }
 
+    .about-team-img {
+        margin-left: 0;
+    }
+
     /* Remove skew — too disorienting stacked */
     .about-text-wrap {
         transform: none;
@@ -243,6 +244,10 @@
 @media (max-width: 600px) {
     .about-image-wrap {
         max-width: 100%;
+    }
+
+    .about-team-img {
+        margin-left: 0;
     }
 
     .about-subtitle {
