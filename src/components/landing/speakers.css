@@ -252,6 +252,23 @@
    Responsive Design
    =========================== */
 
+/* Base carousel container for touch support */
+.carousel-container {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+
+.carousel-container.is-dragging {
+  cursor: grabbing;
+}
+
+/* Prevent pointer events on cards while dragging to avoid accidental link clicks */
+.carousel-container.is-dragging .speaker-card {
+  pointer-events: none;
+}
+
 /* Desktop: Carousel container doesn't constrain */
 @media (min-width: 1024px) {
   .carousel-container {
@@ -275,7 +292,7 @@
   }
   
   .mentors-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
   
@@ -338,7 +355,6 @@
   .mentors-grid {
     display: flex;
     gap: 0;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
   
@@ -377,7 +393,6 @@
   .mentors-grid {
     display: flex;
     gap: 0;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
   
@@ -418,7 +433,6 @@
   .mentors-grid {
     display: flex;
     gap: 0;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
   
@@ -458,7 +472,6 @@
   .mentors-grid {
     display: flex;
     gap: 0;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
   
