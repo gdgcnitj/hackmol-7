@@ -15,7 +15,6 @@ interface Sponsor {
   name: string;
   logo: string;
   label: string;          /* e.g. "Platform Partner" */
-  link: string;
   category: Category;
 }
 
@@ -29,11 +28,9 @@ const categories: { key: Category; title: string }[] = [
 
 const sponsors: Sponsor[] = [
   /* Gold — 1 per row */
-  { 
-    name: "Sponser 1",
-    logo: "",
-    label: "Title Sponsor",
-    link: "#",
+  { name: "Gofr",
+    logo: "/images/gofr_logo.svg",
+    label: "Technology Partner",
     category: "gold"
   },
 
@@ -41,63 +38,71 @@ const sponsors: Sponsor[] = [
   { 
     name: "Devfolio",
     logo: "/images/devfolio_white.png",
-    label: "Official Platform Partner",
-    link: "https://devfolio.co",
+    label: "Platform Partner",
     category: "silver"
   },
-  { name: "Gofr",
-    logo: "/images/gofr_logo.svg",
-    label: "Framework Partner",
-    link: "https://gofr.dev/",
+  { 
+    name: "Coming Soon",
+    logo: "",
+    label: "Media Partner",
     category: "silver"
   },
 
   /* Bronze — 3 per row */
-  { name: "Sponsor 3", logo: "",                           label: "Design Partner",     link: "#",                       category: "bronze" },
-  { name: "Sponsor 4", logo: "",                           label: "API Partner",        link: "#",                       category: "bronze" },
-  { name: "Sponsor 5", logo: "",                           label: "Data Partner",       link: "#",                       category: "bronze" },
+  {
+    name: "Coming Soon",
+    logo: "",
+    label: "Design Partner",
+    category: "bronze"
+  },
+  {
+    name: "Coming Soon",
+    logo: "",
+    label: "Beverage Partner",
+    category: "bronze"
+  },
+  {
+    name: "Coming Soon",
+    logo: "",
+    label: "Gifting Partner",
+    category: "bronze"
+  },
 
   /* Community — 3 per row */
   {
     name: "GDGC NIT Jalandhar",
     logo: "/images/gdgc-nitj.png",
     label: "Community Partner",
-    link: "https://github.com/gdgcnitj",
     category: "community"
   },
   {
     name: "Community 2",
     logo: "",
     label: "Community Partner",
-    link: "#",
     category: "community"
   },
   {
     name: "Community 3",
     logo: "",
     label: "Community Partner",
-    link: "#",
     category: "community"
   },
   {
     name: "Community 4",
     logo: "",
     label: "Community Partner",
-    link: "#",
     category: "community"
   },
   {
     name: "Community 5",
     logo: "",
     label: "Community Partner",
-    link: "#",
     category: "community"
   },
   {
     name: "Community 6",
     logo: "",
     label: "Community Partner",
-    link: "#",
     category: "community"
   },
 ];
@@ -129,7 +134,7 @@ export default function Sponsors() {
           if (categorySponsors.length === 0) return null;
 
           return (
-            <div key={cat.key} className="sponsor-tier">
+            <div key={cat.key} className="sponsor-tier" data-category={cat.key}>
               <div className="sponsor-tier-header">
                 <Image 
                   src={upperFrame} 
@@ -181,6 +186,7 @@ export default function Sponsors() {
                         <span className="sponsor-card-placeholder">Logo</span>
                       )}
                     </div>
+                    <h3 className="sponsor-card-name">{s.name}</h3>
                     <p className="sponsor-card-label">{s.label}</p>
                   </div>
                 ))}
@@ -188,19 +194,6 @@ export default function Sponsors() {
             </div>
           );
         })}
-
-        {/* Hidden sponsors section for crawlers */}
-        <div className="sponsors-seo-section" style={{ opacity: 0, position: 'absolute', left: '-9999px' }}>
-          {sponsors.filter(s => s.logo).map((sponsor, i) => (
-            <img 
-              key={i}
-              src={sponsor.logo} 
-              alt={sponsor.name === "Devfolio" ? "Devfolio" : sponsor.name} 
-              width="1" 
-              height="1"
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
