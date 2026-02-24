@@ -354,8 +354,8 @@
 }
 
 .sponsor-card-logo img {
-  max-width: clamp(80px, 14vw, 160px) !important;
-  max-height: clamp(40px, 6vw, 56px) !important;
+  max-width: clamp(100px, 16vw, 180px) !important;
+  max-height: clamp(50px, 7vw, 70px) !important;
   width: auto !important;
   height: auto !important;
   object-fit: contain;
@@ -373,8 +373,8 @@
 }
 
 .sponsor-grid[data-category="gold"] .sponsor-card-logo img {
-  max-width: clamp(140px, 20vw, 240px) !important;
-  max-height: clamp(60px, 8vw, 80px) !important;
+  max-width: clamp(160px, 22vw, 260px) !important;
+  max-height: clamp(75px, 10vw, 100px) !important;
 }
 
 /* Silver tier logos - medium */
@@ -383,14 +383,14 @@
 }
 
 .sponsor-grid[data-category="silver"] .sponsor-card-logo img {
-  max-width: clamp(110px, 16vw, 180px) !important;
-  max-height: clamp(50px, 7vw, 68px) !important;
+  max-width: clamp(130px, 18vw, 200px) !important;
+  max-height: clamp(60px, 8vw, 80px) !important;
 }
 
 /* Bronze tier logos - standard */
 .sponsor-grid[data-category="bronze"] .sponsor-card-logo img {
-  max-width: clamp(90px, 14vw, 160px) !important;
-  max-height: clamp(45px, 6.5vw, 60px) !important;
+  max-width: clamp(110px, 16vw, 180px) !important;
+  max-height: clamp(55px, 7vw, 70px) !important;
 }
 
 /* Community tier logos - compact */
@@ -399,8 +399,8 @@
 }
 
 .sponsor-grid[data-category="community"] .sponsor-card-logo img {
-  max-width: clamp(75px, 12vw, 140px) !important;
-  max-height: clamp(36px, 5.5vw, 52px) !important;
+  max-width: clamp(90px, 14vw, 160px) !important;
+  max-height: clamp(45px, 6.5vw, 60px) !important;
 }
 
 .sponsor-card:hover .sponsor-card-logo img {

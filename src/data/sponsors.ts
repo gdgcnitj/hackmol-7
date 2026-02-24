@@ -58,8 +58,8 @@ export const sponsors: Sponsor[] = [
     category: "community",
   },
   {
-    name: "Community 2",
-    logo: "",
+    name: "Creative Computer Society",
+    logo: "/images/ccstiet.png",
     label: "Community Partner",
     category: "community",
   },
