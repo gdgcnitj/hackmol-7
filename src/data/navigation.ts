@@ -29,10 +29,10 @@ export const resourceLinks: FooterResourceLink[] = [
 ];
 
 export const archiveLinks: FooterArchiveLink[] = [
-  { label: "HackMol 6.0", href: "https://hackmol-6.devfolio.co" },
-  { label: "HackMol 5.0", href: "https://hackmol-5.devfolio.co" },
-  { label: "HackMol 4.0", href: "https://hackmol-4.devfolio.co" },
-  { label: "HackMol 3.0", href: "https://hackmol3.devfolio.co" },
+  { label: "HackMol 6.0", href: "https://v6.hackmol.com" },
+  { label: "HackMol 5.0", href: "https://v5.hackmol.com" },
+  { label: "HackMol 4.0", href: "https://v4.hackmol.com" },
+  { label: "HackMol 3.0", href: "https://v3.hackmol.com" },
   { label: "HackMol 2.0", href: "https://hackmol.devfolio.co" },
 ];
 
