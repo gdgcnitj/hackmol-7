@@ -39,7 +39,7 @@ export default function Footer() {
 
       <div className="footer-bg footer-bg--wide">
         <Image
-          src="/images/footerBGWide.png"
+          src="/assets/decorative/footerBGWide.png"
           alt=""
           fill
           sizes="100vw"
@@ -49,7 +49,7 @@ export default function Footer() {
 
       <div className="footer-bg footer-bg--narrow">
         <Image
-          src="/images/footerBGNarrow.png"
+          src="/assets/decorative/footerBGNarrow.png"
           alt=""
           fill
           sizes="100vw"
@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="footer-col-1">
           <div className="footer-brand">
             <Image
-              src="/images/hackmol_logo.png"
+              src="/assets/branding/hackmol_logo.png"
               alt="HackMol 7.0"
               width={184}
               height={184}

@@ -40,7 +40,7 @@ function TrackCard({ track }: { track: TrackData }) {
 
       <div className="tracks-card-separator-wrap">
         <Image
-          src="/images/tracksCardSeperator.png"
+          src="/assets/tracks/tracksCardSeperator.png"
           alt=""
           width={500}
           height={16}

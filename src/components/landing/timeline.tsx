@@ -43,7 +43,7 @@ export default function Timeline() {
           <div className="timeline-character">
             <div className="timeline-character-vines">
               <Image
-                src="/images/timelineVines.png"
+                src="/assets/timeline/timelineVines.png"
                 alt=""
                 width={800}
                 height={800}
@@ -52,7 +52,7 @@ export default function Timeline() {
             </div>
             <div className="timeline-character-vessel">
               <Image
-                src="/images/timelinePureVessel.png"
+                src="/assets/timeline/timelinePureVessel.png"
                 alt="Pure Vessel character"
                 width={800}
                 height={800}
@@ -73,8 +73,8 @@ export default function Timeline() {
                     <Image
                       src={
                         index % 2
-                          ? "/images/timelineBulletBlue.png"
-                          : "/images/timelineBulletWhite.png"
+                          ? "/assets/timeline/timelineBulletBlue.png"
+                          : "/assets/timeline/timelineBulletWhite.png"
                       }
                       alt=""
                       width={30}

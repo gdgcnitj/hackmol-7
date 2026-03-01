@@ -5,9 +5,9 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { sponsorTiers as categories, sponsors, tierColumns as tierCols } from "@/data/sponsors";
 import "./Sponsors.css";
-import sponserTag from "../../../public/images/sponserTag.png";
-import upperFrame from "../../../public/images/upperframe.png";
-import lowerFrame from "../../../public/images/lowerframe.png";
+import sponserTag from "../../../public/assets/decorative/sponserTag.png";
+import upperFrame from "../../../public/assets/prizes/upperframe.png";
+import lowerFrame from "../../../public/assets/prizes/lowerframe.png";
 
 /* ─── Component ─── */
 export default function Sponsors() {

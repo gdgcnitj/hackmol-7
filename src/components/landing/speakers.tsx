@@ -9,7 +9,7 @@ import { judgesData, mentorsData } from "@/data/speakers";
 import "./speakers.css";
 
 // Asset imports
-import maskCorner from "../../../public/images/Maskgroup.png";
+import maskCorner from "../../../public/assets/decorative/Maskgroup.png";
 
 function useSwipe(
   itemCount: number,

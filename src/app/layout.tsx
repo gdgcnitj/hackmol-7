@@ -152,7 +152,7 @@ export default function RootLayout({
         "@type": "Organization",
         "name": "Devfolio",
         "url": "https://devfolio.co",
-        "logo": "https://hackmol.com/images/devfolio_white.png"
+        "logo": "https://hackmol.com/assets/sponsors/devfolio_white.png"
       }
     ]
   };
@@ -165,7 +165,7 @@ export default function RootLayout({
         <meta name="color-scheme" content="dark" />
         <meta name="sponsored-by" content="Devfolio" />
         <meta name="platform-partner" content="Devfolio" />
-        <link rel="preload" href="/images/devfolio_white.png" as="image" />
+        <link rel="preload" href="/assets/sponsors/devfolio_white.png" as="image" />
         
 
         

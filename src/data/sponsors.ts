@@ -11,7 +11,7 @@ export const sponsors: Sponsor[] = [
   /* Gold — 1 per row */
   {
     name: "Gofr",
-    logo: "/images/gofr_logo.svg",
+    logo: "/assets/sponsors/gofr_logo.svg",
     label: "Technology Partner",
     category: "gold",
   },
@@ -19,7 +19,7 @@ export const sponsors: Sponsor[] = [
   /* Silver — 2 per row */
   {
     name: "Devfolio",
-    logo: "/images/devfolio_white.png",
+    logo: "/assets/sponsors/devfolio_white.png",
     label: "Platform Partner",
     category: "silver",
   },
@@ -32,6 +32,12 @@ export const sponsors: Sponsor[] = [
 
   /* Bronze — 3 per row */
   {
+    name: "Interview Buddy",
+    logo: "/assets/sponsors/interview_buddy.svg",
+    label: "Associate Partner",
+    category: "bronze",
+  },
+  {
     name: "Coming Soon",
     logo: "",
     label: "Design Partner",
@@ -43,23 +49,17 @@ export const sponsors: Sponsor[] = [
     label: "Beverage Partner",
     category: "bronze",
   },
-  {
-    name: "Coming Soon",
-    logo: "",
-    label: "Gifting Partner",
-    category: "bronze",
-  },
 
   /* Community — 3 per row */
   {
     name: "GDGC NIT Jalandhar",
-    logo: "/images/gdgc-nitj.png",
+    logo: "/assets/sponsors/gdgc-nitj.png",
     label: "Community Partner",
     category: "community",
   },
   {
-    name: "Creative Computer Society",
-    logo: "/images/ccstiet.png",
+    name: "Creative Computing Society",
+    logo: "/assets/sponsors/ccstiet.png",
     label: "Community Partner",
     category: "community",
   },

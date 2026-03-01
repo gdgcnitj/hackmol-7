@@ -1,82 +1,3 @@
-// export default function Prizes() {
-//     return (
-//         <div>
-//         Prizes Section
-//         </div>
-//     )
-// }
-// import React from "react";
-// import "./Prizes.css";
-// import leftcorner from "../../../public/images/corner-left.png";
-// const Prizes: React.FC = () => {
-//   return (
-//     <section className="prizes-section">
-
-//       {/* Corner Decorations */}
-//       <Image src={leftcorner.src} className="corner left" fill alt=""/>
-//       <img src="/assets/corner-right.svg" className="corner right" alt="corner" />
-
-//       <h1 className="title">PRIZES</h1>
-
-//       <div className="cards-container">
-
-//         {/* 2nd Prize */}
-//         <div className="prize-card">
-//           <img src="/assets/bat-2.svg" className="card-icon" alt="2nd prize icon" />
-//           <h2>2nd Prize</h2>
-//           <p className="amount">Rs. XXXX</p>
-
-//           <ul>
-//             <li>Goodies</li>
-//             <li>Geeks for Geeks (800/- INR coupon)</li>
-//             <li>Echo-ar Free premium tier services</li>
-//             <li>Online Mock Interviews</li>
-//             <li>Lifetime upgrades</li>
-//           </ul>
-//         </div>
-
-//         {/* 1st Prize */}
-//         <div className="prize-card first">
-//           <img src="/assets/bat-1.svg" className="card-icon main" alt="1st prize icon" />
-//           <h2>1st Prize</h2>
-//           <p className="amount">Rs. XXXX</p>
-
-//           <ul>
-//             <li>Goodies</li>
-//             <li>Geeks for Geeks (800/- INR coupon)</li>
-//             <li>Echo-ar Free premium tier services</li>
-//             <li>Online Mock Interviews</li>
-//             <li>Lifetime upgrades</li>
-//           </ul>
-//         </div>
-
-//         {/* 3rd Prize */}
-//         <div className="prize-card">
-//           <img src="/assets/bat-3.svg" className="card-icon" alt="3rd prize icon" />
-//           <h2>3rd Prize</h2>
-//           <p className="amount">Rs. XXXX</p>
-
-//           <ul>
-//             <li>Goodies</li>
-//             <li>Geeks for Geeks (800/- INR coupon)</li>
-//             <li>Echo-ar Free premium tier services</li>
-//             <li>Online Mock Interviews</li>
-//             <li>Lifetime upgrades</li>
-//           </ul>
-//         </div>
-
-//       </div>
-
-//       {/* Side Characters */}
-//       <img src="/assets/knight-left.png" className="character left-character" alt="left character" />
-//       <img src="/assets/knight-right.png" className="character right-character" alt="right character" />
-
-//     </section>
-//   );
-// };
-
-// export default Prizes;
-
 "use client";
 
 import Image from "next/image";
@@ -85,18 +6,18 @@ import { topPrizes as topPrizesData, specialPrizes as specialPrizesData } from "
 import "./Prizes.css";
 
 // Asset imports (static images for Next.js optimisation)
-import batFirst from "../../../public/images/bat-first.png";
-import batSecond from "../../../public/images/bat-second.png";
-import batThird from "../../../public/images/bat-third.png";
-import upperframe from "../../../public/images/upperframe.png";
-import lowerframe from "../../../public/images/lowerframe.png";
+import batFirst from "../../../public/assets/prizes/bat-first.png";
+import batSecond from "../../../public/assets/prizes/bat-second.png";
+import batThird from "../../../public/assets/prizes/bat-third.png";
+import upperframe from "../../../public/assets/prizes/upperframe.png";
+import lowerframe from "../../../public/assets/prizes/lowerframe.png";
 import type { StaticImageData } from "next/image";
 
 /** Map icon paths from data layer to static imports */
 const prizeIconMap: Record<string, StaticImageData> = {
-  "/images/bat-first.png": batFirst,
-  "/images/bat-second.png": batSecond,
-  "/images/bat-third.png": batThird,
+  "/assets/prizes/bat-first.png": batFirst,
+  "/assets/prizes/bat-second.png": batSecond,
+  "/assets/prizes/bat-third.png": batThird,
 };
 
 export default function Prizes() {
@@ -106,7 +27,7 @@ export default function Prizes() {
         title="PRIZES &"
         highlight="REWARDS"
         highlightPosition="after"
-        description="The realm's greatest honors await. Over $1,080 in total prizes for those who dare to forge legendary solutions."
+        description="The realm's greatest honors await. Over ₹1,00,000+ in total prizes for those who dare to forge legendary solutions."
       />
 
       {/* TOP 3 PRIZES */}
@@ -120,7 +41,7 @@ export default function Prizes() {
             <div className="prize-icon-wrapper">
               {prize.highlight && (
                 <Image
-                  src="/images/dotsbg.png"
+                  src="/assets/prizes/dotsbg.png"
                   width={600}
                   height={200}
                   alt=""
@@ -172,7 +93,7 @@ export default function Prizes() {
 
       {/* SIDE CHARACTERS */}
       <Image
-        src="/images/knight-right.png"
+        src="/assets/decorative/knight-right.png"
         alt="Knight decoration"
         width={200}
         height={300}
@@ -180,7 +101,7 @@ export default function Prizes() {
       />
 
       <Image
-        src="/images/knight-left.png"
+        src="/assets/decorative/knight-left.png"
         alt="Knight decoration"
         width={200}
         height={300}

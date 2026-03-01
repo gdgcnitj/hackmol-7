@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "./SectionHeading.css";
-import ornament from "../../../public/images/SponserOrnament.png";
+import ornament from "../../../public/assets/decorative/SponserOrnament.png";
 import type { SectionHeadingProps } from "@/types";
 
 export default function SectionHeading({
@@ -14,7 +14,7 @@ export default function SectionHeading({
     <div className={`section-heading__wrapper ${className}`}>
       {/* Corner ornaments — shown automatically in every section */}
       <Image
-        src="/images/timelineLeftBorder.png"
+        src="/assets/timeline/timelineLeftBorder.png"
         alt=""
         width={130}
         height={130}
@@ -22,7 +22,7 @@ export default function SectionHeading({
         aria-hidden="true"
       />
       <Image
-        src="/images/timelineRightBorder.png"
+        src="/assets/timeline/timelineRightBorder.png"
         alt=""
         width={130}
         height={130}

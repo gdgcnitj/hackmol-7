@@ -13,7 +13,7 @@ export const aboutContent: AboutContent = {
   description:
     "The seventh edition of HackMol, organised by GDGC NIT Jalandhar, is your battleground for innovation. <span class=\"hidden md:inline\"> This 30-hour hackathon unites warriors of code, both seasoned champions and rising contenders to forge groundbreaking solutions across digital realms. March 28-29, 2026. Descend into the depths of innovation, discover new possibilities, and develop real-world solutions that leave a lasting impact.</span>",
   image: {
-    src: "/images/team.png",
+    src: "/assets/team/team.png",
     alt: "HackMol Team at NIT Jalandhar",
     width: 500,
     height: 350,

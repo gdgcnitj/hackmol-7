@@ -63,7 +63,7 @@
     position: absolute;
     inset: 0;
     border-radius: 24px;
-    background-image: url("/images/tilt_bg.png");
+    background-image: url("/assets/decorative/tilt_bg.png");
     filter: brightness(200%);
     background-size: contain;
     background-position: center;
@@ -144,10 +144,10 @@
     filter: drop-shadow(0 8px 22px rgba(77, 168, 218, 0.32));
 }
 
-.card-1 { background-image: url("/images/Frame_1.png"); }
-.card-2 { background-image: url("/images/Frame_2.png"); }
-.card-3 { background-image: url("/images/Frame_3.png"); }
-.card-4 { background-image: url("/images/Frame_4.png"); }
+.card-1 { background-image: url("/assets/decorative/Frame_1.png"); }
+.card-2 { background-image: url("/assets/decorative/Frame_2.png"); }
+.card-3 { background-image: url("/assets/decorative/Frame_3.png"); }
+.card-4 { background-image: url("/assets/decorative/Frame_4.png"); }
 
 /*
   The frame images contain a decorative ornament on their left side.

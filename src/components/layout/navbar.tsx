@@ -24,7 +24,7 @@ export default function Navbar() {
             <div className="nav-logo">
                 <Link href="/">
                     <Image 
-                        src="/images/hackmol_logo.png" 
+                        src="/assets/branding/hackmol_logo.png" 
                         alt="HackMol" 
                         width={120} 
                         height={40}
@@ -43,28 +43,28 @@ export default function Navbar() {
                     onClick={() => window.open(siteConfig.devfolioUrl, '_blank')}
                 >
                     <Image 
-                        src="/images/right-corner.png" 
+                        src="/assets/decorative/right-corner.png" 
                         alt="" 
                         width={30} 
                         height={30}
                         className="ornament ornament-top-left"
                     />
                     <Image 
-                        src="/images/right-corner.png" 
+                        src="/assets/decorative/right-corner.png" 
                         alt="" 
                         width={30} 
                         height={30}
                         className="ornament ornament-top-right"
                     />
                     <Image 
-                        src="/images/right-corner.png" 
+                        src="/assets/decorative/right-corner.png" 
                         alt="" 
                         width={30} 
                         height={30}
                         className="ornament ornament-bottom-left"
                     />
                     <Image 
-                        src="/images/right-corner.png" 
+                        src="/assets/decorative/right-corner.png" 
                         alt="" 
                         width={30} 
                         height={30}

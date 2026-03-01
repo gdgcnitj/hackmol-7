@@ -29,14 +29,14 @@
 .sponsors-section::before {
   left: 10;
   top: 20%;
-  background-image: url('/images/knight-right.png');
+  background-image: url('/assets/decorative/knight-right.png');
   background-position: left center;
 }
 
 .sponsors-section::after {
   right: 10;
   top: 40%;
-  background-image: url('/images/knight-left.png');
+  background-image: url('/assets/decorative/knight-left.png');
   background-position: right center;
 }
 
@@ -219,7 +219,7 @@
   left: 0;
   width: 70%;
   height: 70%;
-  background-image: url('/images/image91.png');
+  background-image: url('/assets/decorative/image91.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left bottom;

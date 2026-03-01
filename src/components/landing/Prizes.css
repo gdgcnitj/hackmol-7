@@ -54,7 +54,7 @@
   left: 0;
   width: 66.67%;
   height: 66.67%;
-  background-image: url('/images/image91.png');
+  background-image: url('/assets/decorative/image91.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -117,7 +117,7 @@
   left: 0;
   width: 66.67%;
   height: 66.67%;
-  background-image: url('/images/image91.png');
+  background-image: url('/assets/decorative/image91.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -274,15 +274,15 @@
 
 .prize-subtitle {
   font-family: var(--font-cinzel), serif;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
   margin: clamp(4px, 0.5vw, 6px) 0 0;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
 }
 
 .prize-highlight .prize-subtitle {
-  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   color: rgba(255, 255, 255, 0.95);
 }
 
@@ -305,14 +305,14 @@
 
 .prize-amount {
   font-family: var(--font-cinzel), serif;
-  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
-  font-weight: 600;
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-weight: 700;
   margin: 0;
   color: rgba(237, 237, 237, 0.95);
 }
 
 .prize-highlight .prize-amount {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(3.75rem, 6.5vw, 5.5rem);
   color: #89cff0;
 }
 
@@ -397,8 +397,8 @@
 
 .special-prize-subtitle {
   font-family: var(--font-cinzel), serif;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
   margin: clamp(4px, 0.6vw, 6px) 0 0;
   color: rgba(255, 255, 255, 0.85);
   text-align: center;
@@ -417,7 +417,7 @@
 
 .special-prize-amount {
   font-family: var(--font-cinzel), serif;
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-size: clamp(2.75rem, 5vw, 4rem);
   font-weight: 700;
   margin: 0;
   color: #4da8da;

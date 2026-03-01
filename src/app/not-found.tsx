@@ -44,7 +44,7 @@ export default function NotFound() {
       <div className="not-found-content">
         <div className="not-found-character">
           <Image
-            src="/images/timelinePureVessel.png"
+            src="/assets/timeline/timelinePureVessel.png"
             alt="Pure Vessel - Lost in Hallownest"
             width={400}
             height={400}
@@ -66,28 +66,28 @@ export default function NotFound() {
           <div className="not-found-actions">
             <Link href="/" className="not-found-button navbar-style">
               <Image 
-                src="/images/right-corner.png" 
+                src="/assets/decorative/right-corner.png" 
                 alt="" 
                 width={30} 
                 height={30}
                 className="ornament ornament-top-left"
               />
               <Image 
-                src="/images/right-corner.png" 
+                src="/assets/decorative/right-corner.png" 
                 alt="" 
                 width={30} 
                 height={30}
                 className="ornament ornament-top-right"
               />
               <Image 
-                src="/images/right-corner.png" 
+                src="/assets/decorative/right-corner.png" 
                 alt="" 
                 width={30} 
                 height={30}
                 className="ornament ornament-bottom-left"
               />
               <Image 
-                src="/images/right-corner.png" 
+                src="/assets/decorative/right-corner.png" 
                 alt="" 
                 width={30} 
                 height={30}

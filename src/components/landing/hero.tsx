@@ -308,7 +308,7 @@ export default function Hero() {
       <div className={`hero-loading-overlay ${isLoaded ? "hero-loading-hidden" : ""}`}>
         <div className="hero-loading-content">
           <Image
-            src="/images/hackmol_logo.png"
+            src="/assets/branding/hackmol_logo.png"
             alt="HackMol 7.0"
             width={600}
             height={180}
@@ -336,7 +336,7 @@ export default function Hero() {
           {/* Logo OVERLAY */}
           <div className="logo-overlay">
             <Image
-              src="/images/hackmol_logo.png"
+              src="/assets/branding/hackmol_logo.png"
               alt="HackMol 7.0"
               width={1000}
               height={300}
@@ -382,28 +382,28 @@ export default function Hero() {
               onClick={() => window.open(siteConfig.devfolioUrl, '_blank')}
             >
               <Image
-                src="/images/right-corner.png"
+                src="/assets/decorative/right-corner.png"
                 alt=""
                 width={30}
                 height={30}
                 className="ornament ornament-top-left"
               />
               <Image
-                src="/images/right-corner.png"
+                src="/assets/decorative/right-corner.png"
                 alt=""
                 width={30}
                 height={30}
                 className="ornament ornament-top-right"
               />
               <Image
-                src="/images/right-corner.png"
+                src="/assets/decorative/right-corner.png"
                 alt=""
                 width={30}
                 height={30}
                 className="ornament ornament-bottom-left"
               />
               <Image
-                src="/images/right-corner.png"
+                src="/assets/decorative/right-corner.png"
                 alt=""
                 width={30}
                 height={30}

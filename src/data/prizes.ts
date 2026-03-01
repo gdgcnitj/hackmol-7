@@ -3,18 +3,18 @@ import type { TopPrize, SpecialPrize } from "@/types";
 export const topPrizes: TopPrize[] = [
   {
     title: "The Shadow Relic",
-    subtitle: "Second Place: ₹30,000",
+    subtitle: "₹30,000",
     amount: "₹30,000",
-    iconPath: "/images/bat-second.png",
+    iconPath: "/assets/prizes/bat-second.png",
     rank: "2nd",
     description:
       "For the team delivering a highly impressive and technically strong solution.",
   },
   {
     title: "The Abyss Crown",
-    subtitle: "First Place: ₹50,000",
+    subtitle: "₹50,000",
     amount: "₹50,000",
-    iconPath: "/images/bat-first.png",
+    iconPath: "/assets/prizes/bat-first.png",
     highlight: true,
     rank: "1st",
     description:
@@ -22,9 +22,9 @@ export const topPrizes: TopPrize[] = [
   },
   {
     title: "The Crystal Honor",
-    subtitle: "Third Place: ₹10,000",
+    subtitle: "₹10,000",
     amount: "₹10,000",
-    iconPath: "/images/bat-third.png",
+    iconPath: "/assets/prizes/bat-third.png",
     rank: "3rd",
     description:
       "Recognizing a standout project with strong potential and creativity.",
@@ -34,7 +34,7 @@ export const topPrizes: TopPrize[] = [
 export const specialPrizes: SpecialPrize[] = [
   {
     title: "The Lantern of Beginnings",
-    subtitle: "Fresher's Track: ₹10,000",
+    subtitle: "₹10,000",
     amount: "₹10,000",
     category: "Fresher's Track",
     description:
@@ -42,7 +42,7 @@ export const specialPrizes: SpecialPrize[] = [
   },
   {
     title: "The Queen's Emblem",
-    subtitle: "Women Track: ₹10,000",
+    subtitle: "₹10,000",
     amount: "₹10,000",
     category: "Women Track",
     description:

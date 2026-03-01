@@ -34,7 +34,7 @@ export default function FAQ() {
 
       {/* Side knight characters */}
       <Image
-        src="/images/knight-right.png"
+        src="/assets/decorative/knight-right.png"
         alt=""
         width={180}
         height={260}
@@ -42,7 +42,7 @@ export default function FAQ() {
         aria-hidden="true"
       />
       <Image
-        src="/images/knight-left.png"
+        src="/assets/decorative/knight-left.png"
         alt=""
         width={180}
         height={260}
