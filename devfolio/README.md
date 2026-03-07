@@ -2,63 +2,29 @@
 
 > **March 28 – 29, 2026 | NIT Jalandhar, Punjab**
 
----
-
-HackMol 7.0 is NIT Jalandhar's flagship hackathon, inspired by the mysterious world of **Hollow Knight**. Descend into the depths of creativity and forge powerful technological solutions in this **30-hour onsite innovation arena**.
-
-Bringing together the brightest developers, designers, and problem-solvers, HackMol 7.0 is where ideas transform into real-world impact.
+NIT Jalandhar's flagship **30-hour onsite hackathon** inspired by Hollow Knight. Descend into the depths of creativity and forge powerful technological solutions.
 
 ---
 
-### **Event Format**
+### **Round 1: Idea Submission**
 
-**Phase 1: Idea Submission**  
-Form your team and submit ideas via Devfolio using the official PPT template.
+**Submit your idea:** [Round 1 Submission Form](https://docs.google.com/forms/d/e/1FAIpQLSfc36KOpyJJjNHl0JwyGgPvdgAHDztu_uflMPFKIV9lhmx61w/viewform?usp=dialog)
 
-**Phase 2: The Final Descent (Onsite)**  
-Top teams compete in a 30-hour hackathon at NIT Jalandhar with:
-* Accommodation with proper bedding
-* 24/7 high-speed internet
-* Temperature-controlled venues
-* Meals and refreshments
+**Important Note:**  
+Acceptance on Devfolio doesn't mean you are qualified for the offline round. You must submit the PPT for Round 1 to qualify. Join our WhatsApp group — results will be announced there.
 
 ---
 
-### **Tracks & Prizes**
+### **Round 2: The Final Descent (Onsite)**
 
-**The Deepforge Arena (Main Track)**
-* 1st: ₹50,000 - The Abyss Crown
-* 2nd: ₹30,000 - The Shadow Relic
-* 3rd: ₹10,000 - The Crystal Honor
-
-**The Rising Lanterns (Fresher's Track)**
-* ₹10,000 - The Lantern of Beginnings
-
-**The Queen's Vanguard (Women's Track)**
-* ₹10,000 - The Queen's Emblem
-
-_Plus swags, goodies & mentorship from industry experts!_
-
----
-
-### **Why Participate?**
-
-✦ Real-world problem statements across high-impact domains  
-✦ Mentorship from experienced developers  
-✦ Network with builders nationwide  
-✦ Recognition and career opportunities
+Top teams compete in a 30-hour hackathon at NIT Jalandhar.
 
 ---
 
 ### **Join Our Community**
 
-**[Register on Devfolio](https://hackmol-7.devfolio.co/)**  
-**[WhatsApp Support](https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU)** - Registration help & queries  
-**[Find Teammates](https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2)** - Connect & form teams
+[WhatsApp Support](https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU) - Registration help & queries  
+[Find Teammates](https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2) - Connect & form teams
 
----
 
-**Organized by:** GDGC NIT Jalandhar  
-**Website:** [hackmol.tech](https://hackmol.tech)
-
-_HackMOL 7.0 is not just a hackathon, it's a journey into the Hollow._
+**[Download PPT Template](https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?usp=sharing&ouid=114610509794432923711&rtpof=true&sd=true)**
