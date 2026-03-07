@@ -12,13 +12,13 @@ export const sponsors: Sponsor[] = [
   {
     name: "Gofr",
     logo: "/assets/sponsors/gofr_logo.svg",
-    label: "Technology Partner",
+    label: "Title Sponsor",
     category: "gold",
   },
   {
     name: "Lovable",
     logo: "/assets/sponsors/lovable.svg",
-    label: "Technology Partner",
+    label: "Co-Powered by",
     category: "gold",
   },
 
@@ -29,30 +29,18 @@ export const sponsors: Sponsor[] = [
     label: "Platform Partner",
     category: "silver",
   },
-  {
-    name: "Coming Soon",
-    logo: "",
-    label: "Media Partner",
-    category: "silver",
-  },
 
   /* Bronze — 3 per row */
   {
     name: "Interview Buddy",
     logo: "/assets/sponsors/interview_buddy.svg",
-    label: "Associate Partner",
+    label: "Hiring Partner",
     category: "bronze",
   },
   {
     name: "Osen",
     logo: "/assets/sponsors/osen.png",
-    label: "Associate Partner",
-    category: "bronze",
-  },
-  {
-    name: "Coming Soon",
-    logo: "",
-    label: "Beverage Partner",
+    label: "Event Partner",
     category: "bronze",
   },
 
@@ -72,24 +60,6 @@ export const sponsors: Sponsor[] = [
   {
     name: "Spec NITH",
     logo: "/assets/sponsors/spec_nith.png",
-    label: "Community Partner",
-    category: "community",
-  },
-  {
-    name: "Community 4",
-    logo: "",
-    label: "Community Partner",
-    category: "community",
-  },
-  {
-    name: "Community 5",
-    logo: "",
-    label: "Community Partner",
-    category: "community",
-  },
-  {
-    name: "Community 6",
-    logo: "",
     label: "Community Partner",
     category: "community",
   },
