@@ -15,6 +15,12 @@ export const sponsors: Sponsor[] = [
     label: "Technology Partner",
     category: "gold",
   },
+  {
+    name: "Lovable",
+    logo: "/assets/sponsors/lovable.svg",
+    label: "Technology Partner",
+    category: "gold",
+  },
 
   /* Silver — 2 per row */
   {
@@ -38,9 +44,9 @@ export const sponsors: Sponsor[] = [
     category: "bronze",
   },
   {
-    name: "Coming Soon",
-    logo: "",
-    label: "Design Partner",
+    name: "Osen",
+    logo: "/assets/sponsors/osen.png",
+    label: "Associate Partner",
     category: "bronze",
   },
   {
@@ -64,8 +70,8 @@ export const sponsors: Sponsor[] = [
     category: "community",
   },
   {
-    name: "Community 3",
-    logo: "",
+    name: "Spec NITH",
+    logo: "/assets/sponsors/spec_nith.png",
     label: "Community Partner",
     category: "community",
   },
