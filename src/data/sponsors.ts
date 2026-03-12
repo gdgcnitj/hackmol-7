@@ -16,8 +16,8 @@ export const sponsors: Sponsor[] = [
     category: "gold",
   },
   {
-    name: "Lovable",
-    logo: "/assets/sponsors/lovable.svg",
+    name: "V0 by Vercel",
+    logo: "/assets/sponsors/v0.png",
     label: "Co-Powered by",
     category: "gold",
   },
