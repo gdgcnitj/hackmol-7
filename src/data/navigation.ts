@@ -14,6 +14,7 @@ export const navLinks: NavLink[] = [
   { label: "Tracks",   href: "#tracks" },
   { label: "Sponsors", href: "#sponsors" },
   { label: "Prizes",   href: "#prizes" },
+  { label: "Judges",   href: "#judges" },
   { label: "FAQ",      href: "#faq" },
 ];
 

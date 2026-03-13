@@ -2,10 +2,10 @@ import type { PersonData } from "@/types";
 
 export const judgesData: PersonData[] = [
   {
-    name: "TO BE ANNOUNCED",
-    designation: "to be announced",
+    name: "Adil Mayank Tiwari",
+    designation: "SDE 1 at Unstop",
     category: "JUDGE",
-    image: "/assets/team/tba.png",
+    image: "/assets/judges/adil.png",
     linkedin: "",
     instagram: "",
   },

@@ -138,7 +138,7 @@ export default function Speakers() {
   }, [isMobile, activeMentorIndex]);
 
   return (
-    <div className="speakers-section">
+    <div className="speakers-section" id="judges">
       {/* HEADER SECTION */}
       <SectionHeading
         title="JUDGES &"
