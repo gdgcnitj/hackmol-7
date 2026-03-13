@@ -63,6 +63,12 @@ export const sponsors: Sponsor[] = [
     label: "Community Partner",
     category: "community",
   },
+  {
+    name: "The Uniques Community",
+    logo: "/assets/sponsors/theuniques.png",
+    label: "Community Partner",
+    category: "community",
+  },
 ];
 
 /** Column count per sponsor tier for the grid layout */
