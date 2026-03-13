@@ -171,7 +171,9 @@ export interface PersonData {
   category: "JUDGE" | "MENTOR";
   image: string; // path (resolved to StaticImageData at component level)
   linkedin?: string;
+  twitter?: string;
   instagram?: string;
+  portfolio?: string;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

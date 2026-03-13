@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaGlobe } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { judgesData, mentorsData } from "@/data/speakers";
 
 import "./speakers.css";
@@ -189,13 +190,23 @@ export default function Speakers() {
 
               <div className="social-links">
                 {person.linkedin && (
-                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} LinkedIn`}>
                     <FaLinkedin />
                   </a>
                 )}
+                {person.twitter && (
+                  <a href={person.twitter} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Twitter`}>
+                    <FaXTwitter />
+                  </a>
+                )}
                 {person.instagram && (
-                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Instagram`}>
                     <FaInstagram />
+                  </a>
+                )}
+                {person.portfolio && (
+                  <a href={person.portfolio} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Portfolio`}>
+                    <FaGlobe />
                   </a>
                 )}
               </div>
@@ -259,13 +270,23 @@ export default function Speakers() {
 
               <div className="social-links">
                 {person.linkedin && (
-                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} LinkedIn`}>
                     <FaLinkedin />
                   </a>
                 )}
+                {person.twitter && (
+                  <a href={person.twitter} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Twitter`}>
+                    <FaXTwitter />
+                  </a>
+                )}
                 {person.instagram && (
-                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon">
+                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Instagram`}>
                     <FaInstagram />
+                  </a>
+                )}
+                {person.portfolio && (
+                  <a href={person.portfolio} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Portfolio`}>
+                    <FaGlobe />
                   </a>
                 )}
               </div>

@@ -59,14 +59,14 @@
 
 /* Judges Grid: 3 cards - centered layout */
 .judges-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  max-width: 1100px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 /* Mentors Grid: 5 cards - flexible layout */
 .mentors-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 /* ===========================
@@ -287,12 +287,12 @@
 /* Extra Large Screens (1536px+) */
 @media (min-width: 1536px) {
   .judges-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
   }
   
   .mentors-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 2rem;
   }
   
@@ -304,25 +304,30 @@
 /* Large Screens (1280px - 1535px) */
 @media (min-width: 1280px) and (max-width: 1535px) {
   .judges-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
   }
   
   .mentors-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
   }
 }
 
 /* Medium-Large Screens (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .judges-grid,
+  .judges-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
   .mentors-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
   }
   
   .speaker-card {
-    max-width: 320px;
+    max-width: 100%;
   }
 }
 
