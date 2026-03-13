@@ -18,7 +18,7 @@ export const judgesData: PersonData[] = [
     image: "/assets/judges/anmol.png",
     linkedin: "https://www.linkedin.com/in/anmolvirdi/",
     twitter: "https://x.com/paracetanmol",
-    instagram: "",
+    instagram: "https://www.instagram.com/_anmolvirdi_/",
     portfolio: "",
   },
     {
