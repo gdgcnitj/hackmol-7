@@ -10,9 +10,15 @@ export const sponsorTiers: SponsorTier[] = [
 export const sponsors: Sponsor[] = [
   /* Gold — 1 per row */
   {
+    name: "HackerRank",
+    logo: "/assets/sponsors/hackerrank.png",
+    label: "Coding Partner",
+    category: "gold",
+  },
+  {
     name: "Gofr",
-    logo: "/assets/sponsors/gofr_logo.svg",
-    label: "Title Sponsor",
+    logo: "/assets/sponsors/gofr.png",
+    label: "Powered by",
     category: "gold",
   },
   {
