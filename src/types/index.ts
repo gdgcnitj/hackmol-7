@@ -121,6 +121,23 @@ export interface InnovationArea {
   iconName: string; // icon identifier resolved in the component
 }
 
+export interface SpecialTrackReward {
+  title: string;
+  description: string;
+  iconName: string;
+  amount?: string;
+  url?: string;
+}
+
+export interface SpecialTrackData {
+  name: string;
+  badge: string;
+  organizerName: string;
+  organizerUrl: string;
+  description: string;
+  rewards: SpecialTrackReward[];
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    SPONSORS SECTION
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -132,6 +149,7 @@ export interface Sponsor {
   logo: string;
   label: string;
   category: SponsorCategory;
+  url?: string;
 }
 
 export interface SponsorTier {

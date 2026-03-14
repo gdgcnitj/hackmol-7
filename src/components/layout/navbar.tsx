@@ -9,14 +9,50 @@ import "./Navbar.css";
 
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState<string>("");
 
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const sectionIds = navLinks
+            .map((l) => l.href.replace("#", ""))
+            .filter(Boolean);
+
+        const observers: IntersectionObserver[] = [];
+        const visibleSections = new Map<string, number>();
+
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        visibleSections.set(id, entry.intersectionRatio);
+                    } else {
+                        visibleSections.delete(id);
+                    }
+                    if (visibleSections.size > 0) {
+                        const best = [...visibleSections.entries()].reduce((a, b) =>
+                            a[1] >= b[1] ? a : b
+                        );
+                        setActiveSection(best[0]);
+                    }
+                },
+                { threshold: [0, 0.2, 0.5, 0.8, 1], rootMargin: "-60px 0px -20% 0px" }
+            );
+
+            observer.observe(el);
+            observers.push(observer);
+        });
+
+        return () => observers.forEach((o) => o.disconnect());
     }, []);
 
     return (
@@ -33,9 +69,19 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="nav-links">
-                {navLinks.map((link) => (
-                    <a key={link.href} href={link.href}>{link.label}</a>
-                ))}
+                {navLinks.map((link) => {
+                    const sectionId = link.href.replace("#", "");
+                    const isActive = activeSection === sectionId;
+                    return (
+                        <a
+                            key={link.href}
+                            href={link.href}
+                            className={isActive ? "active" : ""}
+                        >
+                            {link.label}
+                        </a>
+                    );
+                })}
             </div>
             <div className="register-btn-wrapper">
                 <button 

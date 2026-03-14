@@ -62,15 +62,18 @@ export default function Sponsors() {
                 style={{ gridTemplateColumns: `repeat(${tierCols[cat.key]}, 1fr)` }}
               >
                 {categorySponsors.map((s, i) => (
-                  <div
+                  <a
                     key={i}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="sponsor-card"
                   >
                     <div className="sponsor-card-logo">
                       {s.logo ? (
                         <Image 
                           src={s.logo} 
-                          alt={s.name === "Devfolio" ? "Devfolio" : `${s.name} - ${s.label}`} 
+                          alt={s.name}
                           width={160} 
                           height={56} 
                           style={{ objectFit: "contain" }}
@@ -81,8 +84,7 @@ export default function Sponsors() {
                       )}
                     </div>
                     <h3 className="sponsor-card-name">{s.name}</h3>
-                    <p className="sponsor-card-label">{s.label}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>

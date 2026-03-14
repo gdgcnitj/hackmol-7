@@ -63,6 +63,15 @@
   width: 100%;
 }
 
+.nav-links a.active {
+  color: rgba(77, 168, 218, 1);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  background: rgba(77, 168, 218, 1);
+}
+
 .register-btn-wrapper {
   position: relative;
   display: inline-block;

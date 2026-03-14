@@ -8,10 +8,14 @@ import {
   FaGraduationCap, 
   FaShieldAlt, 
   FaNetworkWired,
+  FaCrown,
+  FaRocket,
+  FaCode,
+  FaGift,
 } from "react-icons/fa";
 import { SiBlockchaindotcom } from "react-icons/si";
-import type { TrackData } from "@/types";
-import { tracksData, innovationAreas } from "@/data/tracks";
+import type { TrackData, SpecialTrackData } from "@/types";
+import { tracksData, innovationAreas, hackerRankTrack } from "@/data/tracks";
 import "./tracks.css";
 
 /** Map icon names (from data layer) to actual React icon components */
@@ -24,6 +28,10 @@ const iconMap: Record<string, React.ReactNode> = {
   FaGraduationCap: <FaGraduationCap />,
   FaShieldAlt: <FaShieldAlt />,
   FaNetworkWired: <FaNetworkWired />,
+  FaCrown: <FaCrown />,
+  FaRocket: <FaRocket />,
+  FaCode: <FaCode />,
+  FaGift: <FaGift />,
 };
 
 function TrackCard({ track }: { track: TrackData }) {
@@ -67,6 +75,60 @@ function TrackCard({ track }: { track: TrackData }) {
   );
 }
 
+function SpecialTrackCard({ track }: { track: SpecialTrackData }) {
+  return (
+    <div className="tracks-special-card">
+      <div className="tracks-special-header">
+        <span className="tracks-special-badge">{track.badge}</span>
+        <h3 className="tracks-special-name">{track.name}</h3>
+        <p className="tracks-special-organizer">
+          In collaboration with{" "}
+          <a
+            href={track.organizerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tracks-special-organizer-link"
+          >
+            <strong>{track.organizerName}</strong>
+          </a>
+        </p>
+      </div>
+
+      <div className="tracks-special-body">
+        <p className="tracks-special-description">{track.description}</p>
+
+        <div className="tracks-special-rewards">
+          <h4 className="tracks-special-rewards-title">
+            Rewards for Top 3 Performers
+          </h4>
+          <div className="tracks-special-rewards-grid">
+            {track.rewards.map((reward, i) => (
+              <a
+                key={i}
+                href={reward.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="tracks-special-reward-item"
+              >
+                <div className="tracks-special-reward-icon">
+                  {iconMap[reward.iconName]}
+                </div>
+                <div className="tracks-special-reward-text">
+                  <div className="tracks-special-reward-title">{reward.title}</div>
+                  {reward.amount && (
+                    <div className="tracks-special-reward-amount">{reward.amount}</div>
+                  )}
+                  <div className="tracks-special-reward-desc">{reward.description}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Tracks() {
   return (
     <section className="tracks-section" id="tracks">
@@ -81,6 +143,10 @@ export default function Tracks() {
         {tracksData.map((track, i) => (
           <TrackCard key={i} track={track} />
         ))}
+      </div>
+
+      <div className="tracks-special-wrapper">
+        <SpecialTrackCard track={hackerRankTrack} />
       </div>
 
       <div className="tracks-innovation">

@@ -48,4 +48,12 @@ export const specialPrizes: SpecialPrize[] = [
     description:
       "Awarded to the most outstanding women-led innovation of HackMOL 7.0.",
   },
+  {
+    title: "HackerRank Coding Challenge",
+    subtitle: "$500K",
+    amount: "$300 / winner",
+    category: "HackerRank Coding Track",
+    description:
+      "Top 3 coders win 1-year HackerRank Infinity Plan ($300/person), 6-month JoinSecret access (1500+ tools worth up to $500K in credits), mock interview credits, and exclusive HackerRank merchandise.",
+  },
 ];

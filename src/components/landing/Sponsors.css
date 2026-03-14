@@ -209,6 +209,9 @@
   width: 100%;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 /* Background decorative pattern */
@@ -492,57 +495,6 @@
   color: rgba(255, 255, 255, 1);
 }
 
-/* Label below logo */
-.sponsor-card-label {
-  font-family: var(--font-geist-sans), sans-serif;
-  font-size: clamp(9px, 0.85vw, 12px);
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  margin: 0;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  line-height: 1.4;
-}
-
-/* Gold tier labels - larger */
-.sponsor-grid[data-category="gold"] .sponsor-card-label {
-  font-size: clamp(11px, 1vw, 14px);
-  letter-spacing: 0.12em;
-  color: rgba(137, 207, 240, 0.75);
-}
-
-.sponsor-grid[data-category="gold"] .sponsor-card:hover .sponsor-card-label {
-  color: rgba(137, 207, 240, 0.95);
-}
-
-/* Silver tier labels */
-.sponsor-grid[data-category="silver"] .sponsor-card-label {
-  font-size: clamp(10px, 0.9vw, 13px);
-  color: rgba(111, 168, 255, 0.7);
-}
-
-.sponsor-grid[data-category="silver"] .sponsor-card:hover .sponsor-card-label {
-  color: rgba(111, 168, 255, 0.9);
-}
-
-/* Bronze tier labels */
-.sponsor-grid[data-category="bronze"] .sponsor-card-label {
-  color: rgba(90, 146, 217, 0.65);
-}
-
-.sponsor-grid[data-category="bronze"] .sponsor-card:hover .sponsor-card-label {
-  color: rgba(90, 146, 217, 0.85);
-}
-
-/* Default hover state */
-.sponsor-card:hover .sponsor-card-label {
-  color: rgba(255, 255, 255, 0.8);
-}
-
 /* ══════════════════════════════════════════
    Responsive Breakpoints - Industry Grade
    ══════════════════════════════════════════ */
@@ -709,11 +661,6 @@
     font-size: 10px;
     letter-spacing: 0.08em;
   }
-  
-  .sponsor-card-label {
-    font-size: 9px;
-    letter-spacing: 0.08em;
-  }
 }
 
 /* Mobile Portrait (320px - 479px) */
@@ -775,12 +722,6 @@
   .sponsor-card-name {
     font-size: 9px;
     letter-spacing: 0.08em;
-  }
-  
-  .sponsor-card-label {
-    font-size: 8px;
-    letter-spacing: 0.08em;
-    line-height: 1.3;
   }
 }
 
@@ -855,7 +796,6 @@
 @media (prefers-reduced-motion: reduce) {
   .sponsor-card,
   .sponsor-card-logo img,
-  .sponsor-card-label,
   .tier-ornament-top,
   .tier-ornament-bottom {
     transition: none;
