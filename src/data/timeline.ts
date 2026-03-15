@@ -12,9 +12,9 @@ export const timelineEvents: TimelineEvent[] = [
     date: "Mar 24, 2026",
   },
   {
-    title: "PPT SUBMISSION DEADLINE",
-    description: "Final presentation (PPT) submissions due.",
-    date: "Mar 26, 2026",
+    title: "PPT Submission Deadline 26 March 5PM",
+    description: "PPT Submission Deadline 26 March 5PM.",
+    date: "Mar 26, 5:00 PM",
   },
   {
     title: "HACKATHON STARTS",

@@ -6,7 +6,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HiChevronDown } from "react-icons/hi2";
 import { heroConfig } from "@/data/hero";
-import { siteConfig } from "@/data/site";
 import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -333,84 +332,101 @@ export default function Hero() {
           {/* Atmospheric backdrop — soft dark gradient behind content zone */}
           <div className="hero-content-backdrop"></div>
 
-          {/* Logo OVERLAY */}
-          <div className="logo-overlay">
-            <Image
-              src="/assets/branding/hackmol_logo.png"
-              alt="HackMol 7.0"
-              width={1000}
-              height={300}
-              className="logo-ornament"
-              priority
-            />
-            {/* Tagline */}
-            <div className="hero-tagline">
-              Descend. Discover. Develop.
-            </div>
-          </div>
-
-          {/* Countdown Timer */}
-          <div className="countdown-overlay">
-            <div className="countdown-label">Registration Ends In</div>
-            <div className="countdown-timer">
-              <div className="countdown-item">
-                <span className="countdown-value">{timeLeft.days}</span>
-                <span className="countdown-unit">Days</span>
-              </div>
-              <div className="countdown-separator">:</div>
-              <div className="countdown-item">
-                <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
-                <span className="countdown-unit">Hours</span>
-              </div>
-              <div className="countdown-separator">:</div>
-              <div className="countdown-item">
-                <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                <span className="countdown-unit">Minutes</span>
-              </div>
-              <div className="countdown-separator">:</div>
-              <div className="countdown-item">
-                <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                <span className="countdown-unit">Seconds</span>
+          <div className="hero-stack">
+            {/* Logo OVERLAY */}
+            <div className="logo-overlay">
+              <Image
+                src="/assets/branding/hackmol_logo.png"
+                alt="HackMol 7.0"
+                width={1000}
+                height={300}
+                className="logo-ornament"
+                priority
+              />
+              {/* Tagline */}
+              <div className="hero-tagline">
+                Descend. Discover. Develop.
               </div>
             </div>
-          </div>
 
-          {/* Register Button */}
-          <div className="hero-register-overlay">
-            <button
-              className="register-btn"
-              onClick={() => window.open(siteConfig.devfolioUrl, '_blank')}
-            >
-              <Image
-                src="/assets/decorative/right-corner.png"
-                alt=""
-                width={30}
-                height={30}
-                className="ornament ornament-top-left"
-              />
-              <Image
-                src="/assets/decorative/right-corner.png"
-                alt=""
-                width={30}
-                height={30}
-                className="ornament ornament-top-right"
-              />
-              <Image
-                src="/assets/decorative/right-corner.png"
-                alt=""
-                width={30}
-                height={30}
-                className="ornament ornament-bottom-left"
-              />
-              <Image
-                src="/assets/decorative/right-corner.png"
-                alt=""
-                width={30}
-                height={30}
-                className="ornament ornament-bottom-right"
-              />
-              <span className="btn-text">Register Now</span>
-            </button>
+            {/* Countdown Timer */}
+            <div className="countdown-overlay">
+              <div className="countdown-label">Registration Ends In</div>
+              <div className="countdown-timer">
+                <div className="countdown-item">
+                  <span className="countdown-value">{timeLeft.days}</span>
+                  <span className="countdown-unit">Days</span>
+                </div>
+                <div className="countdown-separator">:</div>
+                <div className="countdown-item">
+                  <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
+                  <span className="countdown-unit">Hours</span>
+                </div>
+                <div className="countdown-separator">:</div>
+                <div className="countdown-item">
+                  <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
+                  <span className="countdown-unit">Minutes</span>
+                </div>
+                <div className="countdown-separator">:</div>
+                <div className="countdown-item">
+                  <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
+                  <span className="countdown-unit">Seconds</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Moving info bulletin */}
+            <div className="hero-bulletin-overlay" aria-label="Important announcements">
+              <div className="hero-bulletin-shell">
+                <div className="hero-bulletin-badge">Latest Updates</div>
+                <div className="hero-bulletin-marquee" role="marquee">
+                  <div className="hero-bulletin-content">
+                    <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
+                      href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Download PPT Template
+                    </a>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfc36KOpyJJjNHl0JwyGgPvdgAHDztu_uflMPFKIV9lhmx61w/viewform"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Round 1 Submission
+                    </a>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                  </div>
+                  <div className="hero-bulletin-content" aria-hidden="true">
+                    <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
+                      href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Download PPT Template
+                    </a>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfc36KOpyJJjNHl0JwyGgPvdgAHDztu_uflMPFKIV9lhmx61w/viewform"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Round 1 Submission
+                    </a>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Canvas for frame animation */}

@@ -4,6 +4,8 @@
 
 **Round 1: PPT Submission**
 
+**PPT Submission Deadline 26 March 5PM**
+
 Submit your project idea presentation for evaluation. Successful teams will be shortlisted for the 30-hour onsite hackathon at NIT Jalandhar.
 
 **[Download PPT Template](https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?usp=sharing&ouid=114610509794432923711&rtpof=true&sd=true)**
