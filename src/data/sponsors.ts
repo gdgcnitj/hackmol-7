@@ -43,7 +43,7 @@ export const sponsors: Sponsor[] = [
   /* Bronze — 3 per row */
   {
     name: "Interview Buddy",
-    logo: "/assets/sponsors/interview_buddy.svg",
+    logo: "/assets/sponsors/interview_buddy.png",
     label: "Hiring Partner",
     category: "bronze",
     url: "https://interviewbuddy.net",

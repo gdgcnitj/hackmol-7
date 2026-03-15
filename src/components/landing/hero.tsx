@@ -6,11 +6,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HiChevronDown } from "react-icons/hi2";
 import { heroConfig } from "@/data/hero";
+import { sponsors } from "@/data/sponsors";
 import "./hero.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const { frameCount: FRAME_COUNT, minFramesForScroll: MIN_FRAMES_FOR_SCROLL, concurrentLoadLimit: CONCURRENT_LOAD_LIMIT } = heroConfig;
+const heroSponsors = sponsors.map(({ name, logo, url }) => ({ name, logo, url }));
 
 function getCurrentFrame(index: number): string {
   return `/frames/${String(index + 1).padStart(3, "0")}.webp`;
@@ -424,6 +426,52 @@ export default function Hero() {
                     </a>
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Moving sponsor logos */}
+            <div className="hero-sponsors-overlay" aria-label="Sponsors">
+              <div className="hero-sponsors-marquee">
+                <div className="hero-sponsors-track">
+                  {heroSponsors.map((sponsor) => (
+                    <a
+                      key={`sponsor-primary-${sponsor.name}`}
+                      href={sponsor.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-sponsor-item"
+                      aria-label={sponsor.name}
+                    >
+                      <Image
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        width={120}
+                        height={40}
+                        className="hero-sponsor-logo"
+                      />
+                    </a>
+                  ))}
+                </div>
+                <div className="hero-sponsors-track" aria-hidden="true">
+                  {heroSponsors.map((sponsor) => (
+                    <a
+                      key={`sponsor-duplicate-${sponsor.name}`}
+                      href={sponsor.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-sponsor-item"
+                      tabIndex={-1}
+                    >
+                      <Image
+                        src={sponsor.logo}
+                        alt=""
+                        width={120}
+                        height={40}
+                        className="hero-sponsor-logo"
+                      />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
