@@ -85,6 +85,13 @@ export const sponsors: Sponsor[] = [
     category: "community",
     url: "https://www.theuniques.in",
   },
+  {
+    name: "Tech Titans, GNDU Amritsar",
+    logo: "/assets/sponsors/tech-titans.png",
+    label: "Community Partner",
+    category: "community",
+    url: "https://www.instagram.com/techtitans.cess/",
+  },
 ];
 
 /** Column count per sponsor tier for the grid layout */
