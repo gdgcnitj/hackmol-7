@@ -106,6 +106,20 @@ export const sponsors: Sponsor[] = [
     category: "community",
     url: "https://www.instagram.com/techtitans.cess/",
   },
+  {
+    name: "GDG Jalandhar",
+    logo: "/assets/sponsors/gdg-jalandhar.png",
+    label: "Community Partner",
+    category: "community",
+    url: "https://gdg.community.dev/gdg-jalandhar/",
+  },
+  {
+    name: "GDGoC SR Group of Institutions, Jhansi",
+    logo: "/assets/sponsors/gdg-jhansi.png",
+    label: "Community Partner",
+    category: "community",
+    url: "https://gdg.community.dev/gdg-on-campus-sr-group-of-institutions-jhansi-india/",
+  },
 ];
 
 /** Column count per sponsor tier for the grid layout */
