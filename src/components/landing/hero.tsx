@@ -386,6 +386,15 @@ export default function Hero() {
                     <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                     <a
+                      href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Round 1 Result (Final Team Selected for Offline Round)
+                    </a>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
                       href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"
                       target="_blank"
                       rel="noreferrer"
@@ -406,6 +415,15 @@ export default function Hero() {
                   </div>
                   <div className="hero-bulletin-content" aria-hidden="true">
                     <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
+                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
+                    <a
+                      href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-bulletin-item hero-bulletin-link"
+                    >
+                      Round 1 Result (Final Team Selected for Offline Round)
+                    </a>
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                     <a
                       href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"

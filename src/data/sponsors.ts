@@ -24,11 +24,11 @@ export const sponsors: Sponsor[] = [
     url: "https://gofr.dev",
   },
   {
-    name: "V0 by Vercel",
-    logo: "/assets/sponsors/v0.png",
+    name: "Hello Recruiter",
+    logo: "/assets/sponsors/hello-recruiter.png",
     label: "Co-Powered by",
     category: "gold",
-    url: "https://v0.app",
+    url: "https://hellorecruiter.ai/",
   },
 
   /* Silver — 2 per row */
@@ -40,11 +40,11 @@ export const sponsors: Sponsor[] = [
     url: "https://devfolio.co",
   },
   {
-    name: "#Coming Soon",
-    logo: "/assets/branding/hackmol_logo.png",
-    label: "Coming Soon",
+    name: "V0 by Vercel",
+    logo: "/assets/sponsors/v0.png",
+    label: "Co-Powered by",
     category: "silver",
-    url: "#",
+    url: "https://v0.app",
   },
 
   /* Bronze — 3 per row */
@@ -119,6 +119,13 @@ export const sponsors: Sponsor[] = [
     label: "Community Partner",
     category: "community",
     url: "https://gdg.community.dev/gdg-on-campus-sr-group-of-institutions-jhansi-india/",
+  },
+  {
+    name: "GDGoC PUSSGRC",
+    logo: "/assets/sponsors/gdg-pussgrc.png",
+    label: "Community Partner",
+    category: "community",
+    url: "https://gdg.community.dev/gdg-on-campus-panjab-university-swami-sarvanand-giri-regional-centre-hoshiarpur-india/",
   },
 ];
 
