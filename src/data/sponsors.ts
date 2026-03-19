@@ -47,7 +47,7 @@ export const sponsors: Sponsor[] = [
     url: "https://v0.app",
   },
   {
-    name: "NextWave Launchpad",
+    name: "NxtWave Launchpad",
     logo: "/assets/sponsors/nextwave.png",
     label: "Career Partner",
     category: "silver",
