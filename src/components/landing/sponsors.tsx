@@ -83,6 +83,7 @@ export default function Sponsors() {
                         <span className="sponsor-card-placeholder">Logo</span>
                       )}
                     </div>
+                    {s.label ? <p className="sponsor-card-label">{s.label}</p> : null}
                     <h3 className="sponsor-card-name">{s.name}</h3>
                   </a>
                 ))}

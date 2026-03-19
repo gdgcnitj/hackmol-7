@@ -439,6 +439,39 @@
   opacity: 0.4;
 }
 
+/* Sponsor label */
+.sponsor-card-label {
+  font-family: var(--font-perpetua), "Perpetua", serif;
+  font-size: clamp(11px, 1.05vw, 14px);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: rgba(173, 220, 255, 0.92);
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsor-grid[data-category="gold"] .sponsor-card-label {
+  font-size: clamp(13px, 1.2vw, 16px);
+  color: rgba(191, 232, 255, 0.97);
+}
+
+.sponsor-grid[data-category="silver"] .sponsor-card-label {
+  color: rgba(168, 224, 255, 0.95);
+}
+
+.sponsor-grid[data-category="community"] .sponsor-card-label {
+  font-size: clamp(10px, 0.95vw, 12px);
+}
+
+.sponsor-card:hover .sponsor-card-label {
+  color: rgba(219, 240, 255, 1);
+}
+
 /* Sponsor name */
 .sponsor-card-name {
   font-family: "Trajan Pro 3", "Trajan Pro", serif;

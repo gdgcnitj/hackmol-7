@@ -26,7 +26,7 @@ export const sponsors: Sponsor[] = [
   {
     name: "Hello Recruiter",
     logo: "/assets/sponsors/hello-recruiter.png",
-    label: "Co-Powered by",
+    label: "Hiring Partner",
     category: "gold",
     url: "https://hellorecruiter.ai/",
   },
@@ -45,6 +45,13 @@ export const sponsors: Sponsor[] = [
     label: "Co-Powered by",
     category: "silver",
     url: "https://v0.app",
+  },
+  {
+    name: "NextWave Launchpad",
+    logo: "/assets/sponsors/nextwave.png",
+    label: "Career Partner",
+    category: "silver",
+    url: "https://launchpad.nxtwave.tech/",
   },
 
   /* Bronze — 3 per row */
