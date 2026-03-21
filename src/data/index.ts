@@ -12,7 +12,8 @@ export { timelineEvents } from "./timeline";
 export { tracksData, innovationAreas } from "./tracks";
 export { sponsorTiers, sponsors, tierColumns } from "./sponsors";
 export { topPrizes, specialPrizes } from "./prizes";
-export { judgesData, mentorsData } from "./speakers";
+export { judgesData } from "./speakers";
+export { teamData } from "./team";
 export { faqData } from "./faq";
 export { contacts } from "./contact";
 export {

@@ -5,6 +5,7 @@ import Tracks from "@/components/landing/tracks";
 import Sponsors from "@/components/landing/sponsors";
 import Prizes from "@/components/landing/prizes";
 import Speakers from "@/components/landing/speakers";
+import Team from "@/components/landing/team";
 import FAQ from "@/components/landing/FAQ";
 import Contact from "@/components/landing/contact";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Sponsors />
       <Prizes />
       <Speakers />
+      <Team />
       <FAQ />
       <Contact />
     </div>

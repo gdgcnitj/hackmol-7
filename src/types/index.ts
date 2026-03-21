@@ -186,7 +186,7 @@ export interface SpecialPrize {
 export interface PersonData {
   name: string;
   designation: string;
-  category: "JUDGE" | "MENTOR";
+  category: "JUDGE" | "MENTOR" | "TEAM";
   image: string; // path (resolved to StaticImageData at component level)
   linkedin?: string;
   twitter?: string;

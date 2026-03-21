@@ -42,7 +42,7 @@ export const faqData: FAQCategoryData = {
     {
       question: "When will I hear back after applying?",
       answer:
-        "Shortlisted teams will receive a confirmation email by March 20, 2026. Check your spam folder and ensure you applied with an active email address.",
+        "Shortlisted teams will receive a confirmation email by March 26, 2026 23:59. Check your spam folder and ensure you applied with an active email address.",
     },
     {
       question: "Can all-female or mixed-gender teams participate?",

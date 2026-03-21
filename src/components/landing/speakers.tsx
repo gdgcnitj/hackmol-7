@@ -5,7 +5,7 @@ import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { FaLinkedin, FaInstagram, FaGlobe } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { judgesData, mentorsData } from "@/data/speakers";
+import { judgesData } from "@/data/speakers";
 
 import "./speakers.css";
 
@@ -98,11 +98,9 @@ function useSwipe(
 
 export default function Speakers() {
   const [activeJudgeIndex, setActiveJudgeIndex] = useState(0);
-  const [activeMentorIndex, setActiveMentorIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   const judgeSwipe = useSwipe(judgesData.length, activeJudgeIndex, setActiveJudgeIndex);
-  const mentorSwipe = useSwipe(mentorsData.length, activeMentorIndex, setActiveMentorIndex);
 
   // Check if screen is mobile/tablet
   useEffect(() => {
@@ -127,30 +125,16 @@ export default function Speakers() {
     return () => clearInterval(interval);
   }, [isMobile, activeJudgeIndex]);
 
-  // Auto-scroll for mentors carousel (only on mobile)
-  useEffect(() => {
-    if (!isMobile) return;
-    
-    const interval = setInterval(() => {
-      setActiveMentorIndex((prev) => (prev + 1) % mentorsData.length);
-    }, 4500); // Change slide every 4.5 seconds
-
-    return () => clearInterval(interval);
-  }, [isMobile, activeMentorIndex]);
-
   return (
     <div className="speakers-section" id="judges">
       {/* HEADER SECTION */}
       <SectionHeading
-        title="JUDGES &"
-        highlight="MENTORS"
-        highlightPosition="after"
+        title="JUDGES"
         description="The ancients of the hollow. Shaped by the depths, here to guide you through yours."
       />
 
       {/* JUDGES SECTION */}
       <div className="category-wrapper">
-        <h2 className="category-title cinzel-font">JUDGES</h2>
         <div 
           className={`carousel-container${judgeSwipe.isDragging ? ' is-dragging' : ''}`}
           onTouchStart={judgeSwipe.onTouchStart}
@@ -223,86 +207,6 @@ export default function Speakers() {
               className={`dot ${index === activeJudgeIndex ? "active" : ""}`}
               onClick={() => setActiveJudgeIndex(index)}
               aria-label={`Go to judge ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* MENTORS SECTION */}
-      <div className="category-wrapper">
-        <h2 className="category-title cinzel-font">MENTORS</h2>
-        <div 
-          className={`carousel-container${mentorSwipe.isDragging ? ' is-dragging' : ''}`}
-          onTouchStart={mentorSwipe.onTouchStart}
-          onTouchMove={mentorSwipe.onTouchMove}
-          onTouchEnd={mentorSwipe.onTouchEnd}
-        >
-          <div 
-            className="cards-grid mentors-grid"
-            style={mentorSwipe.getTrackStyle(isMobile)}
-          >
-          {mentorsData.map((person, index) => (
-            <div key={`mentor-${index}`} className="speaker-card">
-              <div className="card-corner-wrapper">
-                <Image src={maskCorner.src} fill alt="" className="card-corner top-l" />
-              </div>
-              <div className="card-corner-wrapper">
-                <Image src={maskCorner.src} fill alt="" className="card-corner bottom-r" />
-              </div>
-
-              <div className="avatar-wrapper">
-                <div className="image-border">
-                  <Image
-                    src={person.image}
-                    alt={person.name}
-                    width={350}
-                    height={350}
-                    className="avatar-img"
-                  />
-                </div>
-              </div>
-
-              <div className="card-content">
-                <h3 className="cinzel-font card-name">{person.name}</h3>
-                <p className="cinzel-font card-designation">{person.designation}</p>
-                <p className="cinzel-font card-category">{person.category}</p>
-              </div>
-
-              <div className="social-links">
-                {person.linkedin && (
-                  <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} LinkedIn`}>
-                    <FaLinkedin />
-                  </a>
-                )}
-                {person.twitter && (
-                  <a href={person.twitter} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Twitter`}>
-                    <FaXTwitter />
-                  </a>
-                )}
-                {person.instagram && (
-                  <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Instagram`}>
-                    <FaInstagram />
-                  </a>
-                )}
-                {person.portfolio && (
-                  <a href={person.portfolio} target="_blank" rel="noopener noreferrer" className="social-icon" aria-label={`${person.name} Portfolio`}>
-                    <FaGlobe />
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-        </div>
-        
-        {/* Mentors Navigation Dots */}
-        <div className="carousel-dots">
-          {mentorsData.map((_, index) => (
-            <button
-              key={`mentor-dot-${index}`}
-              className={`dot ${index === activeMentorIndex ? "active" : ""}`}
-              onClick={() => setActiveMentorIndex(index)}
-              aria-label={`Go to mentor ${index + 1}`}
             />
           ))}
         </div>
