@@ -351,6 +351,20 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* Live Status */}
+            <div className="hero-live-overlay" aria-label="Live updates">
+              <div className="hero-live-items">
+                <div className="hero-live-item">
+                  <span className="hero-live-item-dot" aria-hidden="true"></span>
+                  <span className="hero-live-item-text">PPT Submission is Live</span>
+                </div>
+                <div className="hero-live-item">
+                  <span className="hero-live-item-dot" aria-hidden="true"></span>
+                  <span className="hero-live-item-text">Registration is Live</span>
+                </div>
+              </div>
+            </div>
+
             {/* Countdown Timer */}
             <div className="countdown-overlay">
               <div className="countdown-label">Registration Ends In</div>
