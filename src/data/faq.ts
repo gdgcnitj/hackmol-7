@@ -37,7 +37,7 @@ export const faqData: FAQCategoryData = {
     {
       question: "What is the registration deadline?",
       answer:
-        "Applications close on March 24, 2026. Do not wait, spots in Hallownest are limited and shortlisting is competitive.",
+        "Applications close on March 24, 2026 at 12:00 PM IST. Do not wait, spots in Hallownest are limited and shortlisting is competitive.",
     },
     {
       question: "When will I hear back after applying?",
@@ -52,7 +52,7 @@ export const faqData: FAQCategoryData = {
     {
       question: "Is it mandatory to submit a PPT before the event?",
       answer:
-        "Yes. Shortlisted teams must submit a presentation of their project idea by March 26, 2026. This helps mentors prepare to guide you during the hackathon.",
+        "Yes. Shortlisted teams must submit a presentation of their project idea by March 24, 2026 at 12:00 PM IST. This helps mentors prepare to guide you during the hackathon.",
     },
   ],
   LOGISTICS: [

@@ -397,7 +397,7 @@ export default function Hero() {
                 <div className="hero-bulletin-badge">Latest Updates</div>
                 <div className="hero-bulletin-marquee" role="marquee">
                   <div className="hero-bulletin-content">
-                    <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
+                    <span className="hero-bulletin-item">PPT Submission Deadline 24 March 12 PM</span>
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                     <a
                       href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"
@@ -428,7 +428,7 @@ export default function Hero() {
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                   </div>
                   <div className="hero-bulletin-content" aria-hidden="true">
-                    <span className="hero-bulletin-item">PPT Submission Deadline 26 March 5PM</span>
+                    <span className="hero-bulletin-item">PPT Submission Deadline 24 March 12 PM</span>
                     <span className="hero-bulletin-divider" aria-hidden="true">•</span>
                     <a
                       href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"

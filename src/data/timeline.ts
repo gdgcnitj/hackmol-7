@@ -8,13 +8,13 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     title: "REGISTRATION ENDS",
-    description: "Last day to register for HackMol 7.0.",
-    date: "Mar 24, 2026",
+    description: "Registration closes on Mar 24 at 12:00 PM.",
+    date: "Mar 24, 12:00 PM",
   },
   {
-    title: "PPT Submission Deadline 26 March 5PM",
-    description: "PPT Submission Deadline 26 March 5PM.",
-    date: "Mar 26, 5:00 PM",
+    title: "PPT Submission Deadline",
+    description: "PPT Submission Deadline 24 March 12 PM.",
+    date: "Mar 24, 12:00 PM",
   },
   {
     title: "HACKATHON STARTS",
