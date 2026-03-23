@@ -37,7 +37,7 @@ export const faqData: FAQCategoryData = {
     {
       question: "What is the registration deadline?",
       answer:
-        "Applications close on March 24, 2026 at 12:00 PM IST. Do not wait, spots in Hallownest are limited and shortlisting is competitive.",
+        "Applications close on March 24, 2026 at 11:59 PM IST. Do not wait, spots in Hallownest are limited and shortlisting is competitive.",
     },
     {
       question: "When will I hear back after applying?",

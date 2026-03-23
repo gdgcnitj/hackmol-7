@@ -8,8 +8,8 @@ export const timelineEvents: TimelineEvent[] = [
   },
   {
     title: "REGISTRATION ENDS",
-    description: "Registration closes on Mar 24 at 12:00 PM.",
-    date: "Mar 24, 12:00 PM",
+    description: "Registration closes on Mar 24 at 11:59 PM.",
+    date: "Mar 24, 11:59 PM",
   },
   {
     title: "PPT Submission Deadline",
