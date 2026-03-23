@@ -45,8 +45,13 @@ export const communityLinks: FooterCommunityLink[] = [
     icon: "FaGithub",
   },
   {
-    label: "WhatsApp Support",
+    label: "WhatsApp Support 1.0",
     href: "https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU?mode=gi_t",
+    icon: "FaWhatsapp",
+  },
+  {
+    label: "WhatsApp Support 2.0",
+    href: "https://chat.whatsapp.com/BVBuQzESMxOL2onVXjRurR?mode=gi_t",
     icon: "FaWhatsapp",
   },
   {

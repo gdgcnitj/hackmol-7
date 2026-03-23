@@ -24,6 +24,7 @@ Top teams compete in a 30-hour hackathon at NIT Jalandhar.
 ### **Join Our Community**
 
 [WhatsApp Support](https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU) - Registration help & queries  
+[WhatsApp Support 2.0](https://chat.whatsapp.com/BVBuQzESMxOL2onVXjRurR?mode=gi_t) - Backup support group (primary is full)  
 [Find Teammates](https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2) - Connect & form teams
 
 

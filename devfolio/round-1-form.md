@@ -106,6 +106,7 @@ Acceptance on Devfolio does NOT qualify you for offline round. You MUST submit R
 **Results:**  
 Announced in WhatsApp group. Join to stay updated:
 - **[WhatsApp Support](https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU)** - Help & queries
+- **[WhatsApp Support 2.0](https://chat.whatsapp.com/BVBuQzESMxOL2onVXjRurR?mode=gi_t)** - Backup support group (primary is full)
 - **[Find Teammates](https://chat.whatsapp.com/DoH0Rp1Yz7oCG8XmUvdVR2)** - Team formation
 
 **Privacy:**  
@@ -131,6 +132,7 @@ Before submitting, ensure you have:
 
 **Questions or Issues?**  
 - Join our [WhatsApp Support Group](https://chat.whatsapp.com/Dxe6XJ8dXKnKPN5ClLB0KU)
+- Or join [WhatsApp Support 2.0](https://chat.whatsapp.com/BVBuQzESMxOL2onVXjRurR?mode=gi_t) (primary group is full)
 - Visit: [hackmol.tech](https://hackmol.tech)
 - Organized by: GDGC NIT Jalandhar
 
