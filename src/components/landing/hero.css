@@ -558,57 +558,22 @@ body {
 .hero-bulletin-shell {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(137, 207, 240, 0.22);
-  background: linear-gradient(120deg, rgba(8, 14, 28, 0.68), rgba(15, 24, 41, 0.62));
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.hero-bulletin-badge {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  height: 24px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: rgba(77, 168, 218, 0.16);
-  color: rgba(224, 242, 255, 0.95);
-  font-family: var(--font-cinzel), serif;
-  font-size: 10px;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  font-weight: 600;
-  white-space: nowrap;
-  flex-shrink: 0;
+  padding: 0;
 }
 
-.hero-bulletin-marquee {
+.hero-bulletin-message {
   display: flex;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-}
-
-.hero-bulletin-content {
-  display: flex;
+  justify-content: center;
+  width: 100%;
   align-items: center;
-  flex-shrink: 0;
-  gap: 10px;
-  min-width: max-content;
-  padding-right: 10px;
-  animation: bulletinMarquee 23s linear infinite;
 }
 
 .hero-bulletin-item {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
+  justify-content: center;
+  min-height: 30px;
   padding: 0 2px;
   border-radius: 4px;
   color: rgba(236, 245, 252, 0.92);
@@ -630,14 +595,34 @@ body {
   color: #ffffff;
 }
 
-.hero-bulletin-divider {
-  color: rgba(137, 207, 240, 0.58);
-  font-size: 11px;
-  transform: translateY(-1px);
+.hero-bulletin-link-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(110, 231, 151, 0.55);
+  background: linear-gradient(120deg, rgba(9, 58, 34, 0.85), rgba(14, 87, 48, 0.8));
+  color: #c7f9d8;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  text-shadow: 0 0 10px rgba(110, 231, 151, 0.25);
 }
 
-.hero-bulletin-overlay:hover .hero-bulletin-content {
-  animation-play-state: paused;
+.hero-bulletin-link-success::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6ee797;
+  box-shadow: 0 0 8px rgba(110, 231, 151, 0.75);
+  flex-shrink: 0;
+}
+
+.hero-bulletin-link-success:hover {
+  color: #ecfff3;
+  border-color: rgba(110, 231, 151, 0.8);
+  box-shadow: 0 0 18px rgba(110, 231, 151, 0.28);
 }
 
 /* Moving Sponsors Strip */

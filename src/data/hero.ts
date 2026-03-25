@@ -5,6 +5,6 @@ export const heroConfig: HeroConfig = {
   frameCount: 46,
   minFramesForScroll: 40,
   concurrentLoadLimit: 6,
-  countdownTarget: siteConfig.dates.registrationClose,
+  countdownTarget: siteConfig.dates.hackathonStart,
   ctaLabel: "Register Now",
 };

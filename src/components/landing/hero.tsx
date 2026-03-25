@@ -351,23 +351,9 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Live Status */}
-            <div className="hero-live-overlay" aria-label="Live updates">
-              <div className="hero-live-items">
-                <div className="hero-live-item">
-                  <span className="hero-live-item-dot" aria-hidden="true"></span>
-                  <span className="hero-live-item-text">PPT Submission is Live</span>
-                </div>
-                <div className="hero-live-item">
-                  <span className="hero-live-item-dot" aria-hidden="true"></span>
-                  <span className="hero-live-item-text">Registration is Live</span>
-                </div>
-              </div>
-            </div>
-
             {/* Countdown Timer */}
             <div className="countdown-overlay">
-              <div className="countdown-label">Registration Ends In</div>
+              <div className="countdown-label">Hack Starts In</div>
               <div className="countdown-timer">
                 <div className="countdown-item">
                   <span className="countdown-value">{timeLeft.days}</span>
@@ -391,73 +377,16 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Moving info bulletin */}
+            {/* Latest update bulletin */}
             <div className="hero-bulletin-overlay" aria-label="Important announcements">
               <div className="hero-bulletin-shell">
-                <div className="hero-bulletin-badge">Latest Updates</div>
-                <div className="hero-bulletin-marquee" role="marquee">
-                  <div className="hero-bulletin-content">
-                    <span className="hero-bulletin-item">PPT Submission Deadline 24 March 12 PM</span>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Round 1 Result (Final Team Selected for Offline Round)
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Download PPT Template
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSfc36KOpyJJjNHl0JwyGgPvdgAHDztu_uflMPFKIV9lhmx61w/viewform"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Round 1 Submission
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                  </div>
-                  <div className="hero-bulletin-content" aria-hidden="true">
-                    <span className="hero-bulletin-item">PPT Submission Deadline 24 March 12 PM</span>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/spreadsheets/d/1bdVxhohD2NRDGQ20FES-2XSoB5q51s87PBjna9VGijs/edit?usp=sharing"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Round 1 Result (Final Team Selected for Offline Round)
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/presentation/d/1hSpe1LAQOVyALhz5Ne8MBoJGg2Aer3h6/edit?slide=id.p1#slide=id.p1"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Download PPT Template
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                    <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSfc36KOpyJJjNHl0JwyGgPvdgAHDztu_uflMPFKIV9lhmx61w/viewform"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hero-bulletin-item hero-bulletin-link"
-                    >
-                      Round 1 Submission
-                    </a>
-                    <span className="hero-bulletin-divider" aria-hidden="true">•</span>
-                  </div>
+                <div className="hero-bulletin-message">
+                  <a
+                    href="/result"
+                    className="hero-bulletin-item hero-bulletin-link hero-bulletin-link-success"
+                  >
+                    Result of selected teams for offline round is live
+                  </a>
                 </div>
               </div>
             </div>
