@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { navLinks } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import "./Navbar.css";
@@ -10,6 +11,7 @@ import "./Navbar.css";
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState<string>("");
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,6 +23,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const sectionIds = navLinks
+            .filter((l) => l.href.startsWith("#"))
             .map((l) => l.href.replace("#", ""))
             .filter(Boolean);
 
@@ -70,8 +73,24 @@ export default function Navbar() {
             </div>
             <div className="nav-links">
                 {navLinks.map((link) => {
+                    const isRouteLink = link.href.startsWith("/");
                     const sectionId = link.href.replace("#", "");
-                    const isActive = activeSection === sectionId;
+                    const isActive = isRouteLink
+                        ? pathname === link.href
+                        : pathname === "/" && activeSection === sectionId;
+
+                    if (isRouteLink) {
+                        return (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className={isActive ? "active" : ""}
+                            >
+                                {link.label}
+                            </Link>
+                        );
+                    }
+
                     return (
                         <a
                             key={link.href}

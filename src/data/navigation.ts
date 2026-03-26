@@ -17,6 +17,7 @@ export const navLinks: NavLink[] = [
   { label: "Judges",   href: "#judges" },
   { label: "Team",     href: "#team" },
   { label: "FAQ",      href: "#faq" },
+  { label: "Resources", href: "/resources" },
 ];
 
 /* ─── Footer ─── */
