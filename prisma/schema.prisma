@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  JUDGE
+  MENTOR
+}
+
+enum RoundType {
+  MENTOR_1
+  MENTOR_2
+  JUDGING
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  name         String
+  passwordHash String
+  role         Role
+  inviteToken  String?  @unique
+  inviteUsed   Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  assignments Assignment[]
+  scores      Score[]
+
+  @@index([role])
+  @@index([inviteToken])
+}
+
+model Team {
+  id         String   @id @default(cuid())
+  teamNumber String   @unique
+  teamName   String
+  leaderName String
+  createdAt  DateTime @default(now())
+
+  assignments Assignment[]
+  scores      Score[]
+
+  @@index([teamNumber])
+}
+
+model Round {
+  id        String    @id @default(cuid())
+  name      String
+  type      RoundType @unique
+  weight    Int
+  isActive  Boolean   @default(false)
+  isLocked  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+
+  assignments Assignment[]
+  scores      Score[]
+}
+
+model Assignment {
+  id      String @id @default(cuid())
+  roundId String
+  userId  String
+  teamId  String
+
+  round Round @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team  Team  @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, userId, teamId])
+  @@index([roundId])
+  @@index([userId])
+}
+
+model Score {
+  id           String   @id @default(cuid())
+  roundId      String
+  userId       String
+  teamId       String
+  technical    Int
+  innovation   Int
+  impact       Int
+  demo         Int
+  presentation Int
+  notes        String?
+  submittedAt  DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  round Round @relation(fields: [roundId], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  team  Team  @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+  @@unique([roundId, userId, teamId])
+  @@index([roundId])
+  @@index([userId])
+  @@index([teamId])
+}

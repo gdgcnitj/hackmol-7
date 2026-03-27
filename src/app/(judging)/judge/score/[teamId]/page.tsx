@@ -1,0 +1,290 @@
+"use client";
+
+import { useEffect, useState, useCallback, type FormEvent } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { CRITERIA } from "@/data/rubric";
+
+interface TeamData {
+  id: string;
+  teamNumber: string;
+  teamName: string;
+  leaderName: string;
+}
+
+interface ActiveRound {
+  id: string;
+  name: string;
+  type: string;
+  isLocked: boolean;
+}
+
+interface ExistingScore {
+  technical: number;
+  innovation: number;
+  impact: number;
+  demo: number;
+  presentation: number;
+  notes: string | null;
+}
+
+interface TeamsResponse {
+  teams: (TeamData & { scored: boolean })[];
+  activeRound: ActiveRound | null;
+}
+
+export default function ScorePage() {
+  const params = useParams();
+  const router = useRouter();
+  const teamId = params.teamId as string;
+
+  const [team, setTeam] = useState<TeamData | null>(null);
+  const [activeRound, setActiveRound] = useState<ActiveRound | null>(null);
+  const [allTeams, setAllTeams] = useState<TeamsResponse["teams"]>([]);
+  const [scores, setScores] = useState<Record<string, number>>({
+    technical: 5,
+    innovation: 5,
+    impact: 5,
+    demo: 5,
+    presentation: 5,
+  });
+  const [notes, setNotes] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+
+  const loadData = useCallback(async () => {
+    try {
+      const [teamsRes, scoreRes] = await Promise.all([
+        fetch("/api/judge/teams"),
+        fetch("/api/judge/scores/" + teamId),
+      ]);
+
+      const teamsData: TeamsResponse = await teamsRes.json();
+      const scoreData = await scoreRes.json();
+
+      setAllTeams(teamsData.teams || []);
+      setActiveRound(teamsData.activeRound || null);
+
+      const currentTeam = teamsData.teams?.find(
+        (t: TeamData) => t.id === teamId
+      );
+      setTeam(currentTeam || null);
+
+      if (scoreData.score) {
+        const s: ExistingScore = scoreData.score;
+        setScores({
+          technical: s.technical,
+          innovation: s.innovation,
+          impact: s.impact,
+          demo: s.demo,
+          presentation: s.presentation,
+        });
+        setNotes(s.notes || "");
+      }
+    } catch {
+      setError("Failed to load data");
+    } finally {
+      setLoading(false);
+    }
+  }, [teamId]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  function handleScoreChange(key: string, value: number) {
+    setScores((prev) => ({ ...prev, [key]: value }));
+    setSuccess("");
+    setError("");
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!activeRound || activeRound.isLocked) return;
+
+    setSubmitting(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const res = await fetch("/api/judge/scores", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teamId,
+          roundId: activeRound.id,
+          ...scores,
+          notes: notes.trim() || null,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Failed to submit score");
+        setSubmitting(false);
+        return;
+      }
+
+      setSuccess("Score submitted successfully");
+      setSubmitting(false);
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setSubmitting(false);
+    }
+  }
+
+  // Find prev/next teams for navigation
+  const currentIndex = allTeams.findIndex((t) => t.id === teamId);
+  const prevTeam = currentIndex > 0 ? allTeams[currentIndex - 1] : null;
+  const nextTeam =
+    currentIndex < allTeams.length - 1 ? allTeams[currentIndex + 1] : null;
+
+  if (loading) {
+    return (
+      <div className="score-page">
+        <p style={{ color: "rgba(255,255,255,0.5)", textAlign: "center", marginTop: 40 }}>
+          Loading...
+        </p>
+      </div>
+    );
+  }
+
+  if (!team) {
+    return (
+      <div className="score-page">
+        <p style={{ color: "#fca5a5", textAlign: "center", marginTop: 40 }}>
+          Team not found
+        </p>
+      </div>
+    );
+  }
+
+  if (!activeRound) {
+    return (
+      <div className="score-page">
+        <div className="score-locked-msg">No active round</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="score-page">
+      <div className="score-team-header">
+        <div className="score-team-number">{team.teamNumber}</div>
+        <div className="score-team-name">{team.teamName}</div>
+        <div className="score-team-leader">{team.leaderName}</div>
+        <div
+          style={{
+            marginTop: 8,
+            fontFamily: "var(--font-perpetua), serif",
+            fontSize: 13,
+            color: "rgba(255,255,255,0.4)",
+          }}
+        >
+          {activeRound.name}
+          {currentIndex >= 0 &&
+            " | Team " + (currentIndex + 1) + " of " + allTeams.length}
+        </div>
+      </div>
+
+      {activeRound.isLocked && (
+        <div className="score-locked-msg" style={{ marginBottom: 20 }}>
+          This round is locked. Scores cannot be modified.
+        </div>
+      )}
+
+      {success && <div className="score-success">{success}</div>}
+      {error && <div className="score-error">{error}</div>}
+
+      <form onSubmit={handleSubmit}>
+        <div className="score-criteria-list">
+          {CRITERIA.map((criterion) => {
+            const value = scores[criterion.key] ?? 5;
+            const fill = (value / 10) * 100;
+            return (
+              <div className="score-criterion" key={criterion.key}>
+                <div className="score-criterion-header">
+                  <div className="score-criterion-label">
+                    {criterion.label}
+                  </div>
+                  <div className="score-criterion-weight">
+                    Weight: {criterion.weight}x | Max: {criterion.maxWeighted}
+                  </div>
+                </div>
+                <div className="score-criterion-desc">
+                  {criterion.description}
+                </div>
+                <div className="score-criterion-value">{value}</div>
+                <div className="score-slider-container">
+                  <input
+                    type="range"
+                    min={0}
+                    max={10}
+                    step={1}
+                    value={value}
+                    onChange={(e) =>
+                      handleScoreChange(
+                        criterion.key,
+                        parseInt(e.target.value, 10)
+                      )
+                    }
+                    className="score-slider"
+                    style={{ "--fill": fill + "%" } as React.CSSProperties}
+                    disabled={activeRound.isLocked}
+                  />
+                  <div className="score-slider-labels">
+                    <span>0</span>
+                    <span>5</span>
+                    <span>10</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="score-notes">
+          <div className="score-notes-label">Notes (optional)</div>
+          <textarea
+            className="score-notes-textarea"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Any additional feedback for this team..."
+            maxLength={1000}
+            disabled={activeRound.isLocked}
+          />
+        </div>
+
+        <div className="score-actions">
+          {prevTeam && (
+            <button
+              type="button"
+              className="score-nav-btn"
+              onClick={() => router.push("/judge/score/" + prevTeam.id)}
+            >
+              Previous: {prevTeam.teamNumber}
+            </button>
+          )}
+          <button
+            type="submit"
+            className="score-submit-btn"
+            disabled={submitting || activeRound.isLocked}
+          >
+            {submitting ? "Submitting..." : "Submit Score"}
+          </button>
+          {nextTeam && (
+            <button
+              type="button"
+              className="score-nav-btn"
+              onClick={() => router.push("/judge/score/" + nextTeam.id)}
+            >
+              Next: {nextTeam.teamNumber}
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
+  );
+}
