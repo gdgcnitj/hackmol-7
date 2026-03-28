@@ -118,3 +118,16 @@ html {
 ::-webkit-scrollbar-thumb:active {
   background: rgba(77, 168, 218, 1);
 }
+
+/* Hide main site chrome inside judging panel */
+.judging-root ~ .navbar,
+body:has(.judging-root) > .navbar,
+body:has(.judging-root) .navbar,
+body:has(.judging-root) .footer-section,
+body:has(.judging-root) .floating-btn {
+  display: none !important;
+}
+
+body:has(.judging-root) main.flex-1 {
+  padding: 0;
+}
