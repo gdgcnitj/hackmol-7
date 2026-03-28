@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { validateAllScores } from "@/lib/scoring";
+import { canRoleAccessRound } from "@/lib/roundAccess";
 
 export async function POST(request: NextRequest) {
   try {
@@ -47,6 +48,17 @@ export async function POST(request: NextRequest) {
     if (!round.isActive) {
       return NextResponse.json(
         { error: "This round is not currently active" },
+        { status: 403 }
+      );
+    }
+    if (!canRoleAccessRound(session.role, round.type)) {
+      return NextResponse.json(
+        {
+          error:
+            session.role === "MENTOR"
+              ? "Mentors can only score mentoring rounds"
+              : "Judges can only score judging round",
+        },
         { status: 403 }
       );
     }

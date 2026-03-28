@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 interface Score {
   id: string;
@@ -9,6 +9,7 @@ interface Score {
   impact: number;
   demo: number;
   presentation: number;
+  notes: string | null;
   submittedAt: string;
   user: { name: string; role: string };
   round: { name: string; type: string };
@@ -79,7 +80,7 @@ export default function TeamsPage() {
               </thead>
               <tbody>
                 {filtered.map((t) => (
-                  <>
+                  <Fragment key={t.id}>
                     <tr key={t.id}>
                       <td>{t.teamNumber}</td>
                       <td>{t.teamName}</td>
@@ -117,6 +118,7 @@ export default function TeamsPage() {
                                 <th>Impact</th>
                                 <th>Demo</th>
                                 <th>Presentation</th>
+                                <th>Notes</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -141,6 +143,7 @@ export default function TeamsPage() {
                                   <td>{s.impact}</td>
                                   <td>{s.demo}</td>
                                   <td>{s.presentation}</td>
+                                  <td>{s.notes?.trim() || "-"}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -162,7 +165,7 @@ export default function TeamsPage() {
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>

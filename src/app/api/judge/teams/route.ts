@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
+import { getAllowedRoundTypesByRole } from "@/lib/roundAccess";
 
 export async function GET() {
   try {
@@ -9,16 +10,19 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const activeRounds = await prisma.round.findMany({
-      where: { isActive: true },
+    const activeRound = await prisma.round.findFirst({
+      where: {
+        isActive: true,
+        type: {
+          in: getAllowedRoundTypesByRole(session.role),
+        },
+      },
       orderBy: { weight: "asc" },
     });
 
-    if (activeRounds.length === 0) {
+    if (!activeRound) {
       return NextResponse.json({ teams: [], activeRound: null });
     }
-
-    const activeRound = activeRounds[0];
 
     // Check if there are assignments for this user in this round
     const assignments = await prisma.assignment.findMany({

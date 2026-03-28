@@ -27,6 +27,14 @@ interface ExistingScore {
   notes: string | null;
 }
 
+interface PreviousRoundNote {
+  id: string;
+  notes: string;
+  submittedAt: string;
+  user: { name: string; role: string };
+  round: { name: string; type: string };
+}
+
 interface TeamsResponse {
   teams: (TeamData & { scored: boolean })[];
   activeRound: ActiveRound | null;
@@ -48,6 +56,9 @@ export default function ScorePage() {
     presentation: 5,
   });
   const [notes, setNotes] = useState("");
+  const [previousRoundNotes, setPreviousRoundNotes] = useState<
+    PreviousRoundNote[]
+  >([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState("");
@@ -82,6 +93,8 @@ export default function ScorePage() {
         });
         setNotes(s.notes || "");
       }
+
+      setPreviousRoundNotes(scoreData.previousRoundNotes || []);
     } catch {
       setError("Failed to load data");
     } finally {
@@ -129,6 +142,12 @@ export default function ScorePage() {
 
       setSuccess("Score submitted successfully");
       setSubmitting(false);
+
+      // Attempt to close the page for quick scoring flow; fallback to dashboard.
+      window.close();
+      setTimeout(() => {
+        router.push("/judge");
+      }, 200);
     } catch {
       setError("Something went wrong. Please try again.");
       setSubmitting(false);
@@ -197,6 +216,66 @@ export default function ScorePage() {
 
       {success && <div className="score-success">{success}</div>}
       {error && <div className="score-error">{error}</div>}
+
+      {previousRoundNotes.length > 0 && (
+        <div
+          style={{
+            marginBottom: 24,
+            background: "rgba(15, 24, 41, 0.55)",
+            border: "1px solid rgba(77, 168, 218, 0.15)",
+            borderRadius: 10,
+            padding: "16px 18px",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-trajan), serif",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              color: "#ffffff",
+              fontSize: 14,
+              marginBottom: 12,
+            }}
+          >
+            Previous Round Notes
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {previousRoundNotes.map((note) => (
+              <div
+                key={note.id}
+                style={{
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 8,
+                  padding: "10px 12px",
+                  background: "rgba(8, 14, 28, 0.6)",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "var(--font-perpetua), serif",
+                    fontSize: 13,
+                    color: "rgba(255,255,255,0.65)",
+                    marginBottom: 6,
+                  }}
+                >
+                  {note.round.name} | {note.user.name} ({note.user.role})
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-perpetua), serif",
+                    fontSize: 14,
+                    color: "rgba(255,255,255,0.9)",
+                    whiteSpace: "pre-wrap",
+                    lineHeight: 1.45,
+                  }}
+                >
+                  {note.notes}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <div className="score-criteria-list">

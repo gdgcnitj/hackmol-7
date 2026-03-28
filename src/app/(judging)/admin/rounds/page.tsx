@@ -18,10 +18,7 @@ interface Round {
 export default function RoundsPage() {
   const [rounds, setRounds] = useState<Round[]>([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadRounds();
-  }, []);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   async function loadRounds() {
     const res = await fetch("/api/admin/rounds");
@@ -30,16 +27,28 @@ export default function RoundsPage() {
     setLoading(false);
   }
 
+  useEffect(() => {
+    void loadRounds();
+  }, []);
+
   async function toggleField(
     id: string,
     field: "isActive" | "isLocked",
     currentValue: boolean
   ) {
-    await fetch("/api/admin/rounds", {
+    const res = await fetch("/api/admin/rounds", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, [field]: !currentValue }),
     });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({ error: "Request failed" }));
+      setErrorMessage(data.error || "Request failed");
+      return;
+    }
+
+    setErrorMessage(null);
     loadRounds();
   }
 
@@ -55,6 +64,19 @@ export default function RoundsPage() {
   return (
     <div>
       <h1 className="admin-page-title">Rounds</h1>
+
+      {errorMessage && (
+        <div
+          className="admin-card"
+          style={{
+            marginBottom: 16,
+            border: "1px solid rgba(239, 68, 68, 0.6)",
+            color: "#fecaca",
+          }}
+        >
+          {errorMessage}
+        </div>
+      )}
 
       <div className="admin-stats-grid">
         {rounds.map((round) => (

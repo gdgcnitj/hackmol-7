@@ -18,14 +18,11 @@ interface ActiveRound {
   isLocked: boolean;
 }
 
-type Filter = "all" | "pending" | "scored";
-
 export default function JudgeTeamsPage() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [activeRound, setActiveRound] = useState<ActiveRound | null>(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<Filter>("all");
 
   useEffect(() => {
     async function load() {
@@ -38,18 +35,16 @@ export default function JudgeTeamsPage() {
     load();
   }, []);
 
-  const filtered = teams
-    .filter((t) => {
-      if (filter === "pending") return !t.scored;
-      if (filter === "scored") return t.scored;
-      return true;
-    })
-    .filter(
-      (t) =>
-        t.teamNumber.toLowerCase().includes(search.toLowerCase()) ||
-        t.teamName.toLowerCase().includes(search.toLowerCase()) ||
-        t.leaderName.toLowerCase().includes(search.toLowerCase())
-    );
+  const query = search.trim().toLowerCase();
+  const hasQuery = query.length > 0;
+
+  const filtered = hasQuery
+    ? teams.filter(
+        (t) =>
+          t.teamNumber.toLowerCase().includes(query) ||
+          t.teamName.toLowerCase().includes(query)
+      )
+    : [];
 
   const scoredCount = teams.filter((t) => t.scored).length;
   const pendingCount = teams.length - scoredCount;
@@ -126,64 +121,54 @@ export default function JudgeTeamsPage() {
       <div className="judge-search-bar">
         <input
           className="judge-search-input"
-          placeholder="Search by team name, number, or leader..."
+          placeholder="Search by team ID or team name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button
-          className={
-            "judge-filter-btn" + (filter === "all" ? " judge-filter-active" : "")
-          }
-          onClick={() => setFilter("all")}
-        >
-          All
-        </button>
-        <button
-          className={
-            "judge-filter-btn" +
-            (filter === "pending" ? " judge-filter-active" : "")
-          }
-          onClick={() => setFilter("pending")}
-        >
-          Pending
-        </button>
-        <button
-          className={
-            "judge-filter-btn" +
-            (filter === "scored" ? " judge-filter-active" : "")
-          }
-          onClick={() => setFilter("scored")}
-        >
-          Scored
-        </button>
       </div>
 
-      <div className="judge-teams-grid">
-        {filtered.map((team) => (
-          <Link
-            key={team.id}
-            href={"/judge/score/" + team.id}
-            className={
-              "judge-team-card" +
-              (team.scored ? " judge-team-card-scored" : "")
-            }
-          >
-            <div className="judge-team-number">{team.teamNumber}</div>
-            <div className="judge-team-name">{team.teamName}</div>
-            <div className="judge-team-leader">{team.leaderName}</div>
-            <div
+      {!hasQuery && (
+        <p
+          style={{
+            color: "rgba(255,255,255,0.5)",
+            textAlign: "center",
+            marginTop: 28,
+            fontFamily: "var(--font-perpetua), serif",
+            fontSize: 16,
+          }}
+        >
+          Start typing a team ID or team name to find a team.
+        </p>
+      )}
+
+      {hasQuery && (
+        <div className="judge-teams-grid">
+          {filtered.map((team) => (
+            <Link
+              key={team.id}
+              href={"/judge/score/" + team.id}
               className={
-                "judge-team-status " +
-                (team.scored ? "judge-status-scored" : "judge-status-pending")
+                "judge-team-card" +
+                (team.scored ? " judge-team-card-scored" : "")
               }
             >
-              {team.scored ? "Scored" : "Pending"}
-            </div>
-          </Link>
-        ))}
-      </div>
+              <div className="judge-team-number">{team.teamNumber}</div>
+              <div className="judge-team-name">{team.teamName}</div>
+              <div className="judge-team-leader">{team.leaderName}</div>
+              <div
+                className={
+                  "judge-team-status " +
+                  (team.scored ? "judge-status-scored" : "judge-status-pending")
+                }
+              >
+                {team.scored ? "Scored" : "Pending"}
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
-      {filtered.length === 0 && (
+      {hasQuery && filtered.length === 0 && (
         <p
           style={{
             color: "rgba(255,255,255,0.4)",

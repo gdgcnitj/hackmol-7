@@ -7,8 +7,8 @@ interface LeaderboardEntry {
   teamNumber: string;
   teamName: string;
   leaderName: string;
+  isAllGirls: boolean;
   finalScore: number;
-  totalJudges: number;
   roundDetails: Record<string, number>;
 }
 
@@ -16,16 +16,16 @@ export default function LeaderboardPage() {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadLeaderboard();
-  }, []);
-
   async function loadLeaderboard() {
     const res = await fetch("/api/admin/leaderboard");
     const data = await res.json();
     setEntries(data);
     setLoading(false);
   }
+
+  useEffect(() => {
+    void loadLeaderboard();
+  }, []);
 
   async function exportCSV() {
     const res = await fetch("/api/admin/leaderboard?format=csv");
@@ -88,7 +88,6 @@ export default function LeaderboardPage() {
                 <th>Mentor R2 (20%)</th>
                 <th>Judging (60%)</th>
                 <th>Final Score</th>
-                <th>Judges</th>
               </tr>
             </thead>
             <tbody>
@@ -104,7 +103,22 @@ export default function LeaderboardPage() {
                     {i + 1}
                   </td>
                   <td>{entry.teamNumber}</td>
-                  <td>{entry.teamName}</td>
+                  <td>
+                    {entry.teamName}
+                    {entry.isAllGirls && (
+                      <span
+                        className="admin-badge"
+                        style={{
+                          marginLeft: 8,
+                          background: "rgba(236, 72, 153, 0.18)",
+                          borderColor: "rgba(236, 72, 153, 0.45)",
+                          color: "#f9a8d4",
+                        }}
+                      >
+                        All Girls Team
+                      </span>
+                    )}
+                  </td>
                   <td>{entry.leaderName}</td>
                   <td>{(entry.roundDetails.MENTOR_1 ?? 0).toFixed(1)}</td>
                   <td>{(entry.roundDetails.MENTOR_2 ?? 0).toFixed(1)}</td>
@@ -118,7 +132,6 @@ export default function LeaderboardPage() {
                   >
                     {entry.finalScore.toFixed(2)}
                   </td>
-                  <td>{entry.totalJudges}</td>
                 </tr>
               ))}
             </tbody>

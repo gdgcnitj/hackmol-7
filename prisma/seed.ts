@@ -89,9 +89,24 @@ async function main() {
 
   // Seed rounds
   const rounds = [
-    { name: "Mentoring Round 1", type: "MENTOR_1" as const, weight: 20 },
-    { name: "Mentoring Round 2", type: "MENTOR_2" as const, weight: 20 },
-    { name: "Judging Round", type: "JUDGING" as const, weight: 60 },
+    {
+      name: "Mentoring Round 1",
+      type: "MENTOR_1" as const,
+      weight: 20,
+      isActive: true,
+    },
+    {
+      name: "Mentoring Round 2",
+      type: "MENTOR_2" as const,
+      weight: 20,
+      isActive: false,
+    },
+    {
+      name: "Judging Round",
+      type: "JUDGING" as const,
+      weight: 60,
+      isActive: false,
+    },
   ];
 
   for (const round of rounds) {
@@ -104,6 +119,22 @@ async function main() {
     } else {
       console.log("Round already exists: " + round.name + ", skipping.");
     }
+  }
+
+  const activeRoundCount = await prisma.round.count({
+    where: { isActive: true },
+  });
+
+  if (activeRoundCount === 0) {
+    await prisma.round.updateMany({
+      where: { type: { not: "MENTOR_1" } },
+      data: { isActive: false },
+    });
+    await prisma.round.update({
+      where: { type: "MENTOR_1" },
+      data: { isActive: true },
+    });
+    console.log("Default active round set: Mentoring Round 1");
   }
 
   // Seed teams from CSV

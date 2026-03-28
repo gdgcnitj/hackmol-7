@@ -16,6 +16,7 @@ export async function GET() {
             impact: true,
             demo: true,
             presentation: true,
+            notes: true,
             submittedAt: true,
             user: {
               select: { name: true, role: true },

@@ -3,10 +3,21 @@ import { prisma } from "@/lib/prisma";
 import { computeWeightedTotal, computeRoundAverage, computeFinalScore } from "@/lib/scoring";
 import type { RoundScore } from "@/lib/scoring";
 
+function parseAllGirlsTeamNumbers(): Set<string> {
+  const raw = process.env.ALL_GIRLS_TEAMS || process.env.ALL_GIRLS_TEAM || "";
+  return new Set(
+    raw
+      .split(",")
+      .map((value) => value.trim().toUpperCase())
+      .filter(Boolean)
+  );
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const format = searchParams.get("format");
+    const allGirlsTeamNumbers = parseAllGirlsTeamNumbers();
 
     const teams = await prisma.team.findMany({
       orderBy: { teamNumber: "asc" },
@@ -65,6 +76,7 @@ export async function GET(request: NextRequest) {
         leaderName: team.leaderName,
         finalScore,
         totalJudges,
+        isAllGirls: allGirlsTeamNumbers.has(team.teamNumber.toUpperCase()),
         roundDetails,
       };
     });

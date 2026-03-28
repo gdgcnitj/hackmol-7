@@ -29,16 +29,16 @@ export default function JudgesPage() {
     role: "JUDGE" as "JUDGE" | "MENTOR",
   });
 
-  useEffect(() => {
-    loadJudges();
-  }, []);
-
   async function loadJudges() {
     const res = await fetch("/api/admin/judges");
     const data = await res.json();
     setJudges(data);
     setLoading(false);
   }
+
+  useEffect(() => {
+    void loadJudges();
+  }, []);
 
   async function handleCreate(e: FormEvent) {
     e.preventDefault();
