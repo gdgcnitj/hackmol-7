@@ -103,6 +103,7 @@ model Score {
   team  Team  @relation(fields: [teamId], references: [id], onDelete: Cascade)
 
   @@unique([roundId, userId, teamId])
+  @@unique([roundId, teamId])
   @@index([roundId])
   @@index([userId])
   @@index([teamId])

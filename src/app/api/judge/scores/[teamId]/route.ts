@@ -40,12 +40,24 @@ export async function GET(
       });
     }
 
-    const score = await prisma.score.findUnique({
+    const score = await prisma.score.findFirst({
       where: {
-        roundId_userId_teamId: {
-          roundId: activeRound.id,
-          userId: session.userId,
-          teamId,
+        roundId: activeRound.id,
+        teamId,
+      },
+      select: {
+        technical: true,
+        innovation: true,
+        impact: true,
+        demo: true,
+        presentation: true,
+        notes: true,
+        userId: true,
+        user: {
+          select: {
+            name: true,
+            role: true,
+          },
         },
       },
     });
@@ -103,7 +115,19 @@ export async function GET(
     }
 
     return NextResponse.json({
-      score,
+      score: score
+        ? {
+            technical: score.technical,
+            innovation: score.innovation,
+            impact: score.impact,
+            demo: score.demo,
+            presentation: score.presentation,
+            notes: score.notes,
+            evaluatedByCurrentUser: score.userId === session.userId,
+            evaluatorName: score.user.name,
+            evaluatorRole: score.user.role,
+          }
+        : null,
       activeRound: {
         id: activeRound.id,
         name: activeRound.name,

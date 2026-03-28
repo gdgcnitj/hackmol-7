@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Prisma } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { validateAllScores } from "@/lib/scoring";
@@ -104,37 +105,75 @@ export async function POST(request: NextRequest) {
     const sanitizedNotes =
       notes && typeof notes === "string" ? notes.trim().slice(0, 1000) : null;
 
-    const score = await prisma.score.upsert({
-      where: {
-        roundId_userId_teamId: {
+    const score = await prisma.$transaction(async (tx) => {
+      const existingScore = await tx.score.findFirst({
+        where: {
+          roundId,
+          teamId,
+        },
+      });
+
+      if (existingScore && existingScore.userId !== session.userId) {
+        throw new Error("TEAM_ALREADY_SCORED_BY_ANOTHER_EVALUATOR");
+      }
+
+      if (existingScore) {
+        return tx.score.update({
+          where: { id: existingScore.id },
+          data: {
+            technical,
+            innovation,
+            impact,
+            demo,
+            presentation,
+            notes: sanitizedNotes,
+          },
+        });
+      }
+
+      return tx.score.create({
+        data: {
           roundId,
           userId: session.userId,
           teamId,
+          technical,
+          innovation,
+          impact,
+          demo,
+          presentation,
+          notes: sanitizedNotes,
         },
-      },
-      create: {
-        roundId,
-        userId: session.userId,
-        teamId,
-        technical,
-        innovation,
-        impact,
-        demo,
-        presentation,
-        notes: sanitizedNotes,
-      },
-      update: {
-        technical,
-        innovation,
-        impact,
-        demo,
-        presentation,
-        notes: sanitizedNotes,
-      },
+      });
     });
 
     return NextResponse.json({ success: true, scoreId: score.id });
-  } catch {
+  } catch (error) {
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002"
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "This team has already been scored by another evaluator in this round",
+        },
+        { status: 409 }
+      );
+    }
+
+    if (
+      error instanceof Error &&
+      error.message === "TEAM_ALREADY_SCORED_BY_ANOTHER_EVALUATOR"
+    ) {
+      return NextResponse.json(
+        {
+          error:
+            "This team has already been scored by another evaluator in this round",
+        },
+        { status: 409 }
+      );
+    }
+
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

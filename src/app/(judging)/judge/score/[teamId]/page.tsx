@@ -25,6 +25,9 @@ interface ExistingScore {
   demo: number;
   presentation: number;
   notes: string | null;
+  evaluatedByCurrentUser: boolean;
+  evaluatorName: string;
+  evaluatorRole: string;
 }
 
 interface PreviousRoundNote {
@@ -59,6 +62,9 @@ export default function ScorePage() {
   const [previousRoundNotes, setPreviousRoundNotes] = useState<
     PreviousRoundNote[]
   >([]);
+  const [isScoredByAnotherEvaluator, setIsScoredByAnotherEvaluator] =
+    useState(false);
+  const [scoredByLabel, setScoredByLabel] = useState("");
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState("");
@@ -92,6 +98,14 @@ export default function ScorePage() {
           presentation: s.presentation,
         });
         setNotes(s.notes || "");
+        const scoredByOther = !s.evaluatedByCurrentUser;
+        setIsScoredByAnotherEvaluator(scoredByOther);
+        setScoredByLabel(
+          scoredByOther ? s.evaluatorName + " (" + s.evaluatorRole + ")" : ""
+        );
+      } else {
+        setIsScoredByAnotherEvaluator(false);
+        setScoredByLabel("");
       }
 
       setPreviousRoundNotes(scoreData.previousRoundNotes || []);
@@ -114,7 +128,9 @@ export default function ScorePage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!activeRound || activeRound.isLocked) return;
+    if (!activeRound || activeRound.isLocked || isScoredByAnotherEvaluator) {
+      return;
+    }
 
     setSubmitting(true);
     setError("");
@@ -211,6 +227,12 @@ export default function ScorePage() {
       {activeRound.isLocked && (
         <div className="score-locked-msg" style={{ marginBottom: 20 }}>
           This round is locked. Scores cannot be modified.
+        </div>
+      )}
+
+      {isScoredByAnotherEvaluator && (
+        <div className="score-locked-msg" style={{ marginBottom: 20 }}>
+          This team has already been scored in this round by {scoredByLabel}.
         </div>
       )}
 
@@ -311,7 +333,7 @@ export default function ScorePage() {
                     }
                     className="score-slider"
                     style={{ "--fill": fill + "%" } as React.CSSProperties}
-                    disabled={activeRound.isLocked}
+                    disabled={activeRound.isLocked || isScoredByAnotherEvaluator}
                   />
                   <div className="score-slider-labels">
                     <span>0</span>
@@ -332,7 +354,7 @@ export default function ScorePage() {
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Any additional feedback for this team..."
             maxLength={1000}
-            disabled={activeRound.isLocked}
+            disabled={activeRound.isLocked || isScoredByAnotherEvaluator}
           />
         </div>
 
@@ -349,7 +371,9 @@ export default function ScorePage() {
           <button
             type="submit"
             className="score-submit-btn"
-            disabled={submitting || activeRound.isLocked}
+            disabled={
+              submitting || activeRound.isLocked || isScoredByAnotherEvaluator
+            }
           >
             {submitting ? "Submitting..." : "Submit Score"}
           </button>

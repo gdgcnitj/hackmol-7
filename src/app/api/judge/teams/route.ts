@@ -48,11 +48,12 @@ export async function GET() {
       });
     }
 
-    // Get this user's scores for active round
+    // Get scores for active round for visible teams.
+    // A team is considered scored once any evaluator has submitted in this round.
     const scores = await prisma.score.findMany({
       where: {
         roundId: activeRound.id,
-        userId: session.userId,
+        teamId: { in: teams.map((team) => team.id) },
       },
       select: { teamId: true },
     });
