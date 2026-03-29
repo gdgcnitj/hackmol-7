@@ -11,6 +11,8 @@ const NAV_ITEMS = [
   { href: "/admin/teams", label: "Teams", icon: "T" },
   { href: "/admin/rounds", label: "Rounds", icon: "R" },
   { href: "/admin/leaderboard", label: "Leaderboard", icon: "L" },
+  { href: "/admin/leaderboard-normalized", label: "Normalized Board", icon: "N" },
+  { href: "/admin/leaderboard-normalized/method", label: "Method", icon: "M" },
 ];
 
 export default function AdminLayout({
