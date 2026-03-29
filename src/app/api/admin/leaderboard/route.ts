@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
     const scores = await prisma.score.findMany({
       include: {
         round: { select: { type: true, weight: true } },
+        user: { select: { role: true, name: true } },
       },
     });
 
@@ -41,19 +42,58 @@ export async function GET(request: NextRequest) {
     const leaderboard = teams.map((team) => {
       const teamScores = scoresByTeam.get(team.id) || [];
 
+      const roundBreakdown: Record<
+        string,
+        Array<{
+          evaluatorRole: string;
+          evaluatorLabel: string;
+          evaluatorName: string;
+          technical: number;
+          innovation: number;
+          impact: number;
+          demo: number;
+          presentation: number;
+          weightedTotal: number;
+        }>
+      > = {};
+
       const roundScores: RoundScore[] = rounds.map((round) => {
         const roundTeamScores = teamScores.filter(
           (s) => s.roundId === round.id
         );
-        const weightedTotals = roundTeamScores.map((s) =>
-          computeWeightedTotal({
+
+        const submissions = roundTeamScores.map((s, index) => {
+          const weightedTotal = computeWeightedTotal({
             technical: s.technical,
             innovation: s.innovation,
             impact: s.impact,
             demo: s.demo,
             presentation: s.presentation,
-          })
-        );
+          });
+
+          const evaluatorLabelPrefix =
+            s.user.role === "MENTOR"
+              ? "Mentor"
+              : s.user.role === "JUDGE"
+              ? "Judge"
+              : "Admin";
+
+          return {
+            evaluatorRole: s.user.role,
+            evaluatorLabel: `${evaluatorLabelPrefix} ${index + 1}`,
+            evaluatorName: s.user.name,
+            technical: s.technical,
+            innovation: s.innovation,
+            impact: s.impact,
+            demo: s.demo,
+            presentation: s.presentation,
+            weightedTotal,
+          };
+        });
+
+        const weightedTotals = submissions.map((s) => s.weightedTotal);
+        roundBreakdown[round.type] = submissions;
+
         return {
           roundType: round.type,
           roundWeight: round.weight,
@@ -78,6 +118,7 @@ export async function GET(request: NextRequest) {
         totalJudges,
         isAllGirls: allGirlsTeamNumbers.has(team.teamNumber.toUpperCase()),
         roundDetails,
+        roundBreakdown,
       };
     });
 

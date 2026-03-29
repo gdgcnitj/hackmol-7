@@ -2,6 +2,18 @@
 
 import { useEffect, useState } from "react";
 
+interface EvaluationBreakdown {
+  evaluatorRole: string;
+  evaluatorLabel: string;
+  evaluatorName: string;
+  technical: number;
+  innovation: number;
+  impact: number;
+  demo: number;
+  presentation: number;
+  weightedTotal: number;
+}
+
 interface LeaderboardEntry {
   teamId: string;
   teamNumber: string;
@@ -10,11 +22,42 @@ interface LeaderboardEntry {
   isAllGirls: boolean;
   finalScore: number;
   roundDetails: Record<string, number>;
+  roundBreakdown: Record<string, EvaluationBreakdown[]>;
 }
 
 export default function LeaderboardPage() {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [breakdownModal, setBreakdownModal] = useState<{
+    teamName: string;
+    teamNumber: string;
+    roundBreakdown: Record<string, EvaluationBreakdown[]>;
+  } | null>(null);
+
+  function openBreakdown(entry: LeaderboardEntry) {
+    setBreakdownModal({
+      teamName: entry.teamName,
+      teamNumber: entry.teamNumber,
+      roundBreakdown: entry.roundBreakdown ?? {},
+    });
+  }
+
+  function getCombinedRows(roundBreakdown: Record<string, EvaluationBreakdown[]>) {
+    const roundConfig = [
+      { key: "MENTOR_1", label: "Mentor Round 1" },
+      { key: "MENTOR_2", label: "Mentor Round 2" },
+      { key: "JUDGING", label: "Judging Round" },
+    ];
+
+    return roundConfig.flatMap(({ key, label }) => {
+      const evaluations = roundBreakdown[key] ?? [];
+      return evaluations.map((evaluation, index) => ({
+        rowKey: `${key}-${evaluation.evaluatorName}-${index}`,
+        round: label,
+        ...evaluation,
+      }));
+    });
+  }
 
   async function loadLeaderboard() {
     const res = await fetch("/api/admin/leaderboard");
@@ -92,7 +135,12 @@ export default function LeaderboardPage() {
             </thead>
             <tbody>
               {entries.map((entry, i) => (
-                <tr key={entry.teamId}>
+                <tr
+                  key={entry.teamId}
+                  onClick={() => openBreakdown(entry)}
+                  style={{ cursor: "pointer" }}
+                  title="Click to view marks breakdown"
+                >
                   <td
                     style={{
                       fontFamily: "var(--font-cinzel), serif",
@@ -138,6 +186,93 @@ export default function LeaderboardPage() {
           </table>
         </div>
       </div>
+
+      {breakdownModal && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.6)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 16,
+            zIndex: 1000,
+          }}
+          onClick={() => setBreakdownModal(null)}
+        >
+          <div
+            className="admin-card"
+            style={{
+              width: "min(920px, 100%)",
+              maxHeight: "80vh",
+              overflow: "auto",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: 8,
+                marginBottom: 14,
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "var(--font-cinzel), serif",
+                  color: "#ffffff",
+                  fontSize: 16,
+                }}
+              >
+                {breakdownModal.teamNumber} - {breakdownModal.teamName} (Marks Breakdown)
+              </div>
+              <button
+                className="admin-btn admin-btn-danger admin-btn-small"
+                onClick={() => setBreakdownModal(null)}
+              >
+                Close
+              </button>
+            </div>
+
+            {getCombinedRows(breakdownModal.roundBreakdown).length === 0 ? (
+              <p style={{ color: "rgba(255,255,255,0.6)", margin: 0 }}>
+                No evaluations submitted for this team yet.
+              </p>
+            ) : (
+              <div className="admin-table-wrap">
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Round</th>
+                      <th>Name</th>
+                      <th>Technical</th>
+                      <th>Innovation</th>
+                      <th>Impact</th>
+                      <th>Demo</th>
+                      <th>Presentation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getCombinedRows(breakdownModal.roundBreakdown).map((row) => (
+                      <tr key={row.rowKey}>
+                        <td>{row.round}</td>
+                        <td>{row.evaluatorName}</td>
+                        <td>{row.technical}</td>
+                        <td>{row.innovation}</td>
+                        <td>{row.impact}</td>
+                        <td>{row.demo}</td>
+                        <td>{row.presentation}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
