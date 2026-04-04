@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Cinzel_Decorative, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import FooterWithRouteContact from "@/components/layout/FooterWithRouteContact";
+import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import FloatingActions from "@/components/ui/FloatingActions";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -214,7 +214,7 @@ export default function RootLayout({
         <SmoothScroll />
         <Navbar />
         <main className="flex-1">{children}</main>
-        <FooterWithRouteContact />
+        <Footer />
         <FloatingActions />
         <Analytics />
         <GoogleAnalytics gaId="G-Z5ZGV0B6C4" />

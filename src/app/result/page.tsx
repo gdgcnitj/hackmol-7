@@ -1,148 +1,175 @@
+import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
-import { promises as fs } from "node:fs";
-import path from "node:path";
+import SectionHeading from "@/components/ui/SectionHeading";
 import styles from "./result.module.css";
-
-type TeamEntry = {
-  teamNo: string;
-  teamName: string;
-  teamLeaderName: string;
-};
-
-type TeamSection = "selected" | "waitlisted";
+import {
+  parseRound2SummaryCsv,
+  parseRound2TopTeamsCsv,
+  readPublicCsv,
+} from "@/lib/resultCsv";
 
 export const metadata: Metadata = {
-  title: "Round 1 Results | HackMol 7.0",
-  description: "HackMol 7.0 Round 1 results with selected and waitlisted teams for the offline round.",
+  title: "Results | HackMol 7.0",
+  description: "Browse HackMol 7.0 Round 1 and Round 2 published results.",
   alternates: {
     canonical: "/result",
   },
 };
 
-function parseResultCsv(csvText: string): { selected: TeamEntry[]; waitlisted: TeamEntry[] } {
-  const selected: TeamEntry[] = [];
-  const waitlisted: TeamEntry[] = [];
+function formatMetricLabel(metric: string): string {
+  return metric
+    .split("_")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
 
-  let currentSection: TeamSection | null = null;
-
-  for (const rawLine of csvText.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    if (!line) continue;
-
-    const lower = line.toLowerCase();
-
-    if (lower.startsWith("selected teams for offline round")) {
-      currentSection = "selected";
-      continue;
-    }
-
-    if (lower.startsWith("waitlisted teams")) {
-      currentSection = "waitlisted";
-      continue;
-    }
-
-    if (lower.startsWith("team no.,team name,team leader name")) {
-      continue;
-    }
-
-    const columns = rawLine.split(",").map((value) => value.trim());
-    if (columns.length < 3 || !currentSection) continue;
-
-    const [teamNo, teamName, ...leaderParts] = columns;
-    const teamLeaderName = leaderParts.join(", ").trim();
-
-    if (!teamNo || !teamName || !teamLeaderName) continue;
-    if (!/^h7/i.test(teamNo)) continue;
-
-    const entry: TeamEntry = {
-      teamNo,
-      teamName,
-      teamLeaderName,
-    };
-
-    if (currentSection === "selected") {
-      selected.push(entry);
-    } else {
-      waitlisted.push(entry);
-    }
+function formatMetricValue(metric: string, value: number): string {
+  if (metric.includes("normalized")) {
+    return value.toFixed(2);
   }
-
-  return { selected, waitlisted };
+  return String(value);
 }
 
-async function getResultData() {
-  const csvPath = path.join(process.cwd(), "public", "result", "result.csv");
-  const csvText = await fs.readFile(csvPath, "utf8");
-  return parseResultCsv(csvText);
-}
+async function getResultHighlights() {
+  try {
+    const [summaryCsv, topTeamsCsv] = await Promise.all([
+      readPublicCsv("round-2-summary.csv"),
+      readPublicCsv("round-2-top-teams.csv"),
+    ]);
 
-function TeamTable({ title, teams }: { title: string; teams: TeamEntry[] }) {
-  return (
-    <section className={styles.panel}>
-      <div className={styles.panelHeaderRow}>
-        <h2 className={styles.panelTitle}>{title}</h2>
-        <span className={styles.panelCount}>{teams.length} Teams</span>
-      </div>
-
-      <div className={styles.tableWrap}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Team No.</th>
-              <th>Team Name</th>
-              <th>Team Leader</th>
-            </tr>
-          </thead>
-          <tbody>
-            {teams.map((team) => (
-              <tr key={team.teamNo}>
-                <td>{team.teamNo}</td>
-                <td>{team.teamName}</td>
-                <td>{team.teamLeaderName}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </section>
-  );
+    return {
+      summary: parseRound2SummaryCsv(summaryCsv),
+      topTeams: parseRound2TopTeamsCsv(topTeamsCsv),
+    };
+  } catch {
+    return {
+      summary: [],
+      topTeams: [],
+    };
+  }
 }
 
 export default async function ResultPage() {
-  const { selected, waitlisted } = await getResultData();
+  const { summary, topTeams } = await getResultHighlights();
+  const snapshotMetrics = summary.filter(
+    (item) =>
+      item.metric !== "scored_teams" &&
+      item.metric !== "lowest_final_normalized" &&
+      item.metric !== "winner_teams"
+  );
 
   return (
     <div className={styles.page}>
       <div className={styles.heroGlow} aria-hidden="true"></div>
+      <Image
+        src="/assets/decorative/knight-right.png"
+        alt=""
+        width={180}
+        height={260}
+        className={`${styles.resultCharacter} ${styles.resultCharacterLeft}`}
+        aria-hidden="true"
+      />
+      <Image
+        src="/assets/decorative/knight-left.png"
+        alt=""
+        width={180}
+        height={260}
+        className={`${styles.resultCharacter} ${styles.resultCharacterRight}`}
+        aria-hidden="true"
+      />
 
       <main className={styles.container}>
         <header className={styles.header}>
-          <p className={styles.eyebrow}>HackMol 7.0</p>
-          <h1 className={styles.title}>Round 1 Results</h1>
-          <p className={styles.subtitle}>
-            Congratulations to all shortlisted teams. The following teams are selected for the offline round.
-          </p>
-
-          <div className={styles.metrics}>
-            <div className={styles.metricCard}>
-              <span className={styles.metricLabel}>Selected Teams</span>
-              <span className={styles.metricValue}>{selected.length}</span>
-            </div>
-            <div className={styles.metricCard}>
-              <span className={styles.metricLabel}>Waitlisted Teams</span>
-              <span className={styles.metricValue}>{waitlisted.length}</span>
-            </div>
-          </div>
+          <SectionHeading
+            title="Published"
+            highlight="Results"
+            description="Explore archived Round 1 results and the final Round 2 normalized leaderboard with winning categories."
+          />
         </header>
 
-        <div className={styles.grid}>
-          <TeamTable title="Selected Teams for Offline Round" teams={selected} />
-          <TeamTable title="Waitlisted Teams" teams={waitlisted} />
+        <div className={styles.routeCards}>
+          <Link href="/result/round-1" className={styles.routeCard}>
+            <p className={styles.routeCardEyebrow}>Archive</p>
+            <h2 className={styles.routeCardTitle}>Round 1</h2>
+            <p className={styles.routeCardCopy}>
+              Selected and waitlisted teams for the offline round.
+              <span className={styles.routeCardCta}>Click to view</span>
+            </p>
+          </Link>
+
+          <Link href="/result/round-2" className={styles.routeCard}>
+            <p className={styles.routeCardEyebrow}>Finale</p>
+            <h2 className={styles.routeCardTitle}>Round 2</h2>
+            <p className={styles.routeCardCopy}>
+              Final normalized scores, rank table, and winner categories.
+              <span className={styles.routeCardCta}>Click to view</span>
+            </p>
+          </Link>
         </div>
 
-        <p className={styles.notice}>
-          Note: Teams listed under the waitlist will be considered for selection in case any selected team withdraws for any reason.
-        </p>
+        <section className={`${styles.panel} ${styles.leaderboardPanel}`}>
+          <div className={styles.panelHeaderRow}>
+            <h2 className={styles.panelTitle}>Round 2 Snapshot</h2>
+            <span className={styles.panelCount}>Stats</span>
+          </div>
+
+          {snapshotMetrics.length === 0 ? (
+            <p className={styles.emptyState}>
+              Snapshot data is unavailable right now.
+            </p>
+          ) : (
+            <div className={styles.resultSummaryGrid}>
+              {snapshotMetrics.map((item) => (
+                <article key={item.metric} className={styles.resultSummaryCard}>
+                  <p className={styles.resultSummaryLabel}>{formatMetricLabel(item.metric)}</p>
+                  <p className={styles.resultSummaryValue}>
+                    {formatMetricValue(item.metric, item.value)}
+                  </p>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section className={`${styles.panel} ${styles.leaderboardPanel}`}>
+          <div className={styles.panelHeaderRow}>
+            <h2 className={styles.panelTitle}>Top 10 Finalists</h2>
+            <span className={styles.panelCount}>{topTeams.length} Teams</span>
+          </div>
+
+          {topTeams.length === 0 ? (
+            <p className={styles.emptyState}>
+              Top team highlights are unavailable right now.
+            </p>
+          ) : (
+            <div className={styles.tableWrap}>
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Team No.</th>
+                    <th>Team Name</th>
+                    <th>Team Leader</th>
+                    <th>Final (Norm)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topTeams.map((team) => (
+                    <tr key={`${team.rank}-${team.teamNo}`}>
+                      <td>{team.rank}</td>
+                      <td>{team.teamNo}</td>
+                      <td>{team.teamName}</td>
+                      <td>{team.leaderName}</td>
+                      <td>{team.finalNormalized.toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
       </main>
     </div>
   );

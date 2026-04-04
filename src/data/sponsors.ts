@@ -69,13 +69,6 @@ export const sponsors: Sponsor[] = [
     category: "bronze",
     url: "https://www.linkedin.com/company/osenofficial/",
   },
-  {
-    name: "Coming Soon",
-    logo: "/assets/branding/hackmol_logo.png",
-    label: "Coming Soon",
-    category: "bronze",
-    url: "#",
-  },
 
   /* Community — 3 per row */
   {

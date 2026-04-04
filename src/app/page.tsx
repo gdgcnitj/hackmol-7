@@ -7,11 +7,12 @@ import Prizes from "@/components/landing/prizes";
 import Speakers from "@/components/landing/speakers";
 import Team from "@/components/landing/team";
 import FAQ from "@/components/landing/FAQ";
-import Contact from "@/components/landing/contact";
+import HomeSectionScroller from "@/components/layout/HomeSectionScroller";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
+      <HomeSectionScroller />
       <Hero />
       <About />
       <Timeline />
@@ -21,7 +22,6 @@ export default function Home() {
       <Speakers />
       <Team />
       <FAQ />
-      <Contact />
     </div>
   );
 }

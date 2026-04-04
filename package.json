@@ -13,7 +13,9 @@
     "db:push": "npx prisma db push",
     "db:seed": "npx tsx prisma/seed.ts",
     "db:studio": "npx prisma studio",
-    "db:reset": "npx prisma db push --force-reset && npx tsx prisma/seed.ts"
+    "db:reset": "npx prisma db push --force-reset && npx tsx prisma/seed.ts",
+    "result:publish:round2": "npx tsx scripts/publish-round-2-results.ts",
+    "result:validate:round2": "node scripts/validate-round-2-results.mjs"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs}": [

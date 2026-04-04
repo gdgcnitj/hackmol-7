@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { navLinks } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
 import "./Navbar.css";
@@ -12,6 +12,16 @@ export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState<string>("");
     const pathname = usePathname();
+    const router = useRouter();
+
+    const scrollToSection = (sectionId: string) => {
+        const element = document.getElementById(sectionId);
+        if (!element) return;
+
+        const y = element.getBoundingClientRect().top + window.scrollY - 88;
+        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+        window.history.replaceState(null, "", `/#${sectionId}`);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -75,30 +85,48 @@ export default function Navbar() {
                 {navLinks.map((link) => {
                     const isRouteLink = link.href.startsWith("/");
                     const sectionId = link.href.replace("#", "");
+                    const targetHref = isRouteLink
+                        ? link.href
+                        : pathname === "/"
+                            ? link.href
+                            : `/${link.href}`;
                     const isActive = isRouteLink
                         ? pathname === link.href
                         : pathname === "/" && activeSection === sectionId;
 
-                    if (isRouteLink) {
-                        return (
-                            <Link
-                                key={link.href}
-                                href={link.href}
-                                className={isActive ? "active" : ""}
-                            >
-                                {link.label}
-                            </Link>
-                        );
-                    }
-
                     return (
-                        <a
+                        <Link
                             key={link.href}
-                            href={link.href}
+                            href={targetHref}
                             className={isActive ? "active" : ""}
+                            onClick={(event) => {
+                                if (!link.href.startsWith("#")) return;
+
+                                const isModifiedClick =
+                                    event.metaKey ||
+                                    event.ctrlKey ||
+                                    event.shiftKey ||
+                                    event.altKey ||
+                                    event.button !== 0;
+
+                                if (isModifiedClick) return;
+
+                                const id = link.href.slice(1);
+                                if (!id) return;
+
+                                event.preventDefault();
+
+                                if (pathname === "/") {
+                                    scrollToSection(id);
+                                    return;
+                                }
+
+                                sessionStorage.setItem("home-scroll-target", id);
+                                router.push("/");
+                            }}
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     );
                 })}
             </div>

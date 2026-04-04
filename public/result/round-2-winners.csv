@@ -1,0 +1,10 @@
+display_order,category,team_name,team_no,award_type,note
+1,Main Track (1st Place),StrawHats,H731,MAIN_TRACK,
+2,Main Track (2nd Place),TerminuX,H749,MAIN_TRACK,
+3,Main Track (3rd Place),AmongDevs,H715,MAIN_TRACK,
+4,Women Track Winner,Merge Conflict Ninjas,H741,TRACK_WINNER,
+5,Fresher's Track Winner,FunTastic4,H711,TRACK_WINNER,
+6,Women's Track Special,Pookiemon,H752,SPECIAL_MENTION,
+7,Women's Track Special,VISION HACKERS,H716,SPECIAL_MENTION,
+8,Fresher's Special Mention,Caffeine Compilers,H727,SPECIAL_MENTION,
+9,Fresher's Special Mention,PurplePiglets,H750,SPECIAL_MENTION,

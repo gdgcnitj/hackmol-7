@@ -9,6 +9,7 @@ import {
   socialLinks as socialLinksData,
 } from "@/data/navigation";
 import { siteConfig } from "@/data/site";
+import Contact from "@/components/landing/contact";
 import "./footer.css";
 import FooterMap from "./FooterMap";
 
@@ -34,8 +35,10 @@ const socialLinks = socialLinksData.map((link) => ({
 
 export default function Footer() {
   return (
-    <footer className="footer-section">
-      <div className="footer-dark-top" />
+    <>
+      <Contact />
+      <footer className="footer-section">
+        <div className="footer-dark-top" />
 
       <div className="footer-bg footer-bg--wide">
         <Image
@@ -140,9 +143,10 @@ export default function Footer() {
 
       </div>
 
-      <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} GDG on Campus, NIT Jalandhar. All rights reserved.</p>
-      </div>
-    </footer>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} GDG on Campus, NIT Jalandhar. All rights reserved.</p>
+        </div>
+      </footer>
+    </>
   );
 }

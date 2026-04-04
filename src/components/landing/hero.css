@@ -427,7 +427,6 @@ body {
 
 .countdown-timer {
   display: flex;
-  gap: 12px;
   align-items: center;
   justify-content: center;
 }
@@ -436,8 +435,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 70px;
-  padding: 14px 18px;
+  min-width: 280px;
+  padding: 14px 22px;
   background: rgba(8, 14, 28, 0.25);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -445,26 +444,20 @@ body {
 }
 
 .countdown-value {
-  font-size: 42px;
+  font-size: 34px;
   font-weight: 700;
   color: #ffffff;
   font-family: var(--font-cinzel), serif;
+  line-height: 1.05;
 }
 
 .countdown-unit {
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 2.2px;
   color: rgba(200, 220, 240, 0.7);
   text-transform: uppercase;
   margin-top: 6px;
   font-weight: 400;
-}
-
-.countdown-separator {
-  font-size: 36px;
-  color: rgba(255, 255, 255, 0.25);
-  font-weight: 300;
-  margin: 0 4px;
 }
 
 /* Hero Register Button */
@@ -869,8 +862,8 @@ body {
   }
 
   .countdown-item {
-    min-width: 50px;
-    padding: 10px 14px;
+    min-width: 230px;
+    padding: 10px 16px;
     border-radius: 10px;
   }
 
@@ -880,15 +873,6 @@ body {
 
   .countdown-unit {
     font-size: 10px;
-  }
-
-  .countdown-separator {
-    font-size: 24px;
-    margin: 0 2px;
-  }
-
-  .countdown-timer {
-    gap: 6px;
   }
 
   .hero-bulletin-overlay {
@@ -1020,8 +1004,8 @@ body {
   }
 
   .countdown-item {
-    min-width: 40px;
-    padding: 8px 10px;
+    min-width: 192px;
+    padding: 8px 12px;
     border-radius: 8px;
   }
 
@@ -1137,8 +1121,8 @@ body {
   }
 
   .countdown-item {
-    min-width: 37px;
-    padding: 7px 8px;
+    min-width: 176px;
+    padding: 7px 10px;
   }
 
   .countdown-value {

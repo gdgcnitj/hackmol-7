@@ -72,38 +72,6 @@ export default function Hero() {
   const [loadProgress, setLoadProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Countdown state
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  // Countdown timer
-  useEffect(() => {
-    const targetDate = new Date(heroConfig.countdownTarget).getTime();
-    
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-        });
-      }
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
   // Find nearest loaded frame (fallback when the exact frame isn't loaded yet)
   const findNearestLoadedFrame = useCallback((targetIndex: number): ImageBitmap | null => {
     const frames = framesRef.current;
@@ -351,28 +319,13 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Countdown Timer */}
+            {/* Event dates */}
             <div className="countdown-overlay">
-              <div className="countdown-label">Hack Starts In</div>
+              <div className="countdown-label">Hackathon Dates</div>
               <div className="countdown-timer">
                 <div className="countdown-item">
-                  <span className="countdown-value">{timeLeft.days}</span>
-                  <span className="countdown-unit">Days</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
-                  <span className="countdown-unit">Hours</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
-                  <span className="countdown-unit">Minutes</span>
-                </div>
-                <div className="countdown-separator">:</div>
-                <div className="countdown-item">
-                  <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
-                  <span className="countdown-unit">Seconds</span>
+                  <span className="countdown-value">28-29 March 2026</span>
+                  <span className="countdown-unit">NIT Jalandhar</span>
                 </div>
               </div>
             </div>
@@ -385,7 +338,7 @@ export default function Hero() {
                     href="/result"
                     className="hero-bulletin-item hero-bulletin-link hero-bulletin-link-success"
                   >
-                    Result of selected teams for offline round is live
+                    Finale result is live
                   </a>
                 </div>
               </div>
